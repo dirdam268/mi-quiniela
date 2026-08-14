@@ -16,13 +16,13 @@ jornadaperfecta.com, laliga.com). Si un dato no está confirmado, se pone
 diferencial de esta app: si están mal, la app no vale nada.
 
 Esto vale por partida doble para las **alineaciones**. La fuente es siempre
-futbolfantasy.com, en concreto las fichas de equipo `/laliga/equipos/<equipo>`,
-que dan el **% de titularidad de cada jugador**. Se copia lo que publica la
-página y solo eso, ordenado de mayor a menor porcentaje: la app enseña los 11
-primeros como once probable y el resto aparte. **No se recorta la lista a 11 a
-mano ni se completa un hueco a ojo** — si la página solo da 7 jugadores, se
-ponen 7. Además futbolfantasy **solo cubre Primera**: los partidos de 2ª nunca
-llevan alineaciones y la app lo dice explícitamente.
+futbolfantasy.com, en concreto las fichas de equipo, que dan el **% de
+titularidad de cada jugador**: `/laliga/equipos/<equipo>` para Primera y
+`/laliga2/equipos/<equipo>` para Segunda. Se copia lo que publica la página y
+solo eso, ordenado de mayor a menor porcentaje: la app enseña los 11 primeros
+como once probable y el resto aparte. **No se recorta la lista a 11 a mano ni se
+completa un hueco a ojo** — si la página solo da 7 jugadores, se ponen 7. Si un
+equipo no tiene porcentajes todavía, se omite el campo y la app lo dice sola.
 
 ## Qué fichero se toca
 
@@ -75,6 +75,12 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - El HTML se regenera entero en cada `render()`. Por eso **todos los eventos
   son delegados** sobre `#app`. Si añades un control nuevo, engánchalo en el
   listener delegado, no con `addEventListener` sobre el elemento.
+- Los **dobles se calculan solos** en `calcDobles()` y viven en la variable
+  `DOBLES`, que `render()` recalcula antes de pintar nada. No se guardan en el
+  JSON. Si tocas el pronóstico de un partido, el doble puede moverse solo.
+- Hay una **tarea programada** los jueves a las 9:00 (`quiniela-datos-semanales`)
+  que prepara el JSON de la jornada y ejecuta `construir.ps1`. El cifrado y la
+  subida los hace Enrique a mano, porque hacen falta su contraseña y su cuenta.
 - El pleno se pinta con el mismo `tplPartido()` que los demás, marcándolo con
   `div: 'P15'`. Si tocas esa función, comprueba las dos ramas.
 - `nombreCorto()` quita siglas de club (FC, CD, RCD, SD, UD…) para el boleto

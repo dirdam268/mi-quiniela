@@ -110,16 +110,31 @@ Notas del schema:
 - `suspendido: true` pinta el borde en ámbar y añade el aviso de sorteo.
   `urgente: true` lo pinta en rojo con la etiqueta "PARTIDO CLAVE".
 - `alineaciones` es **opcional** y sale siempre de las fichas de equipo de
-  [futbolfantasy.com](https://www.futbolfantasy.com/laliga/equipos/alaves)
-  (`/laliga/equipos/<equipo>`), donde cada jugador lleva su **% de
-  titularidad**. Se copian todos los jugadores con porcentaje visible,
-  **ordenados de mayor a menor**: la app pinta los 11 primeros como once
-  probable y el resto bajo "Resto de la plantilla".
+  futbolfantasy.com, donde cada jugador lleva su **% de titularidad**:
+  - 1ª: `https://www.futbolfantasy.com/laliga/equipos/<equipo>`
+  - 2ª: `https://www.futbolfantasy.com/laliga2/equipos/<equipo>`
+
+  Se copian todos los jugadores con porcentaje visible, **ordenados de mayor a
+  menor**: la app pinta los 11 primeros como once probable y el resto bajo
+  "Resto de la plantilla".
 - Cada jugador es `{ "n": nombre, "p": porcentaje }`. También se admite un
   string suelto si no hay porcentaje (se pinta con "—").
-- Si falta el campo, la app lo dice sola: "aún no publicadas" en 1ª, y
-  "futbolfantasy solo publica alineaciones de Primera" en los partidos de 2ª.
-  **Nunca rellenar a ojo** — mejor dejarlo fuera.
+- Si falta el campo, la app muestra sola "aún no publicadas" apuntando a la
+  sección que corresponda. **Nunca rellenar a ojo** — mejor dejarlo fuera.
+- `meta.actualizado` (opcional, `YYYY-MM-DD`) es el sello "↻ Actualizado" de la
+  cabecera. Si falta, se usa `meta.fecha_datos`.
+
+## Dobles
+
+La app elige los dobles **sola**, no se ponen en el JSON. Ordena los partidos
+por el margen entre el pronóstico y su mejor alternativa, y dobla los `N_DOBLES`
+más ajustados (2 por defecto, constante al principio del `<script>` de
+`plantilla.html`). A igualdad de margen entra antes el de confianza BAJA. Los
+partidos suspendidos quedan fuera: su resultado sale por sorteo y no merece
+gastar un doble.
+
+Cada doble multiplica por 2 las apuestas: 2 dobles = 4 apuestas. La app lo
+muestra en la cabecera del boleto y lo incluye al copiarlo.
 
 ---
 
