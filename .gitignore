@@ -1,0 +1,4 @@
+# index-src.html se genera con construir.ps1: no se versiona
+index-src.html
+_test_*.html
+*.log
