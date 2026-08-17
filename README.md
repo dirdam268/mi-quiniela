@@ -85,6 +85,7 @@ tocar `plantilla.html` para añadir una jornada.
         "local": [{ "n": "Antonio Sivera", "p": 95 }, { "n": "Nahuel Tenaglia", "p": 90 }],
         "visit": [{ "n": "David Soria", "p": 95 }, { "n": "Zaid Romero", "p": 90 }]
       },
+      "resultado": "1",
       "suspendido": false,
       "urgente": false
     }
@@ -98,7 +99,8 @@ tocar `plantilla.html` para añadir una jornada.
     "pred_marcador": "1-0",
     "lae_p15_local": [7, 49, 37, 7],
     "lae_p15_visit": [24, 60, 14, 2],
-    "razon": "...", "bajas": "...", "conf": "MEDIA"
+    "razon": "...", "bajas": "...", "conf": "MEDIA",
+    "resultado_marcador": "1-0"
   }
 }
 ```
@@ -139,6 +141,27 @@ gastar un doble.
 
 Cada doble multiplica por 2 las apuestas: 2 dobles = 4 apuestas. La app lo
 muestra en la cabecera del boleto y lo incluye al copiarlo.
+
+## Resultados y aciertos
+
+`resultado` (`"1"`, `"X"` o `"2"`) en cada partido y `resultado_marcador` en el
+pleno son **opcionales**: se rellenan el lunes, cuando ya se ha jugado. Fuente:
+el escrutinio de eduardolosilla,
+`https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_XX`.
+
+Con solo algunos rellenos, la app trabaja en modo provisional y lo dice. En
+cuanto hay resultados aparece:
+
+- Un panel arriba con los **aciertos**, en verde si ≥71%, ámbar si ≥50%, rojo
+  por debajo.
+- La comparación **boleto real vs boleto simple**, para saber si los dobles han
+  servido de algo o han sido dinero tirado.
+- Cada tarjeta con borde verde o rojo, el resultado real y, si se falló, qué se
+  había pronosticado. Un ✓/✗ en cada línea del boleto.
+- El **acumulado histórico** en cuanto haya dos jornadas o más con resultados.
+
+Un doble cuenta como acierto si el resultado real es cualquiera de sus dos
+signos. Los partidos sin `resultado` no cuentan ni a favor ni en contra.
 
 ---
 

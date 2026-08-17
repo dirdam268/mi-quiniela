@@ -82,9 +82,17 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - Los **dobles se calculan solos** en `calcDobles()` y viven en la variable
   `DOBLES`, que `render()` recalcula antes de pintar nada. No se guardan en el
   JSON. Si tocas el pronóstico de un partido, el doble puede moverse solo.
-- Hay una **tarea programada** los jueves a las 9:00 (`quiniela-datos-semanales`)
-  que prepara el JSON de la jornada, ejecuta `construir.ps1` y deja el commit y
-  el push listos para que Enrique los revise.
+- Los aciertos se calculan en `calcAciertos()` / `calcHistorico()`. Solo cuentan
+  los partidos con `resultado`, así que una jornada a medias sale como
+  provisional. Un doble acierta si el resultado es cualquiera de sus dos signos.
+- **Cuidado con `false || (undefined && x)`**: devuelve `undefined`, no `false`.
+  Ya rompió una vez el marcado de partidos fallados. Por eso `acertado` pasa por
+  `Boolean()` antes de compararse con `false`.
+- Hay **dos tareas programadas**:
+  - `quiniela-datos-semanales`, jueves 9:00 — prepara el JSON de la nueva
+    jornada, reconstruye y deja el commit hecho sin hacer push.
+  - `quiniela-resultados-lunes`, lunes 12:00 — rellena `resultado` con el
+    escrutinio real y actualiza la marca de aciertos.
 - El pleno se pinta con el mismo `tplPartido()` que los demás, marcándolo con
   `div: 'P15'`. Si tocas esa función, comprueba las dos ramas.
 - `nombreCorto()` quita siglas de club (FC, CD, RCD, SD, UD…) para el boleto
