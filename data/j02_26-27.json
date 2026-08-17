@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "jornada": 2,
+    "temporada": "26/27",
+    "fecha_cierre": "2026-08-22T16:00:00",
+    "bote": 0,
+    "fuente": "eduardolosilla.es",
+    "fecha_datos": "2026-08-17",
+    "actualizado": "2026-08-17"
+  },
+  "contexto": {
+    "alertas": [
+      "📅 Reparto distinto a la J1: 7 partidos de 1ª + 7 de 2ª · Pleno al 15 en Primera",
+      "🆕 Debutan en la quiniela Eldense, Castellón y Almería (2ª) · Málaga estrena Primera",
+      "⚠ Alineaciones pendientes: futbolfantasy las publica al acercarse la jornada"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"1ª","local":"Athletic Club","local_emoji":"🔴","local_nota":"","visit":"Sevilla","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·17:00","pred":"1","p1":58,"px":24,"p2":18,"lae_1":64,"lae_x":19,"lae_2":17,"conf":"ALTA","razon":"San Mamés es el estadio más fiable de Primera para el local. El Sevilla ganó su estreno al Rayo, pero fuera de casa es otro equipo. 64% LAE al 1, el porcentaje más alto de la jornada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Valencia","local_emoji":"⚪","local_nota":"","visit":"Celta Vigo","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·19:30","pred":"1","p1":42,"px":31,"p2":27,"lae_1":45,"lae_x":29,"lae_2":26,"conf":"BAJA","razon":"Mestalla ante un Celta que viene de Europa y que arrastra el partido aplazado de la J1. LAE reparte casi por igual (45-29-26): partido abierto en el que el local es solo ligero favorito.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"RCD Espanyol","local_emoji":"⚪","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·21:30","pred":"2","p1":23,"px":22,"p2":58,"lae_1":23,"lae_x":19,"lae_2":58,"conf":"ALTA","razon":"El Espanyol ganó 3-0 al Levante en su estreno, pero el salto de rival es enorme. 58% LAE al 2 y el Madrid llega de su primer partido. Cornellà aprieta, pero no basta.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"Getafe","local_emoji":"🔵","local_nota":"","visit":"Racing Santander","visit_emoji":"⚪","visit_nota":"🆕 ASCENDIDO","dia":"Dom·19:30","pred":"1","p1":50,"px":27,"p2":23,"lae_1":56,"lae_x":22,"lae_2":22,"conf":"MEDIA","razon":"El Coliseum con Bordalás es un campo incómodo. Ojo: el Racing empató 2-2 con el Villarreal en su debut y no es el recién ascendido blando que esperábamos — nos costó un fallo en la J1. Aun así, 56% LAE al 1.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"Elche CF","local_emoji":"🟢","local_nota":"","visit":"FC Barcelona","visit_emoji":"🔵","visit_nota":"","dia":"Dom·21:30","pred":"2","p1":17,"px":20,"p2":63,"lae_1":21,"lae_x":17,"lae_2":62,"conf":"ALTA","razon":"El Barça campeón visita el Martínez Valero. 62% LAE al 2 y diferencia de plantilla abismal. El pronóstico más claro de la jornada junto al Athletic.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"Osasuna","local_emoji":"🔴","local_nota":"","visit":"Levante","visit_emoji":"🔵","visit_nota":"","dia":"Lun·19:30","pred":"1","p1":45,"px":32,"p2":23,"lae_1":47,"lae_x":32,"lae_2":21,"conf":"MEDIA","razon":"El Sadar es un fortín y el Levante viene de encajar un 3-0 en Cornellà. Osasuna aún no ha jugado: su partido de la J1 en Vigo sigue aplazado. 47% LAE al 1 con un empate muy cotizado (32%).","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Málaga","local_emoji":"🔵","local_nota":"🆕 ASCENDIDO","visit":"RC Deportivo","visit_emoji":"🔵","visit_nota":"🆕 ASCENDIDO","dia":"Lun·21:30","pred":"1","p1":38,"px":36,"p2":26,"lae_1":39,"lae_x":37,"lae_2":24,"conf":"BAJA","razon":"Duelo de recién ascendidos en La Rosaleda, el partido más igualado del boleto: 39-37-24 en LAE, dos puntos entre el 1 y la X. Vamos al local por el factor campo, sin ninguna convicción.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"2ª","local":"Real Oviedo","local_emoji":"🔵","local_nota":"","visit":"CD Leganés","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·17:00","pred":"1","p1":45,"px":30,"p2":25,"lae_1":48,"lae_x":28,"lae_2":24,"conf":"MEDIA","razon":"El Tartiere, candidato al ascenso. Cuidado: en la J1 dimos el 1 al Oviedo con el 49% de LAE y firmó un 0-0 en casa. El 48% de ahora tampoco es garantía, y el empate paga bien (28%).","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"AD Ceuta","local_emoji":"🔵","local_nota":"","visit":"UD Las Palmas","visit_emoji":"🟡","visit_nota":"","dia":"Sáb·19:00","pred":"2","p1":33,"px":28,"p2":39,"lae_1":34,"lae_x":26,"lae_2":40,"conf":"BAJA","razon":"Uno de los pocos partidos donde LAE hace favorito al visitante (40% al 2). Las Palmas ganó su estreno y aspira al ascenso; el Ceuta cayó 5-1 en Andorra. Aun así, jugar en Ceuta nunca es cómodo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"CD Eldense","local_emoji":"🔵","local_nota":"","visit":"Cádiz CF","visit_emoji":"🟡","visit_nota":"","dia":"Sáb·21:30","pred":"2","p1":34,"px":30,"p2":36,"lae_1":35,"lae_x":30,"lae_2":35,"conf":"BAJA","razon":"El reparto más abierto de todo el boleto: LAE deja el 1 y el 2 empatados al 35%. El Cádiz empató 0-0 en su estreno y apunta a playoff; el Eldense es equipo de permanencia. Nos inclinamos al visitante por plantilla, a sabiendas de que es una moneda al aire.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"2ª","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"R. Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Dom·17:00","pred":"1","p1":45,"px":30,"p2":25,"lae_1":48,"lae_x":29,"lae_2":23,"conf":"MEDIA","razon":"Ipurua sigue siendo Ipurua, pero el Eibar acaba de perder 1-3 en casa contra el Tenerife y eso desmonta el argumento del fortín. El Valladolid cayó en Mallorca. 48% LAE al 1.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"2ª","local":"CD Castellón","local_emoji":"⚫","local_nota":"","visit":"CE Sabadell","visit_emoji":"⚪","visit_nota":"🆕 ASCENDIDO","dia":"Dom·19:00","pred":"1","p1":50,"px":28,"p2":22,"lae_1":54,"lae_x":25,"lae_2":21,"conf":"MEDIA","razon":"Castalia ante el Sabadell recién ascendido de 1ª Federación. 54% LAE al 1, el segundo porcentaje más alto de la Segunda en esta jornada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"2ª","local":"Sporting Gijón","local_emoji":"🔴","local_nota":"","visit":"Burgos CF","visit_emoji":"⚪","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":49,"px":28,"p2":23,"lae_1":53,"lae_x":26,"lae_2":21,"conf":"MEDIA","razon":"El Molinón. El Burgos ganó 3-2 al Córdoba en su estreno y llega con moral, pero fuera de casa es otra historia. 53% LAE al 1.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"2ª","local":"CD Tenerife","local_emoji":"🔵","local_nota":"","visit":"UD Almería","visit_emoji":"🔴","visit_nota":"","dia":"Dom·21:30","pred":"2","p1":34,"px":28,"p2":38,"lae_1":34,"lae_x":28,"lae_2":38,"conf":"BAJA","razon":"LAE hace favorito al Almería (38% al 2) pese a que el Tenerife ganó 1-3 en Ipurua en su debut. El Almería se quedó sin ascender en el playoff y es plantilla de Primera. Partido de los que se deciden por detalles.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "local":"Atlético Madrid","local_emoji":"🔴","local_nota":"",
+    "visit":"Villarreal","visit_emoji":"🟡","visit_nota":"",
+    "dia":"Dom·17:00",
+    "pred_signo":"X",
+    "pred_marcador":"1-1",
+    "razon":"Metropolitano contra el Villarreal, que fue 4º y empató 2-2 en el Sardinero. LAE reparte los goles 0:8% · 1:40% · 2:38% · M:14% (dato agregado, sin desglose por equipo esta jornada), así que un gol por bando es la combinación más probable. Apuesta 1-1.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+}

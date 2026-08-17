@@ -388,12 +388,20 @@ function tplPartido(p) {
 
   let detalle = '';
   if (abierta) {
+    // El reparto de goles del pleno es opcional: hay jornadas en las que LAE
+    // no lo publica desglosado por equipo.
+    const fila = (et, arr) => arr && arr.length === 4
+      ? `<div>${et}: ${['0', '1', '2', 'M'].map((g, i) => `${g}:${arr[i]}%`).join(' · ')}</div>`
+      : '';
+    const goles = fila('Local', p.lae_p15_local) + fila('Visit', p.lae_p15_visit);
+
     const lae = esPleno
-      ? `<div class="goles">
-           <div class="cab">% LAE goles · ${esc(p.local)} / ${esc(p.visit)}</div>
-           <div>Local: ${['0','1','2','M'].map((g, i) => `${g}:${p.lae_p15_local[i]}%`).join(' · ')}</div>
-           <div>Visit: ${['0','1','2','M'].map((g, i) => `${g}:${p.lae_p15_visit[i]}%`).join(' · ')}</div>
-         </div>`
+      ? (goles
+          ? `<div class="goles">
+               <div class="cab">% LAE goles · ${esc(p.local)} / ${esc(p.visit)}</div>
+               ${goles}
+             </div>`
+          : '')
       : `<div class="lae">${barra(p.lae_1, p.lae_x, p.lae_2)}
            <div class="pie"><span style="color:var(--p1)">1</span>${p.lae_1}%<span style="color:var(--px)">X</span>${p.lae_x}%<span style="color:var(--p2)">2</span>${p.lae_2}%<span class="et">% LAE</span></div>
          </div>`;
