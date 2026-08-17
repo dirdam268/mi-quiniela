@@ -109,6 +109,32 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .once-corte { border-top:1px dashed var(--brd); margin:5px 0 4px; padding-top:4px; font-family:var(--mono); font-size:.54rem; color:var(--tenue); text-transform:uppercase; letter-spacing:.06em; }
 .once-vacio { font-family:var(--mono); font-size:.62rem; color:var(--mut); background:var(--sfc2); border:1px solid var(--brd); border-radius:6px; padding:6px 8px; line-height:1.5; }
 
+/* ── Marca de aciertos ─────────────────────────────────────────────── */
+.marca { border-radius:10px; padding:11px 13px; margin-bottom:8px; border:1px solid; }
+.marca.bien    { background:#f0fdf4; border-color:#bbf7d0; }
+.marca.regular { background:#fffbeb; border-color:#fde68a; }
+.marca.mal     { background:#fef2f2; border-color:#fecaca; }
+.marca-top { display:flex; align-items:center; gap:12px; }
+.marca-num { font-variant-numeric:tabular-nums; line-height:1; white-space:nowrap; }
+.marca-num b { font-size:1.65rem; font-weight:800; }
+.marca-num span { font-size:.85rem; color:var(--mut); }
+.marca.bien .marca-num b    { color:#15803d; }
+.marca.regular .marca-num b { color:#b45309; }
+.marca.mal .marca-num b     { color:#b91c1c; }
+.marca-tit { font-size:.76rem; font-weight:600; line-height:1.3; }
+.marca-sub { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:3px; line-height:1.5; }
+.marca-hist { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:8px; padding-top:7px; border-top:1px dashed rgba(0,0,0,.12); }
+.marca-hist b { color:var(--txt); }
+
+.card.ok { border-color:#bbf7d0; }
+.card.ko { border-color:#fecaca; }
+.real { font-family:var(--mono); font-size:.6rem; margin-top:7px; padding-top:6px; border-top:1px solid var(--brd); }
+.real.ok { color:#15803d; }
+.real.ko { color:#b91c1c; }
+.tick { font-size:.66rem; width:12px; flex-shrink:0; text-align:center; }
+.tick.ok { color:var(--p1); }
+.tick.ko { color:var(--p2); }
+
 /* ── Boleto ────────────────────────────────────────────────────────── */
 .boleto { background:var(--sfc2); border:1px solid var(--brd); border-radius:10px; padding:12px 13px; margin-top:8px; }
 .boleto-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:9px; gap:8px; }
@@ -190,6 +216,79 @@ function calcDobles(partidos) {
 // "X" + alternativa "1" -> "1X" (siempre en orden 1-X-2)
 const signosDoble = (pred, alt) => ORDEN.filter(s => s === pred || s === alt).join('');
 
+// ── Aciertos ────────────────────────────────────────────────────────
+// Solo cuenta los partidos que ya tienen `resultado`. Se calculan dos marcas:
+// el boleto simple (solo el pronostico) y el real (pronostico + dobles), para
+// poder ver si los dobles han servido de algo.
+function calcAciertos(j) {
+  const dobles = calcDobles(j.partidos);
+  const jugados = j.partidos.filter(p => p.resultado);
+  if (!jugados.length) return null;
+
+  let simple = 0, conDobles = 0;
+  for (const p of jugados) {
+    const d = dobles.get(p.num);
+    const okSimple = p.resultado === p.pred;
+    if (okSimple) simple++;
+    if (okSimple || (d && p.resultado === d.alt)) conDobles++;
+  }
+
+  const plenoOk = j.pleno.resultado_marcador
+    ? j.pleno.resultado_marcador === j.pleno.pred_marcador
+    : null;
+
+  return {
+    jugados: jugados.length,
+    total: j.partidos.length,
+    simple, conDobles,
+    rescatados: conDobles - simple,
+    plenoOk,
+    completa: jugados.length === j.partidos.length,
+  };
+}
+
+// Acumulado de todas las jornadas que ya tienen resultados
+function calcHistorico() {
+  const conRes = JORNADAS.map(j => ({ j, a: calcAciertos(j) })).filter(x => x.a);
+  if (conRes.length < 2) return null;
+  return {
+    jornadas: conRes.length,
+    jugados: conRes.reduce((s, x) => s + x.a.jugados, 0),
+    conDobles: conRes.reduce((s, x) => s + x.a.conDobles, 0),
+    simple: conRes.reduce((s, x) => s + x.a.simple, 0),
+    plenos: conRes.filter(x => x.a.plenoOk === true).length,
+    plenosJugados: conRes.filter(x => x.a.plenoOk !== null).length,
+    detalle: conRes.map(x => ({ et: etiqueta(x.j), aciertos: x.a.conDobles, de: x.a.jugados })),
+  };
+}
+
+function tplAciertos(j) {
+  const a = calcAciertos(j);
+  if (!a) return '';
+
+  const pct = Math.round((a.conDobles / a.jugados) * 100);
+  const tono = pct >= 71 ? 'bien' : pct >= 50 ? 'regular' : 'mal';
+
+  const h = calcHistorico();
+  const histTxt = h
+    ? `<div class="marca-hist">Histórico: <b>${h.conDobles}/${h.jugados}</b> (${Math.round((h.conDobles / h.jugados) * 100)}%) en ${h.jornadas} jornadas${h.plenosJugados ? ` · Pleno ${h.plenos}/${h.plenosJugados}` : ''}</div>`
+    : '';
+
+  return `<div class="marca ${tono}">
+    <div class="marca-top">
+      <div class="marca-num"><b>${a.conDobles}</b><span>/${a.jugados}</span></div>
+      <div class="marca-txt">
+        <div class="marca-tit">${a.completa ? 'Aciertos de la jornada' : `Aciertos provisionales · ${a.jugados} de ${a.total} partidos jugados`}</div>
+        <div class="marca-sub">
+          ${pct}% acertado · boleto simple ${a.simple}/${a.jugados}${a.rescatados ? ` · los dobles rescataron ${a.rescatados}` : ' · los dobles no han sumado'}
+          ${a.plenoOk === null ? '' : ` · Pleno al 15 ${a.plenoOk ? '✓' : '✗'}`}
+        </div>
+      </div>
+    </div>
+    ${histTxt}
+  </div>`;
+}
+
 // ── Plantillas ──────────────────────────────────────────────────────
 function barra(a, b, c) {
   return `<div class="barra">
@@ -258,6 +357,15 @@ function tplPartido(p) {
   const doble = DOBLES.get(p.num);
   if (doble) clases.push('doble');
 
+  // Resultado real, si ya se ha jugado
+  const real = esPleno ? p.resultado_marcador : p.resultado;
+  const acertado = real
+    ? (esPleno ? real === p.pred_marcador
+               : real === p.pred || (doble && real === doble.alt))
+    : null;
+  if (acertado === true) clases.push('ok');
+  else if (acertado === false) clases.push('ko');
+
   const avisos = [
     doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — solo ${doble.margen} ${doble.margen === 1 ? 'punto' : 'puntos'} de diferencia</div>` : '',
     p.suspendido ? '<div class="card-aviso warn">⚠ SUSPENDIDO — resultado por sorteo LAE</div>' : '',
@@ -309,6 +417,9 @@ function tplPartido(p) {
       </div>
       <div class="pred">${pred}</div>
     </div>
+    ${real ? `<div class="real ${acertado ? 'ok' : 'ko'}">
+      ${acertado ? '✓' : '✗'} Resultado real: <b>${esc(real)}</b>${acertado ? '' : ` — pronosticamos ${esc(esPleno ? p.pred_marcador : (doble ? signosDoble(p.pred, doble.alt) : p.pred))}`}
+    </div>` : ''}
     ${detalle}
   </div>`;
 }
@@ -317,10 +428,12 @@ function tplBoleto(j) {
   const { partidos, pleno } = j;
   const linea = p => {
     const d = DOBLES.get(p.num);
+    const ok = p.resultado ? (p.resultado === p.pred || (d && p.resultado === d.alt)) : null;
     return `<div class="linea${d ? ' doble' : ''}">
       <span class="n">${p.num}</span>
       <span class="eq">${esc(nombreCorto(p.local))} — ${esc(nombreCorto(p.visit))}</span>
       <span class="sg${d ? ' sg-doble' : ''}" style="color:${varPred(p.pred)}">${d ? esc(signosDoble(p.pred, d.alt)) : esc(p.pred)}</span>
+      ${ok === null ? '' : `<span class="tick ${ok ? 'ok' : 'ko'}">${ok ? '✓' : '✗'}</span>`}
     </div>`;
   };
 
@@ -423,6 +536,7 @@ function render() {
     </div>
 
     <div class="lista">
+      ${tplAciertos(j)}
       ${lista.map(tplPartido).join('')}
       <div class="pie-toca">Toca cada partido · análisis · lesionados · % LAE · alineaciones</div>
       ${filtro === 'todos' ? tplBoleto(j) : ''}

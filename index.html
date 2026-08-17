@@ -109,6 +109,32 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .once-corte { border-top:1px dashed var(--brd); margin:5px 0 4px; padding-top:4px; font-family:var(--mono); font-size:.54rem; color:var(--tenue); text-transform:uppercase; letter-spacing:.06em; }
 .once-vacio { font-family:var(--mono); font-size:.62rem; color:var(--mut); background:var(--sfc2); border:1px solid var(--brd); border-radius:6px; padding:6px 8px; line-height:1.5; }
 
+/* ── Marca de aciertos ─────────────────────────────────────────────── */
+.marca { border-radius:10px; padding:11px 13px; margin-bottom:8px; border:1px solid; }
+.marca.bien    { background:#f0fdf4; border-color:#bbf7d0; }
+.marca.regular { background:#fffbeb; border-color:#fde68a; }
+.marca.mal     { background:#fef2f2; border-color:#fecaca; }
+.marca-top { display:flex; align-items:center; gap:12px; }
+.marca-num { font-variant-numeric:tabular-nums; line-height:1; white-space:nowrap; }
+.marca-num b { font-size:1.65rem; font-weight:800; }
+.marca-num span { font-size:.85rem; color:var(--mut); }
+.marca.bien .marca-num b    { color:#15803d; }
+.marca.regular .marca-num b { color:#b45309; }
+.marca.mal .marca-num b     { color:#b91c1c; }
+.marca-tit { font-size:.76rem; font-weight:600; line-height:1.3; }
+.marca-sub { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:3px; line-height:1.5; }
+.marca-hist { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:8px; padding-top:7px; border-top:1px dashed rgba(0,0,0,.12); }
+.marca-hist b { color:var(--txt); }
+
+.card.ok { border-color:#bbf7d0; }
+.card.ko { border-color:#fecaca; }
+.real { font-family:var(--mono); font-size:.6rem; margin-top:7px; padding-top:6px; border-top:1px solid var(--brd); }
+.real.ok { color:#15803d; }
+.real.ko { color:#b91c1c; }
+.tick { font-size:.66rem; width:12px; flex-shrink:0; text-align:center; }
+.tick.ok { color:var(--p1); }
+.tick.ko { color:var(--p2); }
+
 /* ── Boleto ────────────────────────────────────────────────────────── */
 .boleto { background:var(--sfc2); border:1px solid var(--brd); border-radius:10px; padding:12px 13px; margin-top:8px; }
 .boleto-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:9px; gap:8px; }
@@ -148,7 +174,8 @@ const JORNADAS = [{
     "fecha_cierre": "2026-08-15T16:00:00",
     "bote": 393561,
     "fuente": "eduardolosilla.es",
-    "fecha_datos": "2026-08-14"
+    "fecha_datos": "2026-08-14",
+    "actualizado": "2026-08-17"
   },
   "contexto": {
     "alertas": [
@@ -158,19 +185,19 @@ const JORNADAS = [{
     ]
   },
   "partidos": [
-    {"num":1,"div":"1ª","local":"Dep. Alavés","local_emoji":"⚪","local_nota":"","visit":"Getafe","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·19:30","pred":"X","p1":38,"px":37,"p2":25,"lae_1":40,"lae_x":35,"lae_2":25,"conf":"BAJA","razon":"Apertura de temporada. Dos equipos de permanencia sin historial esta temporada. % LAE casi igualados entre 1 y X. Empate como valor en duelo equilibrado.","bajas":"Sin datos confirmados de pretemporada","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Antonio Sivera","p":95},{"n":"Nahuel Tenaglia","p":90},{"n":"Antonio Blanco","p":90},{"n":"Ángel Pérez","p":80},{"n":"Toni Martínez","p":80},{"n":"Pablo Ibáñez","p":70},{"n":"Ville Koski","p":70},{"n":"Carles Aleñá","p":50},{"n":"Aitor Mañas","p":50},{"n":"Jonny Castro","p":50},{"n":"Abde Rebbach","p":50}],"visit":[{"n":"David Soria","p":95},{"n":"Zaid Romero","p":90},{"n":"Dakonam Djené","p":90},{"n":"Martín Satriano","p":90},{"n":"Ramón Terrats","p":80},{"n":"Mario Martín","p":80},{"n":"Kiko Femenía","p":70},{"n":"Andrés García","p":70},{"n":"Abdel Abqar","p":70},{"n":"Orel Mangala","p":50},{"n":"Enes Ünal","p":10}]},"suspendido":false,"urgente":false},
-    {"num":2,"div":"1ª","local":"Sevilla","local_emoji":"⚪","local_nota":"","visit":"Rayo Vallecano","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·21:30","pred":"1","p1":41,"px":30,"p2":29,"lae_1":54,"lae_x":28,"lae_2":18,"conf":"MEDIA","razon":"Sevilla local en el Sánchez-Pizjuán. Rayo recién salido de Conference League. 54% LAE al 1 favorece al local.","bajas":"Sin datos confirmados","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Odysseas Vlachodimos","p":90},{"n":"Kike Salas","p":90},{"n":"Lucien Agoumé","p":80},{"n":"Gabriel Suazo","p":70},{"n":"Jon Guridi","p":70},{"n":"Juan Iglesias","p":70},{"n":"Isaac Romero","p":70},{"n":"Miguel Sierra","p":70},{"n":"Joaquín Oso","p":60},{"n":"Nico Guillén","p":60},{"n":"Arouna Sangante","p":50},{"n":"Peque","p":50},{"n":"Andrés Castrín","p":50},{"n":"José Ángel Carmona","p":50},{"n":"Julio Díaz","p":40},{"n":"Rubén Vargas","p":40},{"n":"Robbie Ure","p":20}],"visit":[{"n":"Augusto Batalla","p":95},{"n":"Jorge de Frutos","p":90},{"n":"Florian Lejeune","p":90},{"n":"Andrei Ratiu","p":90},{"n":"Isi Palazón","p":80},{"n":"Álvaro García","p":80},{"n":"Unai López","p":70},{"n":"Iván Balliu","p":60},{"n":"Óscar Valentín","p":60},{"n":"Sergio Camello","p":50},{"n":"Pelayo Fernández","p":50},{"n":"Pedro Díaz","p":50},{"n":"Alemão","p":50},{"n":"Pathé Ciss","p":40},{"n":"Jozhua Vertrouwd","p":40},{"n":"Marash Kumbulla","p":30},{"n":"Fran Pérez","p":30},{"n":"Randy Nteka","p":30},{"n":"Georgiy Tsitaishvili","p":10},{"n":"Dani Cárdenas","p":5}]},"suspendido":false,"urgente":false},
-    {"num":3,"div":"1ª","local":"Racing Santander","local_emoji":"⚪","local_nota":"🆕 ASCENDIDO","visit":"Villarreal","visit_emoji":"🟡","visit_nota":"","dia":"Dom·17:00","pred":"2","p1":15,"px":22,"p2":63,"lae_1":19,"lae_x":20,"lae_2":61,"conf":"ALTA","razon":"Racing recién ascendido tras 14 años en Segunda. Villarreal 4º la temporada pasada con objetivos Champions. Rival claramente superior pese al ambiente del Sardinero. 61-63% al 2.","bajas":"Racing: adaptación a Primera","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Iñigo Vicente","p":90},{"n":"Jorge Salinas","p":90},{"n":"Álvaro Mantilla","p":80},{"n":"Gustavo Puerta","p":80},{"n":"Sergio Canales","p":80},{"n":"Maguette Gueye","p":80},{"n":"Andrés Martín","p":80},{"n":"Asier Villalibre","p":70},{"n":"Facundo González","p":60},{"n":"Pedro Felipe","p":50},{"n":"Julen Agirrezabala","p":50}],"visit":[{"n":"Santi Comesaña","p":90},{"n":"Carlos Romero","p":80},{"n":"Alberto Moleiro","p":80},{"n":"Georges Mikautadze","p":80},{"n":"Pape Gueye","p":70},{"n":"Renato Veiga","p":70},{"n":"Nicolas Pépé","p":70},{"n":"Santiago Mouriño","p":70},{"n":"Gerard Moreno","p":60},{"n":"Juan Foyth","p":50},{"n":"Luiz Junior","p":50}]},"suspendido":false,"urgente":false},
-    {"num":4,"div":"1ª","local":"RCD Espanyol","local_emoji":"⚪","local_nota":"","visit":"Levante","visit_emoji":"🔵","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":46,"px":29,"p2":25,"lae_1":61,"lae_x":25,"lae_2":14,"conf":"MEDIA","razon":"Espanyol local (61% LAE al 1). Levante se salvó del descenso con 42pts in extremis. En Cornellà-El Prat, Espanyol superior.","bajas":"Sin datos confirmados","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Marko Dmitrovic","p":95},{"n":"Leandro Cabrera","p":95},{"n":"Omar El Hilali","p":80},{"n":"Urko González de Zárate","p":80},{"n":"Edu Expósito","p":80},{"n":"Álex Calatrava","p":70},{"n":"Roberto Fernández","p":70}],"visit":[{"n":"Jon Ander Olasagasti","p":90},{"n":"Adrián de la Fuente","p":90},{"n":"Mathew Ryan","p":90},{"n":"Aissa Mandi","p":80},{"n":"Manu Sánchez","p":80},{"n":"Iván Romero","p":80},{"n":"Carlos Álvarez","p":50},{"n":"Nacho Pérez","p":50},{"n":"Víctor García","p":50},{"n":"Oriol Rey","p":50},{"n":"Paco Cortés","p":50},{"n":"Enzo Bardelli","p":50},{"n":"Kareem Tunde","p":50},{"n":"Karl Etta Eyong","p":50},{"n":"Jeremy Toljan","p":50},{"n":"Hugo Sotelo","p":40},{"n":"Kervin Arriaga","p":40},{"n":"Yanis Musuayi","p":10},{"n":"Dani Requena","p":10},{"n":"Thiago Fernández","p":10}]},"suspendido":false,"urgente":false},
+    {"num":1,"div":"1ª","local":"Dep. Alavés","local_emoji":"⚪","local_nota":"","visit":"Getafe","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·19:30","pred":"X","p1":38,"px":37,"p2":25,"lae_1":40,"lae_x":35,"lae_2":25,"conf":"BAJA","razon":"Apertura de temporada. Dos equipos de permanencia sin historial esta temporada. % LAE casi igualados entre 1 y X. Empate como valor en duelo equilibrado.","bajas":"Sin datos confirmados de pretemporada","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Antonio Sivera","p":95},{"n":"Nahuel Tenaglia","p":90},{"n":"Antonio Blanco","p":90},{"n":"Ángel Pérez","p":80},{"n":"Toni Martínez","p":80},{"n":"Pablo Ibáñez","p":70},{"n":"Ville Koski","p":70},{"n":"Carles Aleñá","p":50},{"n":"Aitor Mañas","p":50},{"n":"Jonny Castro","p":50},{"n":"Abde Rebbach","p":50}],"visit":[{"n":"David Soria","p":95},{"n":"Zaid Romero","p":90},{"n":"Dakonam Djené","p":90},{"n":"Martín Satriano","p":90},{"n":"Ramón Terrats","p":80},{"n":"Mario Martín","p":80},{"n":"Kiko Femenía","p":70},{"n":"Andrés García","p":70},{"n":"Abdel Abqar","p":70},{"n":"Orel Mangala","p":50},{"n":"Enes Ünal","p":10}]},"resultado":"1","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Sevilla","local_emoji":"⚪","local_nota":"","visit":"Rayo Vallecano","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·21:30","pred":"1","p1":41,"px":30,"p2":29,"lae_1":54,"lae_x":28,"lae_2":18,"conf":"MEDIA","razon":"Sevilla local en el Sánchez-Pizjuán. Rayo recién salido de Conference League. 54% LAE al 1 favorece al local.","bajas":"Sin datos confirmados","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Odysseas Vlachodimos","p":90},{"n":"Kike Salas","p":90},{"n":"Lucien Agoumé","p":80},{"n":"Gabriel Suazo","p":70},{"n":"Jon Guridi","p":70},{"n":"Juan Iglesias","p":70},{"n":"Isaac Romero","p":70},{"n":"Miguel Sierra","p":70},{"n":"Joaquín Oso","p":60},{"n":"Nico Guillén","p":60},{"n":"Arouna Sangante","p":50},{"n":"Peque","p":50},{"n":"Andrés Castrín","p":50},{"n":"José Ángel Carmona","p":50},{"n":"Julio Díaz","p":40},{"n":"Rubén Vargas","p":40},{"n":"Robbie Ure","p":20}],"visit":[{"n":"Augusto Batalla","p":95},{"n":"Jorge de Frutos","p":90},{"n":"Florian Lejeune","p":90},{"n":"Andrei Ratiu","p":90},{"n":"Isi Palazón","p":80},{"n":"Álvaro García","p":80},{"n":"Unai López","p":70},{"n":"Iván Balliu","p":60},{"n":"Óscar Valentín","p":60},{"n":"Sergio Camello","p":50},{"n":"Pelayo Fernández","p":50},{"n":"Pedro Díaz","p":50},{"n":"Alemão","p":50},{"n":"Pathé Ciss","p":40},{"n":"Jozhua Vertrouwd","p":40},{"n":"Marash Kumbulla","p":30},{"n":"Fran Pérez","p":30},{"n":"Randy Nteka","p":30},{"n":"Georgiy Tsitaishvili","p":10},{"n":"Dani Cárdenas","p":5}]},"resultado":"1","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"Racing Santander","local_emoji":"⚪","local_nota":"🆕 ASCENDIDO","visit":"Villarreal","visit_emoji":"🟡","visit_nota":"","dia":"Dom·17:00","pred":"2","p1":15,"px":22,"p2":63,"lae_1":19,"lae_x":20,"lae_2":61,"conf":"ALTA","razon":"Racing recién ascendido tras 14 años en Segunda. Villarreal 4º la temporada pasada con objetivos Champions. Rival claramente superior pese al ambiente del Sardinero. 61-63% al 2.","bajas":"Racing: adaptación a Primera","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Iñigo Vicente","p":90},{"n":"Jorge Salinas","p":90},{"n":"Álvaro Mantilla","p":80},{"n":"Gustavo Puerta","p":80},{"n":"Sergio Canales","p":80},{"n":"Maguette Gueye","p":80},{"n":"Andrés Martín","p":80},{"n":"Asier Villalibre","p":70},{"n":"Facundo González","p":60},{"n":"Pedro Felipe","p":50},{"n":"Julen Agirrezabala","p":50}],"visit":[{"n":"Santi Comesaña","p":90},{"n":"Carlos Romero","p":80},{"n":"Alberto Moleiro","p":80},{"n":"Georges Mikautadze","p":80},{"n":"Pape Gueye","p":70},{"n":"Renato Veiga","p":70},{"n":"Nicolas Pépé","p":70},{"n":"Santiago Mouriño","p":70},{"n":"Gerard Moreno","p":60},{"n":"Juan Foyth","p":50},{"n":"Luiz Junior","p":50}]},"resultado":"X","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"RCD Espanyol","local_emoji":"⚪","local_nota":"","visit":"Levante","visit_emoji":"🔵","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":46,"px":29,"p2":25,"lae_1":61,"lae_x":25,"lae_2":14,"conf":"MEDIA","razon":"Espanyol local (61% LAE al 1). Levante se salvó del descenso con 42pts in extremis. En Cornellà-El Prat, Espanyol superior.","bajas":"Sin datos confirmados","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Marko Dmitrovic","p":95},{"n":"Leandro Cabrera","p":95},{"n":"Omar El Hilali","p":80},{"n":"Urko González de Zárate","p":80},{"n":"Edu Expósito","p":80},{"n":"Álex Calatrava","p":70},{"n":"Roberto Fernández","p":70}],"visit":[{"n":"Jon Ander Olasagasti","p":90},{"n":"Adrián de la Fuente","p":90},{"n":"Mathew Ryan","p":90},{"n":"Aissa Mandi","p":80},{"n":"Manu Sánchez","p":80},{"n":"Iván Romero","p":80},{"n":"Carlos Álvarez","p":50},{"n":"Nacho Pérez","p":50},{"n":"Víctor García","p":50},{"n":"Oriol Rey","p":50},{"n":"Paco Cortés","p":50},{"n":"Enzo Bardelli","p":50},{"n":"Kareem Tunde","p":50},{"n":"Karl Etta Eyong","p":50},{"n":"Jeremy Toljan","p":50},{"n":"Hugo Sotelo","p":40},{"n":"Kervin Arriaga","p":40},{"n":"Yanis Musuayi","p":10},{"n":"Dani Requena","p":10},{"n":"Thiago Fernández","p":10}]},"resultado":"1","suspendido":false,"urgente":false},
     {"num":5,"div":"1ª","local":"Celta Vigo","local_emoji":"🔵","local_nota":"⚠ SUSPENDIDO","visit":"Osasuna","visit_emoji":"🔴","visit_nota":"","dia":"Lun·21:30","pred":"1","p1":58,"px":26,"p2":16,"lae_1":59,"lae_x":28,"lae_2":13,"conf":"BAJA","razon":"⚠ SUSPENDIDO por mal estado del terreno. Resultado por sorteo LAE: ~59 bolas al 1, 28 X, 13 al 2. Pronóstico: 1 (más probable).","bajas":"N/A — resultado por sorteo oficial","alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Ionut Radu","p":90},{"n":"Marcos Alonso","p":90},{"n":"Javi Rodríguez","p":80},{"n":"Ferran Jutglà","p":80},{"n":"Sergio Carreira","p":70},{"n":"Miguel Román","p":70},{"n":"Carl Starfelt","p":60},{"n":"Javi Rueda","p":60},{"n":"Aleix Febas","p":50},{"n":"Williot Swedberg","p":50},{"n":"Hugo González","p":50}],"visit":[{"n":"Ante Budimir","p":90},{"n":"Jon Moncayola","p":90},{"n":"Alejandro Catena","p":80},{"n":"Abel Bretones","p":80},{"n":"Aimar Oroz","p":70},{"n":"Boyomo","p":70},{"n":"Sergio Herrera","p":70},{"n":"Raúl Moro","p":60},{"n":"Iñigo Arguibide","p":60},{"n":"Rubén García","p":60},{"n":"Iker Muñoz","p":50},{"n":"Lucas Torró","p":50},{"n":"Jorge Herrando","p":50},{"n":"Jonathan Dubasin","p":40},{"n":"Valentin Rosier","p":40},{"n":"Moi Gómez","p":30},{"n":"Kike Barja","p":30},{"n":"Raúl García","p":30},{"n":"Aitor Fernández","p":30},{"n":"Diego Rico","p":20},{"n":"Asier Osambela","p":10}]},"suspendido":true,"urgente":false},
-    {"num":6,"div":"2ª","local":"FC Andorra","local_emoji":"🔴","local_nota":"","visit":"AD Ceuta","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·17:00","pred":"1","p1":56,"px":24,"p2":20,"lae_1":52,"lae_x":27,"lae_2":21,"conf":"MEDIA","razon":"Andorra local en el Estadi Nacional. Ceuta repite en 2ª. 52-61% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":7,"div":"2ª","local":"Cádiz CF","local_emoji":"🟡","local_nota":"","visit":"Celta Fortuna","visit_emoji":"🔵","visit_nota":"🆕 ASCENDIDO","dia":"Sáb·19:00","pred":"1","p1":48,"px":27,"p2":25,"lae_1":66,"lae_x":21,"lae_2":13,"conf":"ALTA","razon":"Cádiz con aspiraciones de playoff/ascenso. Celta Fortuna (filial del Celta) recién ascendido de 1ª Fed. 66% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":8,"div":"2ª","local":"Real Oviedo","local_emoji":"🔵","local_nota":"🔽 DESCENDIDO","visit":"Granada CF","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·19:00","pred":"1","p1":54,"px":26,"p2":20,"lae_1":49,"lae_x":30,"lae_2":21,"conf":"MEDIA","razon":"Oviedo vuelve a Segunda con el Tartiere enardecido. Candidato top al ascenso. Granada lleva en 2ª desde 23/24. 55% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":9,"div":"2ª","local":"RCD Mallorca","local_emoji":"🔴","local_nota":"🔽 DESCENDIDO","visit":"R. Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Sáb·21:30","pred":"1","p1":56,"px":26,"p2":18,"lae_1":71,"lae_x":19,"lae_2":10,"conf":"ALTA","razon":"Mallorca cae a 2ª tras 5 años en Primera (descendió con 42pts). Motivación máxima en Son Moix para volver de inmediato. 71% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":10,"div":"2ª","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"🆕 ASCENDIDO","dia":"Dom·17:00","pred":"1","p1":49,"px":29,"p2":22,"lae_1":57,"lae_x":26,"lae_2":17,"conf":"MEDIA","razon":"Eibar en Ipurua ante Tenerife recién ascendido de 1ª Fed. Estadio complicado para cualquier visitante. 57-62% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":11,"div":"2ª","local":"Burgos CF","local_emoji":"⚪","local_nota":"","visit":"Córdoba CF","visit_emoji":"🟢","visit_nota":"","dia":"Dom·19:00","pred":"X","p1":41,"px":29,"p2":30,"lae_1":46,"lae_x":31,"lae_2":23,"conf":"BAJA","razon":"Duelo de zona media en El Plantío. Ambos equipos fuera del playoff la temporada pasada. Muy igualado, apostamos al empate como valor.","bajas":"","suspendido":false,"urgente":false},
-    {"num":12,"div":"2ª","local":"Girona FC","local_emoji":"🔴","local_nota":"🔽 DESCENDIDO","visit":"CD Leganés","visit_emoji":"🔵","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":57,"px":26,"p2":17,"lae_1":62,"lae_x":23,"lae_2":15,"conf":"ALTA","razon":"Girona regresa a 2ª (41pts en Primera). Candidato top al ascenso junto a Oviedo y Mallorca. Montilivi volcado. 62-68% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
-    {"num":13,"div":"2ª","local":"UD Las Palmas","local_emoji":"🟡","local_nota":"","visit":"Albacete BP","visit_emoji":"🔵","visit_nota":"","dia":"Dom·21:30","pred":"1","p1":57,"px":25,"p2":18,"lae_1":64,"lae_x":21,"lae_2":15,"conf":"ALTA","razon":"Las Palmas quedó 5ª en playoff sin ascender. Con hambre de revancha. En Gran Canaria debería ganar. 64-76% LAE al 1.","bajas":"","suspendido":false,"urgente":false},
+    {"num":6,"div":"2ª","local":"FC Andorra","local_emoji":"🔴","local_nota":"","visit":"AD Ceuta","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·17:00","pred":"1","p1":56,"px":24,"p2":20,"lae_1":52,"lae_x":27,"lae_2":21,"conf":"MEDIA","razon":"Andorra local en el Estadi Nacional. Ceuta repite en 2ª. 52-61% LAE al 1.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
+    {"num":7,"div":"2ª","local":"Cádiz CF","local_emoji":"🟡","local_nota":"","visit":"Celta Fortuna","visit_emoji":"🔵","visit_nota":"🆕 ASCENDIDO","dia":"Sáb·19:00","pred":"1","p1":48,"px":27,"p2":25,"lae_1":66,"lae_x":21,"lae_2":13,"conf":"ALTA","razon":"Cádiz con aspiraciones de playoff/ascenso. Celta Fortuna (filial del Celta) recién ascendido de 1ª Fed. 66% LAE al 1.","bajas":"","resultado":"X","suspendido":false,"urgente":false},
+    {"num":8,"div":"2ª","local":"Real Oviedo","local_emoji":"🔵","local_nota":"🔽 DESCENDIDO","visit":"Granada CF","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·19:00","pred":"1","p1":54,"px":26,"p2":20,"lae_1":49,"lae_x":30,"lae_2":21,"conf":"MEDIA","razon":"Oviedo vuelve a Segunda con el Tartiere enardecido. Candidato top al ascenso. Granada lleva en 2ª desde 23/24. 55% LAE al 1.","bajas":"","resultado":"X","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"RCD Mallorca","local_emoji":"🔴","local_nota":"🔽 DESCENDIDO","visit":"R. Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Sáb·21:30","pred":"1","p1":56,"px":26,"p2":18,"lae_1":71,"lae_x":19,"lae_2":10,"conf":"ALTA","razon":"Mallorca cae a 2ª tras 5 años en Primera (descendió con 42pts). Motivación máxima en Son Moix para volver de inmediato. 71% LAE al 1.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"🆕 ASCENDIDO","dia":"Dom·17:00","pred":"1","p1":49,"px":29,"p2":22,"lae_1":57,"lae_x":26,"lae_2":17,"conf":"MEDIA","razon":"Eibar en Ipurua ante Tenerife recién ascendido de 1ª Fed. Estadio complicado para cualquier visitante. 57-62% LAE al 1.","bajas":"","resultado":"2","suspendido":false,"urgente":false},
+    {"num":11,"div":"2ª","local":"Burgos CF","local_emoji":"⚪","local_nota":"","visit":"Córdoba CF","visit_emoji":"🟢","visit_nota":"","dia":"Dom·19:00","pred":"X","p1":41,"px":29,"p2":30,"lae_1":46,"lae_x":31,"lae_2":23,"conf":"BAJA","razon":"Duelo de zona media en El Plantío. Ambos equipos fuera del playoff la temporada pasada. Muy igualado, apostamos al empate como valor.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
+    {"num":12,"div":"2ª","local":"Girona FC","local_emoji":"🔴","local_nota":"🔽 DESCENDIDO","visit":"CD Leganés","visit_emoji":"🔵","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":57,"px":26,"p2":17,"lae_1":62,"lae_x":23,"lae_2":15,"conf":"ALTA","razon":"Girona regresa a 2ª (41pts en Primera). Candidato top al ascenso junto a Oviedo y Mallorca. Montilivi volcado. 62-68% LAE al 1.","bajas":"","resultado":"X","suspendido":false,"urgente":false},
+    {"num":13,"div":"2ª","local":"UD Las Palmas","local_emoji":"🟡","local_nota":"","visit":"Albacete BP","visit_emoji":"🔵","visit_nota":"","dia":"Dom·21:30","pred":"1","p1":57,"px":25,"p2":18,"lae_1":64,"lae_x":21,"lae_2":15,"conf":"ALTA","razon":"Las Palmas quedó 5ª en playoff sin ascender. Con hambre de revancha. En Gran Canaria debería ganar. 64-76% LAE al 1.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
     {"num":14,"div":"2ª","local":"Sporting Gijón","local_emoji":"🔴","local_nota":"","visit":"CE Sabadell","visit_emoji":"⚪","visit_nota":"🆕 ASCENDIDO","dia":"Lun·19:00","pred":"1","p1":51,"px":28,"p2":21,"lae_1":67,"lae_x":20,"lae_2":13,"conf":"ALTA","razon":"Sporting en El Molinón ante Sabadell recién ascendido de 1ª Fed. El Molinón ruge. 67-68% LAE al 1.","bajas":"","suspendido":false,"urgente":false}
   ],
   "pleno": {
@@ -235,6 +262,79 @@ function calcDobles(partidos) {
 
 // "X" + alternativa "1" -> "1X" (siempre en orden 1-X-2)
 const signosDoble = (pred, alt) => ORDEN.filter(s => s === pred || s === alt).join('');
+
+// ── Aciertos ────────────────────────────────────────────────────────
+// Solo cuenta los partidos que ya tienen `resultado`. Se calculan dos marcas:
+// el boleto simple (solo el pronostico) y el real (pronostico + dobles), para
+// poder ver si los dobles han servido de algo.
+function calcAciertos(j) {
+  const dobles = calcDobles(j.partidos);
+  const jugados = j.partidos.filter(p => p.resultado);
+  if (!jugados.length) return null;
+
+  let simple = 0, conDobles = 0;
+  for (const p of jugados) {
+    const d = dobles.get(p.num);
+    const okSimple = p.resultado === p.pred;
+    if (okSimple) simple++;
+    if (okSimple || (d && p.resultado === d.alt)) conDobles++;
+  }
+
+  const plenoOk = j.pleno.resultado_marcador
+    ? j.pleno.resultado_marcador === j.pleno.pred_marcador
+    : null;
+
+  return {
+    jugados: jugados.length,
+    total: j.partidos.length,
+    simple, conDobles,
+    rescatados: conDobles - simple,
+    plenoOk,
+    completa: jugados.length === j.partidos.length,
+  };
+}
+
+// Acumulado de todas las jornadas que ya tienen resultados
+function calcHistorico() {
+  const conRes = JORNADAS.map(j => ({ j, a: calcAciertos(j) })).filter(x => x.a);
+  if (conRes.length < 2) return null;
+  return {
+    jornadas: conRes.length,
+    jugados: conRes.reduce((s, x) => s + x.a.jugados, 0),
+    conDobles: conRes.reduce((s, x) => s + x.a.conDobles, 0),
+    simple: conRes.reduce((s, x) => s + x.a.simple, 0),
+    plenos: conRes.filter(x => x.a.plenoOk === true).length,
+    plenosJugados: conRes.filter(x => x.a.plenoOk !== null).length,
+    detalle: conRes.map(x => ({ et: etiqueta(x.j), aciertos: x.a.conDobles, de: x.a.jugados })),
+  };
+}
+
+function tplAciertos(j) {
+  const a = calcAciertos(j);
+  if (!a) return '';
+
+  const pct = Math.round((a.conDobles / a.jugados) * 100);
+  const tono = pct >= 71 ? 'bien' : pct >= 50 ? 'regular' : 'mal';
+
+  const h = calcHistorico();
+  const histTxt = h
+    ? `<div class="marca-hist">Histórico: <b>${h.conDobles}/${h.jugados}</b> (${Math.round((h.conDobles / h.jugados) * 100)}%) en ${h.jornadas} jornadas${h.plenosJugados ? ` · Pleno ${h.plenos}/${h.plenosJugados}` : ''}</div>`
+    : '';
+
+  return `<div class="marca ${tono}">
+    <div class="marca-top">
+      <div class="marca-num"><b>${a.conDobles}</b><span>/${a.jugados}</span></div>
+      <div class="marca-txt">
+        <div class="marca-tit">${a.completa ? 'Aciertos de la jornada' : `Aciertos provisionales · ${a.jugados} de ${a.total} partidos jugados`}</div>
+        <div class="marca-sub">
+          ${pct}% acertado · boleto simple ${a.simple}/${a.jugados}${a.rescatados ? ` · los dobles rescataron ${a.rescatados}` : ' · los dobles no han sumado'}
+          ${a.plenoOk === null ? '' : ` · Pleno al 15 ${a.plenoOk ? '✓' : '✗'}`}
+        </div>
+      </div>
+    </div>
+    ${histTxt}
+  </div>`;
+}
 
 // ── Plantillas ──────────────────────────────────────────────────────
 function barra(a, b, c) {
@@ -304,6 +404,15 @@ function tplPartido(p) {
   const doble = DOBLES.get(p.num);
   if (doble) clases.push('doble');
 
+  // Resultado real, si ya se ha jugado
+  const real = esPleno ? p.resultado_marcador : p.resultado;
+  const acertado = real
+    ? (esPleno ? real === p.pred_marcador
+               : real === p.pred || (doble && real === doble.alt))
+    : null;
+  if (acertado === true) clases.push('ok');
+  else if (acertado === false) clases.push('ko');
+
   const avisos = [
     doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — solo ${doble.margen} ${doble.margen === 1 ? 'punto' : 'puntos'} de diferencia</div>` : '',
     p.suspendido ? '<div class="card-aviso warn">⚠ SUSPENDIDO — resultado por sorteo LAE</div>' : '',
@@ -355,6 +464,9 @@ function tplPartido(p) {
       </div>
       <div class="pred">${pred}</div>
     </div>
+    ${real ? `<div class="real ${acertado ? 'ok' : 'ko'}">
+      ${acertado ? '✓' : '✗'} Resultado real: <b>${esc(real)}</b>${acertado ? '' : ` — pronosticamos ${esc(esPleno ? p.pred_marcador : (doble ? signosDoble(p.pred, doble.alt) : p.pred))}`}
+    </div>` : ''}
     ${detalle}
   </div>`;
 }
@@ -363,10 +475,12 @@ function tplBoleto(j) {
   const { partidos, pleno } = j;
   const linea = p => {
     const d = DOBLES.get(p.num);
+    const ok = p.resultado ? (p.resultado === p.pred || (d && p.resultado === d.alt)) : null;
     return `<div class="linea${d ? ' doble' : ''}">
       <span class="n">${p.num}</span>
       <span class="eq">${esc(nombreCorto(p.local))} — ${esc(nombreCorto(p.visit))}</span>
       <span class="sg${d ? ' sg-doble' : ''}" style="color:${varPred(p.pred)}">${d ? esc(signosDoble(p.pred, d.alt)) : esc(p.pred)}</span>
+      ${ok === null ? '' : `<span class="tick ${ok ? 'ok' : 'ko'}">${ok ? '✓' : '✗'}</span>`}
     </div>`;
   };
 
@@ -469,6 +583,7 @@ function render() {
     </div>
 
     <div class="lista">
+      ${tplAciertos(j)}
       ${lista.map(tplPartido).join('')}
       <div class="pie-toca">Toca cada partido · análisis · lesionados · % LAE · alineaciones</div>
       ${filtro === 'todos' ? tplBoleto(j) : ''}
