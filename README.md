@@ -14,11 +14,15 @@ de las apps del autor.
 |---|---|
 | `plantilla.html` | **La app.** Aquí se toca el diseño y la lógica. Lleva el marcador `__JORNADAS__` donde se inyectan los datos. |
 | `data/jXX_YY-YY.json` | Una jornada por fichero. Es lo único que hay que rellenar cada semana. |
-| `construir.ps1` | Mete todos los JSON de `data/` dentro de `plantilla.html` → genera **`index-src.html`** (app completa, se abre con doble clic). |
-| `build-secure.ps1` | Construye y cifra con AES-256 → genera **`index.html`**, que es lo que se publica. |
-| `index-src.html` | Generado. No versionado. Es la app en claro, para probar en local. |
-| `index.html` | Generado. Cifrado con contraseña. Es lo que va a GitHub Pages. |
+| `construir.ps1` | Mete todos los JSON de `data/` dentro de `plantilla.html` → genera **`index.html`**. |
+| `index.html` | Generado, pero **sí se versiona**: es lo que sirve GitHub Pages. Se abre igual con doble clic. |
 | `referencia/` | El JSX monolítico original de Claude.ai, como histórico. |
+
+La app se publica **abierta, sin contraseña**, en
+<https://dirdam268.github.io/mi-quiniela>. Son pronósticos de fútbol, no hay
+nada que proteger. Si algún día hiciera falta cifrarla, el `build-secure.ps1`
+que hacía ese trabajo (AES-256 + PBKDF2, pantalla de acceso en el navegador)
+está en el historial de git: `git show d708ef2:build-secure.ps1`.
 
 ---
 
@@ -28,20 +32,20 @@ de las apps del autor.
 2. Buscar lesionados en futbolfantasy.com / jornadaperfecta.com.
 3. Revisar clasificaciones en laliga.com + siguetuliga.com.
 4. Copiar `data/j01_26-27.json` a `data/jXX_YY-YY.json` y rellenarlo.
-5. Generar y probar en local:
+5. Generar la app:
 
 ```bash
 powershell -ExecutionPolicy Bypass -File construir.ps1
 ```
 
-6. Abrir `index-src.html` con doble clic y comprobar que todo está bien.
-7. Cifrar y publicar:
+6. Abrir `index.html` con doble clic y comprobar que todo está bien.
+7. Publicar:
 
 ```bash
-powershell -ExecutionPolicy Bypass -File build-secure.ps1 -Password "TU_CLAVE"
+git add -A && git commit -m "Jornada XX" && git push
 ```
 
-8. Subir `index.html` al repo de GitHub Pages.
+GitHub Pages tarda un minuto en refrescar.
 
 El selector de jornada de la cabecera aparece solo en cuanto hay más de un
 JSON en `data/`, ordenadas de la más reciente a la más antigua. No hay que

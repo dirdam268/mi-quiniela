@@ -1,12 +1,13 @@
 # ── Quiniela IA · construir la app ─────────────────────────────────────
 # Inyecta todos los data\jXX_YY-YY.json dentro de plantilla.html y genera
-# index-src.html, que ya es la app completa y se puede abrir con doble clic.
+# index.html: la app completa en un solo fichero. Se abre con doble clic y es
+# tambien lo que se sube al repo de GitHub Pages.
 #
 # Uso:
 #   powershell -ExecutionPolicy Bypass -File construir.ps1
 param(
   [string]$Plantilla = "plantilla.html",
-  [string]$Out = "index-src.html"
+  [string]$Out = "index.html"
 )
 $ErrorActionPreference = 'Stop'
 $dir = $PSScriptRoot

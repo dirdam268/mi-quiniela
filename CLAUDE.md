@@ -28,24 +28,28 @@ equipo no tiene porcentajes todavía, se omite el campo y la app lo dice sola.
 
 - **Diseño y lógica** → `plantilla.html`
 - **Datos de una jornada** → `data/jXX_YY-YY.json`
-- **NUNCA** editar `index-src.html` ni `index.html`: los dos son generados.
-  `index-src.html` lo produce `construir.ps1`; `index.html` lo produce
-  `build-secure.ps1` y está cifrado.
+- **NUNCA** editar `index.html` a mano: lo genera `construir.ps1` a partir de
+  los dos anteriores. Sí se versiona, porque es lo que publica GitHub Pages.
 
 ## Comandos
 
 ```bash
 powershell -ExecutionPolicy Bypass -File construir.ps1
 ```
-```bash
-powershell -ExecutionPolicy Bypass -File build-secure.ps1 -Password "TU_CLAVE"
-```
 
 Los `.ps1` no arrancan con `.\script.ps1` en esta máquina por la
 ExecutionPolicy: usar siempre la forma larga de arriba.
 
-**La contraseña se pide al autor.** Nunca inventarla ni dejarla escrita en
-ningún fichero del repo.
+## Publicación
+
+Repo `dirdam268/mi-quiniela`, público, servido en
+<https://dirdam268.github.io/mi-quiniela> desde la rama `main`.
+
+**La app va sin contraseña, y es una decisión tomada a propósito.** Se valoró
+cifrarla y se descartó: son pronósticos de fútbol, y un fichero cifrado en un
+repo público se puede atacar offline sin límite, así que la contraseña acabaría
+siendo más riesgo que protección. No volver a proponer cifrado salvo que Enrique
+lo pida. El script que lo hacía sigue en el historial: `git show d708ef2:build-secure.ps1`.
 
 ## Convenciones de estilo
 
@@ -79,8 +83,8 @@ La versión oscura original está en el historial de git, por si hiciera falta.
   `DOBLES`, que `render()` recalcula antes de pintar nada. No se guardan en el
   JSON. Si tocas el pronóstico de un partido, el doble puede moverse solo.
 - Hay una **tarea programada** los jueves a las 9:00 (`quiniela-datos-semanales`)
-  que prepara el JSON de la jornada y ejecuta `construir.ps1`. El cifrado y la
-  subida los hace Enrique a mano, porque hacen falta su contraseña y su cuenta.
+  que prepara el JSON de la jornada, ejecuta `construir.ps1` y deja el commit y
+  el push listos para que Enrique los revise.
 - El pleno se pinta con el mismo `tplPartido()` que los demás, marcándolo con
   `div: 'P15'`. Si tocas esa función, comprueba las dos ramas.
 - `nombreCorto()` quita siglas de club (FC, CD, RCD, SD, UD…) para el boleto
@@ -90,10 +94,8 @@ La versión oscura original está en el historial de git, por si hiciera falta.
   `navigator.clipboard` no existe en `file://` en algunos navegadores.
 - `construir.ps1` valida cada JSON con `ConvertFrom-Json` antes de inyectarlo:
   si un fichero está roto, falla ahí y no en el navegador.
-- La pantalla de acceso cifrada guarda la clave en `localStorage.qnl_pw`, así
-  que **solo se pide una vez por dispositivo**. No cambiar ese comportamiento.
-- El sello de verificación del descifrado es `QNL_OK|` (7 bytes). Si se cambia,
-  hay que cambiarlo en los dos sitios de `build-secure.ps1`.
+- El sello "↻ Actualizado" de la cabecera sale de `meta.actualizado`, con
+  `meta.fecha_datos` como respaldo. Rellenarlo siempre al preparar una jornada.
 
 ## Cosas que NO hacer
 

@@ -1,4 +1,4 @@
-# index-src.html se genera con construir.ps1: no se versiona
-index-src.html
+# index.html SÍ se versiona: es lo que publica GitHub Pages
 _test_*.html
+_vista_*.html
 *.log
