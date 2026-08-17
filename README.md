@@ -18,6 +18,12 @@ de las apps del autor.
 | `index.html` | Generado, pero **sí se versiona**: es lo que sirve GitHub Pages. Se abre igual con doble clic. |
 | `referencia/` | El JSX monolítico original de Claude.ai, como histórico. |
 
+Además: `manifest.json`, `sw.js` e `icons/` la convierten en **PWA instalable**.
+Los iconos los genera `gen-icons.ps1` y solo hay que volver a ejecutarlo si se
+cambia el diseño. El service worker va a **red primero** al abrir la app, así
+que la jornada nueva se ve en cuanto se publica; la última copia guardada solo
+entra en juego si no hay conexión.
+
 La app se publica **abierta, sin contraseña**, en
 <https://dirdam268.github.io/mi-quiniela>. Son pronósticos de fútbol, no hay
 nada que proteger. Si algún día hiciera falta cifrarla, el `build-secure.ps1`
@@ -52,6 +58,19 @@ JSON en `data/`, ordenadas de la más reciente a la más antigua. No hay que
 tocar `plantilla.html` para añadir una jornada.
 
 ---
+
+## Instalar en el móvil o el ordenador
+
+Se instala desde <https://dirdam268.github.io/mi-quiniela>.
+
+- **Android (Chrome)**: menú ⋮ → *Instalar aplicación* / *Añadir a pantalla de inicio*.
+- **iPhone / iPad (Safari)**: botón compartir → *Añadir a pantalla de inicio*.
+  Tiene que ser Safari; desde Chrome en iOS no aparece la opción.
+- **Windows (Chrome / Edge)**: icono de instalar en la barra de direcciones, o
+  menú ⋮ → *Instalar Quiniela IA*.
+
+Queda con su icono propio, sin barra de navegador, y funciona sin conexión con
+los datos de la última vez que se abrió.
 
 ## Schema de `data/jXX_YY-YY.json`
 
