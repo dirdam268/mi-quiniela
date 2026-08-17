@@ -406,9 +406,11 @@ function tplPartido(p) {
 
   // Resultado real, si ya se ha jugado
   const real = esPleno ? p.resultado_marcador : p.resultado;
+  // Boolean() a proposito: sin el, "false || (undefined && ...)" da undefined
+  // y la comparacion con false de mas abajo no entraria nunca.
   const acertado = real
-    ? (esPleno ? real === p.pred_marcador
-               : real === p.pred || (doble && real === doble.alt))
+    ? Boolean(esPleno ? real === p.pred_marcador
+                      : real === p.pred || (doble && real === doble.alt))
     : null;
   if (acertado === true) clases.push('ok');
   else if (acertado === false) clases.push('ko');
@@ -475,7 +477,7 @@ function tplBoleto(j) {
   const { partidos, pleno } = j;
   const linea = p => {
     const d = DOBLES.get(p.num);
-    const ok = p.resultado ? (p.resultado === p.pred || (d && p.resultado === d.alt)) : null;
+    const ok = p.resultado ? Boolean(p.resultado === p.pred || (d && p.resultado === d.alt)) : null;
     return `<div class="linea${d ? ' doble' : ''}">
       <span class="n">${p.num}</span>
       <span class="eq">${esc(nombreCorto(p.local))} — ${esc(nombreCorto(p.visit))}</span>
