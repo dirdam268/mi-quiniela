@@ -4,10 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Quiniela IA</title>
-<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16a34a">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Quiniela IA">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
 /* ── Tema Quiniela IA · fondo blanco ───────────────────────────────── */
 :root {
@@ -600,6 +604,13 @@ function copiaManual(txt, ok) {
 }
 
 render();
+
+// ── Instalable como app (PWA) ───────────────────────────────────────
+// Solo tiene sentido servido por http(s): abierto con doble clic desde
+// file:// no hay service worker, y no pasa nada.
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>
