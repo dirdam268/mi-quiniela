@@ -88,16 +88,18 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - **Cuidado con `false || (undefined && x)`**: devuelve `undefined`, no `false`.
   Ya rompió una vez el marcado de partidos fallados. Por eso `acertado` pasa por
   `Boolean()` antes de compararse con `false`.
-- Hay **dos rutinas en la nube** que mantienen la app sola, sin depender del
-  ordenador de Enrique. Corren en Linux, así que usan `construir.sh`, **nunca**
-  `construir.ps1`. Se gestionan en <https://claude.ai/code/routines>:
-  - *Quiniela · datos de la jornada (miércoles)*, 10:00 hora española — prepara
-    el JSON de la jornada nueva, reconstruye y hace push.
-  - *Quiniela · resultados y aciertos (lunes)*, 12:00 hora española — rellena
-    los `resultado` con el escrutinio real y actualiza la marca de aciertos.
-- El cron de esas rutinas está en **UTC**. Con el horario de verano español
-  (CEST) van a las 08:00 y 10:00 UTC; al cambiar la hora en octubre se
-  dispararán una hora antes en local salvo que se ajuste el cron.
+- Hay **una única rutina en la nube** que mantiene la app sola, sin depender del
+  ordenador de Enrique: *Quiniela · revisión semanal (martes)*, los martes a las
+  15:00 hora española. Cierra la jornada terminada (resultados + aciertos) y
+  prepara la siguiente, todo de una pasada. Se gestiona en
+  <https://claude.ai/code/routines>.
+- **Martes a propósito**: muchas jornadas terminan el lunes por la noche, así
+  que el martes es el primer día en que el escrutinio está completo. No moverlo
+  antes sin motivo.
+- Corre en Linux: usa `construir.sh`, **nunca** `construir.ps1`.
+- El cron está en **UTC** (`0 13 * * 2`). Con el horario de verano español
+  (CEST) eso son las 15:00 locales; al cambiar la hora en octubre se disparará
+  a las 14:00 salvo que se ajuste el cron a `0 14 * * 2`.
 - El pleno se pinta con el mismo `tplPartido()` que los demás, marcándolo con
   `div: 'P15'`. Si tocas esa función, comprueba las dos ramas.
 - `nombreCorto()` quita siglas de club (FC, CD, RCD, SD, UD…) para el boleto

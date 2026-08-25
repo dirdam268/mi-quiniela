@@ -34,17 +34,24 @@ está en el historial de git: `git show d708ef2:build-secure.ps1`.
 
 ## Actualización automática
 
-No hay que hacer nada cada semana: dos **rutinas en la nube** mantienen la app
-al día por su cuenta, sin necesidad de tener ningún ordenador encendido.
+No hay que hacer nada cada semana: una **rutina en la nube** mantiene la app al
+día por su cuenta, sin necesidad de tener ningún ordenador encendido.
 
-| Cuándo | Qué hace |
-|---|---|
-| **Miércoles 10:00** | Prepara `data/jXX_YY-YY.json` de la jornada nueva con los % LAE, las alineaciones y las bajas, reconstruye y publica. |
-| **Lunes 12:00** | Rellena los resultados reales del escrutinio y actualiza la marca de aciertos. |
+**Martes a las 15:00**, de una sola pasada:
 
-Se gestionan en <https://claude.ai/code/routines>. Ambas corren en Linux, así
-que usan `construir.sh`. El cron está en UTC: al cambiar la hora en octubre
-habrá que ajustarlo si se quiere mantener la hora local.
+1. Cierra la jornada terminada: rellena los resultados del escrutinio oficial y
+   recalcula los aciertos y el acumulado histórico.
+2. Prepara la jornada siguiente: % LAE, alineaciones, bajas y pronósticos.
+3. Reconstruye, hace commit y publica.
+4. Manda un informe con las dos mitades: en qué se falló la semana pasada y qué
+   boleto propone para la siguiente.
+
+El martes no es casual: muchas jornadas terminan el lunes por la noche, y es el
+primer día en que el escrutinio está completo.
+
+Se gestiona en <https://claude.ai/code/routines>. Corre en Linux, así que usa
+`construir.sh`. El cron está en UTC (`0 13 * * 2`): al cambiar la hora en
+octubre habrá que pasarlo a `0 14 * * 2` para mantener las 15:00 locales.
 
 El flujo manual de abajo sigue funcionando, por si hace falta adelantarse o
 corregir algo.
