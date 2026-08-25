@@ -97,6 +97,20 @@ La versión oscura original está en el historial de git, por si hiciera falta.
   que el martes es el primer día en que el escrutinio está completo. No moverlo
   antes sin motivo.
 - Corre en Linux: usa `construir.sh`, **nunca** `construir.ps1`.
+- **La rutina trabaja con las manos atadas** y hay que contar con ello:
+  - El cortafuegos de salida del entorno bloquea `eduardolosilla.es`,
+    `futbolfantasy.com`, `loteriasyapuestas.es` y otros. Solo le funciona la
+    búsqueda web. Cuando eso pasa, tiene orden de **no hacer** esa parte y
+    decirlo, nunca de reconstruir los datos a base de titulares.
+  - El 25/08/2026 lo hizo y se equivocó: dio el Athletic-Sevilla de la J2 al 2
+    cuando el escrutinio decía 1. De ahí la prohibición explícita en su prompt.
+  - El `git push` desde la nube requiere que la Claude GitHub App tenga
+    `dirdam268/mi-quiniela` en su lista de repos
+    (<https://github.com/apps/claude/installations/select_target>). El conector
+    de GitHub en claude.ai **no** basta: son permisos distintos.
+- **Reparto de trabajo acordado con Enrique:** la rutina hace lo que puede y
+  señala lo que no; cuando él abre Claude Code, se completa todo desde aquí,
+  que sí llega a las fuentes.
 - El cron está en **UTC** (`0 13 * * 2`). Con el horario de verano español
   (CEST) eso son las 15:00 locales; al cambiar la hora en octubre se disparará
   a las 14:00 salvo que se ajuste el cron a `0 14 * * 2`.
