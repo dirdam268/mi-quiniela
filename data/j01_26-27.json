@@ -6,11 +6,11 @@
     "bote": 393561,
     "fuente": "eduardolosilla.es",
     "fecha_datos": "2026-08-14",
-    "actualizado": "2026-08-17"
+    "actualizado": "2026-08-25"
   },
   "contexto": {
     "alertas": [
-      "⚠ Partido 5 Celta-Osasuna SUSPENDIDO — sorteo (59 bolas al 1 / 28 X / 13 al 2)",
+      "⚠ Partido 5 Celta-Osasuna APLAZADO por el estado del césped de Balaídos — pendiente de confirmar el signo",
       "🆕 Suben a 1ª: Racing Santander · Deportivo La Coruña · Málaga (playoff vs Almería)",
       "🔽 Bajan a 2ª: Real Oviedo · Girona FC · RCD Mallorca"
     ]
@@ -29,7 +29,7 @@
     {"num":11,"div":"2ª","local":"Burgos CF","local_emoji":"⚪","local_nota":"","visit":"Córdoba CF","visit_emoji":"🟢","visit_nota":"","dia":"Dom·19:00","pred":"X","p1":41,"px":29,"p2":30,"lae_1":46,"lae_x":31,"lae_2":23,"conf":"BAJA","razon":"Duelo de zona media en El Plantío. Ambos equipos fuera del playoff la temporada pasada. Muy igualado, apostamos al empate como valor.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
     {"num":12,"div":"2ª","local":"Girona FC","local_emoji":"🔴","local_nota":"🔽 DESCENDIDO","visit":"CD Leganés","visit_emoji":"🔵","visit_nota":"","dia":"Dom·19:00","pred":"1","p1":57,"px":26,"p2":17,"lae_1":62,"lae_x":23,"lae_2":15,"conf":"ALTA","razon":"Girona regresa a 2ª (41pts en Primera). Candidato top al ascenso junto a Oviedo y Mallorca. Montilivi volcado. 62-68% LAE al 1.","bajas":"","resultado":"X","suspendido":false,"urgente":false},
     {"num":13,"div":"2ª","local":"UD Las Palmas","local_emoji":"🟡","local_nota":"","visit":"Albacete BP","visit_emoji":"🔵","visit_nota":"","dia":"Dom·21:30","pred":"1","p1":57,"px":25,"p2":18,"lae_1":64,"lae_x":21,"lae_2":15,"conf":"ALTA","razon":"Las Palmas quedó 5ª en playoff sin ascender. Con hambre de revancha. En Gran Canaria debería ganar. 64-76% LAE al 1.","bajas":"","resultado":"1","suspendido":false,"urgente":false},
-    {"num":14,"div":"2ª","local":"Sporting Gijón","local_emoji":"🔴","local_nota":"","visit":"CE Sabadell","visit_emoji":"⚪","visit_nota":"🆕 ASCENDIDO","dia":"Lun·19:00","pred":"1","p1":51,"px":28,"p2":21,"lae_1":67,"lae_x":20,"lae_2":13,"conf":"ALTA","razon":"Sporting en El Molinón ante Sabadell recién ascendido de 1ª Fed. El Molinón ruge. 67-68% LAE al 1.","bajas":"","suspendido":false,"urgente":false}
+    {"num":14,"div":"2ª","local":"Sporting Gijón","local_emoji":"🔴","local_nota":"","visit":"CE Sabadell","visit_emoji":"⚪","visit_nota":"🆕 ASCENDIDO","dia":"Lun·19:00","pred":"1","p1":51,"px":28,"p2":21,"lae_1":67,"lae_x":20,"lae_2":13,"conf":"ALTA","razon":"Sporting en El Molinón ante Sabadell recién ascendido de 1ª Fed. El Molinón ruge. 67-68% LAE al 1.","bajas":"","resultado":"X","suspendido":false,"urgente":false}
   ],
   "pleno": {
     "num":15,
@@ -42,6 +42,7 @@
     "lae_p15_visit":[24,60,14,2],
     "razon":"Deportivo regresa a Primera. El Riazor de gala para el debut histórico. LAE: goles local 49% al 1. Partido de pocos goles: apuesta 1-0.",
     "bajas":"Sin datos confirmados",
+    "resultado_marcador":"1-1",
     "alineaciones":{"actualizado":"2026-08-14","local":[{"n":"Lorenzo Amatucci","p":80},{"n":"Lucas Noubi","p":80},{"n":"Mario Soriano","p":80},{"n":"Leo Román","p":80},{"n":"Luismi Cruz","p":70},{"n":"Pierre-Emerick Aubameyang","p":70},{"n":"Ximo Navarro","p":70},{"n":"Bil Nsongo","p":60},{"n":"Bright Ede","p":60},{"n":"Diego Villares","p":50},{"n":"Angeliño","p":50},{"n":"Giacomo Quagliata","p":50},{"n":"Miguel Loureiro","p":50},{"n":"David Mella","p":30},{"n":"Zakaria Eddahchouri","p":30},{"n":"Jonathan Asp Jensen","p":30},{"n":"Adrià Altimira","p":30},{"n":"Yeremay Hernández","p":30},{"n":"Teun Gijselhart","p":20}],"visit":[{"n":"David Affengruber","p":90},{"n":"Germán Valera","p":90},{"n":"Gonzalo Villar","p":90},{"n":"Matías Dituro","p":90},{"n":"Víctor Chust","p":80},{"n":"Buba Sangaré","p":70},{"n":"Marc Aguado","p":70},{"n":"Lucas Cepeda","p":60},{"n":"Fernando Niño","p":60},{"n":"Pedro Bigas","p":50},{"n":"Ali Houary","p":50},{"n":"Federico Redondo","p":50},{"n":"Martim Neto","p":50},{"n":"Tete Morente","p":40},{"n":"Facundo Buonanotte","p":40},{"n":"Umaru Konaré","p":40},{"n":"Javi Morcillo","p":20},{"n":"John Chetauya","p":20},{"n":"Abiel Osorio","p":10},{"n":"Alejandro Iturbe","p":10}]},
     "conf":"MEDIA"
   }
