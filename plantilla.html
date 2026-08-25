@@ -18,7 +18,7 @@
   --bg:#ffffff; --sfc:#ffffff; --sfc2:#f8fafc; --brd:#e5e7eb; --brd2:#cbd5e1;
   --txt:#111827; --mut:#6b7280; --tenue:#9ca3af;
   --p1:#16a34a; --px:#d97706; --p2:#dc2626;
-  --div1:#1d4ed8; --div2:#0f766e; --pleno:#be185d;
+  --div1:#1d4ed8; --div2:#0f766e; --divF:#c2410c; --pleno:#be185d;
   --accent:#1d4ed8; --warn:#b45309; --danger:#dc2626;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -147,7 +147,7 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .btn-copiar { font-family:var(--mono); font-size:.64rem; background:#fff; color:var(--txt); border:1px solid var(--brd2); border-radius:6px; padding:5px 10px; cursor:pointer; white-space:nowrap; }
 .btn-copiar:hover { background:#f1f5f9; }
 .btn-copiar.ok { background:var(--p1); border-color:var(--p1); color:#fff; }
-.cols { display:grid; grid-template-columns:1fr 1fr; gap:2px 14px; }
+.cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(165px, 1fr)); gap:2px 14px; }
 .col-cab { font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; margin-bottom:4px; font-weight:600; }
 .linea { display:flex; gap:5px; align-items:center; padding:4px 0; border-bottom:1px solid var(--brd); font-family:var(--mono); }
 .linea .n { color:var(--tenue); width:13px; flex-shrink:0; font-size:.58rem; }
@@ -179,7 +179,15 @@ const varPred = p => p === '1' ? 'var(--p1)' : p === 'X' ? 'var(--px)' : 'var(--
 const bgPred  = p => p === '1' ? '#f0fdf4' : p === 'X' ? '#fffbeb' : '#fef2f2';
 const bdPred  = p => p === '1' ? '#bbf7d0' : p === 'X' ? '#fde68a' : '#fecaca';
 const varConf = c => c === 'ALTA' ? 'var(--p1)' : c === 'MEDIA' ? 'var(--px)' : 'var(--mut)';
-const varDiv  = d => d === '1ª' ? 'var(--div1)' : d === '2ª' ? 'var(--div2)' : 'var(--pleno)';
+// Divisiones que pueden salir en el boleto. La quiniela mete partidos de Liga F
+// (femenino) en algunas jornadas, así que no se puede dar por hecho 1ª y 2ª.
+const DIVS = {
+  '1ª': { etiqueta: '1ª División', color: 'var(--div1)' },
+  '2ª': { etiqueta: '2ª División', color: 'var(--div2)' },
+  'F':  { etiqueta: 'Liga F',      color: 'var(--divF)' },
+};
+const varDiv = d => d === 'P15' ? 'var(--pleno)' : (DIVS[d] ? DIVS[d].color : 'var(--mut)');
+const etiquetaDiv = d => DIVS[d] ? DIVS[d].etiqueta : d;
 
 // Siglas de club que no aportan nada en el boleto compacto.
 // Sin "Real" a proposito: "Real Sociedad" y "Real Madrid" se quedan enteros.
@@ -459,6 +467,17 @@ function tplBoleto(j) {
   const nD = DOBLES.size;
   const apuestas = Math.pow(2, nD);
 
+  const divisiones = [...new Set(partidos.map(p => p.div))];
+  const divPleno = pleno.div || '1ª';
+  const bloquePleno = `<div class="bloque-pleno">
+      <div class="col-cab" style="color:var(--pleno)">PLENO AL 15</div>
+      <div class="linea" style="border:none">
+        <span class="n">${pleno.num || 15}</span>
+        <span class="eq">${esc(nombreCorto(pleno.local))} — ${esc(nombreCorto(pleno.visit))}</span>
+        <span class="sg" style="color:var(--pleno);width:auto">${esc(pleno.pred_marcador)}</span>
+      </div>
+    </div>`;
+
   return `<div class="boleto">
     <div class="boleto-top">
       <div>
@@ -468,22 +487,12 @@ function tplBoleto(j) {
       <button class="btn-copiar" id="copiar">📋 Copiar</button>
     </div>
     <div class="cols">
-      <div>
-        <div class="col-cab" style="color:var(--div1)">1ª DIV</div>
-        ${partidos.filter(p => p.div === '1ª').map(linea).join('')}
-      </div>
-      <div>
-        <div class="col-cab" style="color:var(--div2)">2ª DIV</div>
-        ${partidos.filter(p => p.div === '2ª').map(linea).join('')}
-        <div class="bloque-pleno">
-          <div class="col-cab" style="color:var(--pleno)">PLENO AL 15</div>
-          <div class="linea" style="border:none">
-            <span class="n">${pleno.num}</span>
-            <span class="eq">${esc(nombreCorto(pleno.local))} — ${esc(nombreCorto(pleno.visit))}</span>
-            <span class="sg" style="color:var(--pleno);width:auto">${esc(pleno.pred_marcador)}</span>
-          </div>
-        </div>
-      </div>
+      ${divisiones.map(d => `<div>
+        <div class="col-cab" style="color:${varDiv(d)}">${esc(etiquetaDiv(d)).toUpperCase()}</div>
+        ${partidos.filter(p => p.div === d).map(linea).join('')}
+        ${divPleno === d ? bloquePleno : ''}
+      </div>`).join('')}
+      ${divisiones.includes(divPleno) ? '' : `<div>${bloquePleno}</div>`}
     </div>
     <div class="resumen">${resumen}<span style="color:var(--pleno)">P15: ${esc(pleno.pred_marcador)}</span>${nD ? `<span class="et-doble">◧ dobles: ${[...DOBLES.keys()].sort((a, b) => a - b).join(' y ')}</span>` : ''}</div>
   </div>`;
@@ -494,17 +503,18 @@ const etiqueta = j => `J${j.meta.jornada} · ${j.meta.temporada}`;
 function render() {
   const j = JORNADAS[idxJornada];
   const { meta, contexto, partidos, pleno } = j;
-  const plenoItem = Object.assign({}, pleno, { num: pleno.num || 15, div: 'P15' });
+  // divReal es la división a la que pertenece el pleno para filtrar; div:'P15'
+  // es solo para pintarlo con su color propio.
+  const plenoItem = Object.assign({}, pleno, { num: pleno.num || 15, div: 'P15', divReal: pleno.div || '1ª' });
 
   DOBLES = calcDobles(partidos);
 
-  const lista =
-    filtro === 'todos' ? partidos.concat([plenoItem]) :
-    filtro === '1a'    ? partidos.filter(p => p.div === '1ª') :
-                         partidos.filter(p => p.div === '2ª').concat([plenoItem]);
+  // Las pestañas salen de las divisiones que trae la jornada, no de una lista fija
+  const divisiones = [...new Set(partidos.map(p => p.div))];
 
-  const n1a = partidos.filter(p => p.div === '1ª').length;
-  const n2a = partidos.filter(p => p.div === '2ª').length;
+  const lista = filtro === 'todos'
+    ? partidos.concat([plenoItem])
+    : partidos.filter(p => p.div === filtro).concat(plenoItem.divReal === filtro ? [plenoItem] : []);
 
   const selector = JORNADAS.length > 1
     ? `<select class="selector" id="selJornada">${JORNADAS.map((x, i) =>
@@ -537,16 +547,18 @@ function render() {
       ${(contexto.alertas || []).map(a =>
         `<div class="alerta ${a.trim().charAt(0) === '⚠' ? 'warn' : 'info'}">${esc(a)}</div>`).join('')}
       <div class="leyenda">
-        <span style="color:var(--div1)">■ 1ª División</span>
-        <span style="color:var(--div2)">■ 2ª División</span>
+        ${divisiones.map(d => `<span style="color:${varDiv(d)}">■ ${esc(etiquetaDiv(d))}</span>`).join('')}
         <span style="color:var(--pleno)">■ Pleno al 15</span>
       </div>
     </div>
 
     <div class="tabs">
       <button class="tab ${filtro === 'todos' ? 'on' : ''}" data-filtro="todos">Todos (${partidos.length}+P15)</button>
-      <button class="tab ${filtro === '1a' ? 'on' : ''}" data-filtro="1a">1ª División (${n1a})</button>
-      <button class="tab ${filtro === '2a' ? 'on' : ''}" data-filtro="2a">2ª + Pleno (${n2a}+1)</button>
+      ${divisiones.map(d => {
+        const n = partidos.filter(p => p.div === d).length;
+        const conPleno = plenoItem.divReal === d;
+        return `<button class="tab ${filtro === d ? 'on' : ''}" data-filtro="${esc(d)}">${esc(etiquetaDiv(d))} (${n}${conPleno ? '+P15' : ''})</button>`;
+      }).join('')}
     </div>
 
     <div class="lista">
