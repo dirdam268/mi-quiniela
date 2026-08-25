@@ -32,6 +32,23 @@ está en el historial de git: `git show d708ef2:build-secure.ps1`.
 
 ---
 
+## Actualización automática
+
+No hay que hacer nada cada semana: dos **rutinas en la nube** mantienen la app
+al día por su cuenta, sin necesidad de tener ningún ordenador encendido.
+
+| Cuándo | Qué hace |
+|---|---|
+| **Miércoles 10:00** | Prepara `data/jXX_YY-YY.json` de la jornada nueva con los % LAE, las alineaciones y las bajas, reconstruye y publica. |
+| **Lunes 12:00** | Rellena los resultados reales del escrutinio y actualiza la marca de aciertos. |
+
+Se gestionan en <https://claude.ai/code/routines>. Ambas corren en Linux, así
+que usan `construir.sh`. El cron está en UTC: al cambiar la hora en octubre
+habrá que ajustarlo si se quiere mantener la hora local.
+
+El flujo manual de abajo sigue funcionando, por si hace falta adelantarse o
+corregir algo.
+
 ## Flujo de cada jornada
 
 1. En [eduardolosilla.es](https://www.eduardolosilla.es) coger los 15 partidos y los **% LAE**.

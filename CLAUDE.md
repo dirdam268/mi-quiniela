@@ -88,11 +88,16 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - **Cuidado con `false || (undefined && x)`**: devuelve `undefined`, no `false`.
   Ya rompió una vez el marcado de partidos fallados. Por eso `acertado` pasa por
   `Boolean()` antes de compararse con `false`.
-- Hay **dos tareas programadas**:
-  - `quiniela-datos-semanales`, jueves 9:00 — prepara el JSON de la nueva
-    jornada, reconstruye y deja el commit hecho sin hacer push.
-  - `quiniela-resultados-lunes`, lunes 12:00 — rellena `resultado` con el
-    escrutinio real y actualiza la marca de aciertos.
+- Hay **dos rutinas en la nube** que mantienen la app sola, sin depender del
+  ordenador de Enrique. Corren en Linux, así que usan `construir.sh`, **nunca**
+  `construir.ps1`. Se gestionan en <https://claude.ai/code/routines>:
+  - *Quiniela · datos de la jornada (miércoles)*, 10:00 hora española — prepara
+    el JSON de la jornada nueva, reconstruye y hace push.
+  - *Quiniela · resultados y aciertos (lunes)*, 12:00 hora española — rellena
+    los `resultado` con el escrutinio real y actualiza la marca de aciertos.
+- El cron de esas rutinas está en **UTC**. Con el horario de verano español
+  (CEST) van a las 08:00 y 10:00 UTC; al cambiar la hora en octubre se
+  dispararán una hora antes en local salvo que se ajuste el cron.
 - El pleno se pinta con el mismo `tplPartido()` que los demás, marcándolo con
   `div: 'P15'`. Si tocas esa función, comprueba las dos ramas.
 - `nombreCorto()` quita siglas de club (FC, CD, RCD, SD, UD…) para el boleto
