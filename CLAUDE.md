@@ -51,6 +51,37 @@ repo público se puede atacar offline sin límite, así que la contraseña acaba
 siendo más riesgo que protección. No volver a proponer cifrado salvo que Enrique
 lo pida. El script que lo hacía sigue en el historial: `git show d708ef2:build-secure.ps1`.
 
+## Lo que dicen los datos (jornadas 1 a 4, 45 partidos)
+
+Medido, no opinado. Estas reglas salen del análisis del 05/09/2026 y **mandan
+sobre cualquier intuición**:
+
+**1. No apartarse del favorito de LAE.** Nos apartamos 3 veces y acertamos 0;
+LAE habría acertado 2 de esas 3. Ahí está la diferencia entre nuestro 47% y el
+51% de seguir ciegamente al mercado. El `pred` es **el signo con más % de LAE**.
+Solo se puede desviar con un hecho concreto y verificable que el porcentaje no
+recoja (una baja confirmada después, un equipo sin nada en juego), y hay que
+decirlo en la `razon`. Nunca por olfato.
+
+**2. La Segunda es el agujero: 29% de aciertos (6 de 21).** Pronosticamos el 1
+en 17 de 21 partidos, y salió 1×7, X×8, 2×6 — un reparto casi uniforme. El
+factor campo en Segunda vale mucho menos de lo que parece.
+
+**3. Cuando el favorito de LAE no llega al 50%, acierta solo el 38%.** Y eso es
+más de la mitad del boleto (24 de 45). Ahí no hay pronóstico que valga: es donde
+tienen que ir los dobles, y por eso `calcDobles()` los elige por debilidad del
+favorito y no por nuestro propio margen.
+
+**4. La confianza sí está calibrada:** ALTA 64%, MEDIA 56%, BAJA 25%. El campo
+`conf` funciona, mantenerlo honesto.
+
+**5. Liga F es lo más predecible:** 4 de 4. Los porcentajes de LAE ahí son
+extremos (84%, 88%) y se cumplen.
+
+**Expectativa realista: 55-60%.** La quiniela es en su mayor parte azar; el
+valor de esta app es ordenar la información y colocar bien los dobles, no
+adivinar. No prometer más.
+
 ## Convenciones de estilo
 
 - **Idioma UI y comentarios**: español (informal, directo)

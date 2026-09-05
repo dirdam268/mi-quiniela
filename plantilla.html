@@ -205,22 +205,29 @@ let expandido = null;
 let DOBLES = new Map();   // num de partido -> { alt, margen }
 
 // ── Dobles ──────────────────────────────────────────────────────────
-// Se doblan los partidos mas ajustados: aquellos donde el pronostico gana por
-// menos margen a su mejor alternativa. A igualdad de margen, primero los de
-// confianza BAJA. Cambiar N_DOBLES cambia cuantos se marcan.
-const N_DOBLES = 2;
+// Se doblan los partidos donde el favorito de LAE es mas debil, que son los
+// que de verdad estan abiertos. Medido sobre las jornadas 1 a 4: cuando el
+// favorito de LAE no llega al 50%, acierta solo el 38% de las veces.
+//
+// N_DOBLES probado contra esos mismos datos (45 partidos):
+//   0 o 1 doble -> 51% de aciertos ·  1-2 apuestas
+//   2 dobles    -> 53% de aciertos ·  4 apuestas
+//   3 dobles    -> 58% de aciertos ·  8 apuestas  <- mejor relacion
+//   4 dobles    -> 58% de aciertos · 16 apuestas  (no aporta nada)
+const N_DOBLES = 3;
 const ORDEN = ['1', 'X', '2'];
 
 function calcDobles(partidos) {
   const candidatos = partidos
     .filter(p => !p.suspendido)   // un partido por sorteo no merece gastar un doble
     .map(p => {
-      const prob = { '1': p.p1, 'X': p.px, '2': p.p2 };
-      const alt = ORDEN.filter(s => s !== p.pred).sort((a, b) => prob[b] - prob[a])[0];
-      return { num: p.num, alt, margen: Math.abs(prob[p.pred] - prob[alt]), conf: p.conf };
+      const lae = { '1': p.lae_1, 'X': p.lae_x, '2': p.lae_2 };
+      const porFuerza = ORDEN.slice().sort((a, b) => lae[b] - lae[a]);
+      // El segundo signo con mas apuestas que no sea ya el pronostico
+      const alt = porFuerza.find(s => s !== p.pred);
+      return { num: p.num, alt, fuerza: lae[porFuerza[0]] };
     })
-    .sort((a, b) => a.margen - b.margen ||
-      (a.conf === 'BAJA' ? 0 : 1) - (b.conf === 'BAJA' ? 0 : 1));
+    .sort((a, b) => a.fuerza - b.fuerza);
 
   return new Map(candidatos.slice(0, N_DOBLES).map(d => [d.num, d]));
 }
@@ -381,7 +388,7 @@ function tplPartido(p) {
   else if (acertado === false) clases.push('ko');
 
   const avisos = [
-    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — solo ${doble.margen} ${doble.margen === 1 ? 'punto' : 'puntos'} de diferencia</div>` : '',
+    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — el favorito de LAE se queda en el ${doble.fuerza}%</div>` : '',
     p.suspendido ? '<div class="card-aviso warn">⚠ SUSPENDIDO — resultado por sorteo LAE</div>' : '',
     p.urgente    ? '<div class="card-aviso danger">⚡ PARTIDO CLAVE</div>' : '',
     p.local_nota ? `<div class="card-aviso info">${esc(p.local_nota)}</div>` : '',

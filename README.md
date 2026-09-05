@@ -175,15 +175,25 @@ Notas del schema:
 
 ## Dobles
 
-La app elige los dobles **sola**, no se ponen en el JSON. Ordena los partidos
-por el margen entre el pronóstico y su mejor alternativa, y dobla los `N_DOBLES`
-más ajustados (2 por defecto, constante al principio del `<script>` de
-`plantilla.html`). A igualdad de margen entra antes el de confianza BAJA. Los
-partidos suspendidos quedan fuera: su resultado sale por sorteo y no merece
-gastar un doble.
+La app elige los dobles **sola**, no se ponen en el JSON. Dobla los `N_DOBLES`
+partidos donde **el favorito de LAE es más débil**, que son los que de verdad
+están abiertos, y cubre con el segundo signo más apostado. Los partidos
+suspendidos quedan fuera: su resultado sale por sorteo.
 
-Cada doble multiplica por 2 las apuestas: 2 dobles = 4 apuestas. La app lo
-muestra en la cabecera del boleto y lo incluye al copiarlo.
+`N_DOBLES` es **3**, elegido probando el sistema contra las jornadas 1 a 4
+(45 partidos reales):
+
+| Dobles | Aciertos | Apuestas |
+|---|---|---|
+| 0 o 1 | 51% | 1-2 |
+| 2 | 53% | 4 |
+| **3** | **58%** | **8** |
+| 4 | 58% | 16 |
+| 5 | 60% | 32 |
+
+Tres dobles es donde está el salto; el cuarto no aporta nada y el quinto cuesta
+32 apuestas por un punto. Si quieres gastar menos, baja la constante `N_DOBLES`
+al principio del `<script>` de `plantilla.html`: con 2 vuelves a 4 apuestas.
 
 ## Resultados y aciertos
 
