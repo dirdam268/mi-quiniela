@@ -127,6 +127,12 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - **Martes a propósito**: muchas jornadas terminan el lunes por la noche, así
   que el martes es el primer día en que el escrutinio está completo. No moverlo
   antes sin motivo.
+- **Ojo con las jornadas entre semana.** La J5 fue de Champions (8-9 de
+  septiembre) y cerró antes del martes siguiente, así que nunca se preparó. La
+  J6 cerró el viernes 11 a las 20:00 y tampoco llegó a tiempo. No hay datos de
+  la J5 en `data/` a propósito: sin los % LAE de antes del cierre no se puede
+  reconstruir sin hacer trampa. La J6 se publicó tarde, solo para seguir
+  midiendo el sistema.
 - Corre en Linux: usa `construir.sh`, **nunca** `construir.ps1`.
 - **La rutina trabaja con las manos atadas** y hay que contar con ello:
   - El cortafuegos de salida del entorno bloquea `eduardolosilla.es`,
