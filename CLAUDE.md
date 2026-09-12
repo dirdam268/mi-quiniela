@@ -145,9 +145,15 @@ La versión oscura original está en el historial de git, por si hiciera falta.
     `dirdam268/mi-quiniela` en su lista de repos
     (<https://github.com/apps/claude/installations/select_target>). El conector
     de GitHub en claude.ai **no** basta: son permisos distintos.
-- **Reparto de trabajo acordado con Enrique:** la rutina hace lo que puede y
-  señala lo que no; cuando él abre Claude Code, se completa todo desde aquí,
-  que sí llega a las fuentes.
+- **ESTADO ACTUAL (12/09/2026): la rutina está PAUSADA.** Tres martes seguidos
+  bloqueada por el cortafuegos, sin hacer nada. Se reactiva desde
+  <https://claude.ai/code/routines> si algún día se abre la red del entorno.
+- **Cómo se trabaja ahora, acordado con Enrique:** él pide «actualizar» desde
+  Claude Code el jueves o el viernes, antes del cierre, y se hace todo desde
+  aquí: cerrar la jornada anterior con el escrutinio, preparar la nueva,
+  reconstruir y publicar. Sin recordatorios automáticos, lo pidió así. Si pide
+  «actualizar» después del cierre, la jornada se publica igual pero marcada como
+  tardía, solo para medir el sistema.
 - El cron está en **UTC** (`0 13 * * 2`). Con el horario de verano español
   (CEST) eso son las 15:00 locales; al cambiar la hora en octubre se disparará
   a las 14:00 salvo que se ajuste el cron a `0 14 * * 2`.
