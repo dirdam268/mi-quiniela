@@ -219,15 +219,22 @@ let DOBLES = new Map();   // num de partido -> { alt, margen }
 const N_DOBLES = 3;
 const ORDEN = ['1', 'X', '2'];
 
+// Una jornada provisional se publica antes de que salgan los % LAE. Entonces
+// los dobles se calculan con los porcentajes propios, y se dice en pantalla.
+const tieneLae = p => [p.lae_1, p.lae_x, p.lae_2].every(v => typeof v === 'number');
+
 function calcDobles(partidos) {
   const candidatos = partidos
     .filter(p => !p.suspendido)   // un partido por sorteo no merece gastar un doble
     .map(p => {
-      const lae = { '1': p.lae_1, 'X': p.lae_x, '2': p.lae_2 };
-      const porFuerza = ORDEN.slice().sort((a, b) => lae[b] - lae[a]);
-      // El segundo signo con mas apuestas que no sea ya el pronostico
+      const estimado = !tieneLae(p);
+      const ref = estimado
+        ? { '1': p.p1, 'X': p.px, '2': p.p2 }
+        : { '1': p.lae_1, 'X': p.lae_x, '2': p.lae_2 };
+      const porFuerza = ORDEN.slice().sort((a, b) => ref[b] - ref[a]);
+      // El segundo signo mas probable que no sea ya el pronostico
       const alt = porFuerza.find(s => s !== p.pred);
-      return { num: p.num, alt, fuerza: lae[porFuerza[0]] };
+      return { num: p.num, alt, fuerza: ref[porFuerza[0]], estimado };
     })
     .sort((a, b) => a.fuerza - b.fuerza);
 
@@ -390,7 +397,7 @@ function tplPartido(p) {
   else if (acertado === false) clases.push('ko');
 
   const avisos = [
-    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — el favorito de LAE se queda en el ${doble.fuerza}%</div>` : '',
+    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — el favorito ${doble.estimado ? 'estimado' : 'de LAE'} se queda en el ${doble.fuerza}%</div>` : '',
     p.suspendido ? '<div class="card-aviso warn">⚠ SUSPENDIDO — resultado por sorteo LAE</div>' : '',
     p.urgente    ? '<div class="card-aviso danger">⚡ PARTIDO CLAVE</div>' : '',
     p.local_nota ? `<div class="card-aviso info">${esc(p.local_nota)}</div>` : '',
@@ -419,7 +426,9 @@ function tplPartido(p) {
                ${goles}
              </div>`
           : '')
-      : `<div class="lae">${barra(p.lae_1, p.lae_x, p.lae_2)}
+      : !tieneLae(p)
+        ? `<div class="lae"><div class="pie"><span class="et">% LAE pendientes de publicar · pronóstico estimado a mano</span></div></div>`
+        : `<div class="lae">${barra(p.lae_1, p.lae_x, p.lae_2)}
            <div class="pie"><span style="color:var(--p1)">1</span>${p.lae_1}%<span style="color:var(--px)">X</span>${p.lae_x}%<span style="color:var(--p2)">2</span>${p.lae_2}%<span class="et">% LAE</span></div>
          </div>`;
     detalle = `<div class="detalle">
@@ -507,7 +516,7 @@ function tplBoleto(j) {
   </div>`;
 }
 
-const etiqueta = j => `J${j.meta.jornada} · ${j.meta.temporada}`;
+const etiqueta = j => `J${j.meta.jornada} · ${j.meta.temporada}${j.meta.provisional ? ' · PROVISIONAL' : ''}`;
 
 function render() {
   const j = JORNADAS[idxJornada];

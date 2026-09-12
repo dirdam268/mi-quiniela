@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "jornada": 7,
+    "temporada": "26/27",
+    "provisional": true,
+    "fecha_cierre": "2026-09-15T18:00:00",
+    "bote": 0,
+    "fuente": "estimación propia, sin % LAE",
+    "fecha_datos": "2026-09-12",
+    "actualizado": "2026-09-12"
+  },
+  "contexto": {
+    "alertas": [
+      "⚠ PROVISIONAL: pronóstico a ojo, sin los % LAE, que se publican el lunes 14. Se rehará con los porcentajes reales",
+      "⏰ Jornada entre semana, del martes 15 al jueves 17. Cierre previsto el martes hacia las 18:00, por confirmar",
+      "🌍 Mezcla 8 partidos de LaLiga con 6 de competiciones europeas, donde no tenemos datos propios"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"1ª","local":"Rayo Vallecano","local_emoji":"🔴","local_nota":"","visit":"RCD Espanyol","visit_emoji":"⚪","visit_nota":"","dia":"Mar·19:00","pred":"1","p1":45,"px":29,"p2":26,"conf":"BAJA","razon":"Estimación propia. El Rayo ganó su último partido en casa (3-2 al Racing); el Espanyol lleva una sola victoria en cuatro jornadas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Dep. Alavés","local_emoji":"⚪","local_nota":"","visit":"Valencia","visit_emoji":"⚪","visit_nota":"","dia":"Mar·20:00","pred":"1","p1":55,"px":26,"p2":19,"conf":"MEDIA","razon":"Estimación propia. En Mendizorroza el Alavés ha ganado 3-0 al Getafe y 5-2 a Osasuna; el Valencia llega con tres derrotas seguidas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"Elche CF","local_emoji":"🟢","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Mar·21:30","pred":"2","p1":12,"px":17,"p2":71,"conf":"ALTA","razon":"Estimación propia. El Madrid ha ganado todo lo que hemos visto (1-2 en Cornellà, 4-0 al Málaga, 2-1 al Inter); el Elche encajó cinco en casa con el Barça.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"Atlético Madrid","local_emoji":"🔴","local_nota":"","visit":"Osasuna","visit_emoji":"🔴","visit_nota":"","dia":"Mié·19:00","pred":"1","p1":70,"px":19,"p2":11,"conf":"ALTA","razon":"Estimación propia. El Metropolitano ante un Osasuna que encajó cinco en Mendizorroza.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"Sevilla","visit_emoji":"⚪","visit_nota":"","dia":"Mié·19:00","pred":"1","p1":42,"px":29,"p2":29,"conf":"BAJA","razon":"Estimación propia. El Depor llega con dos victorias seguidas (3-1 al Valencia y 2-3 en Vila-real); el Sevilla alterna victorias y derrotas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"FC Barcelona","local_emoji":"🔵","local_nota":"","visit":"Racing Santander","visit_emoji":"⚪","visit_nota":"","dia":"Mié·21:30","pred":"1","p1":84,"px":11,"p2":5,"conf":"ALTA","razon":"Estimación propia. El Barça ha marcado cinco goles en cada uno de sus tres partidos de liga; el Racing todavía no ha ganado.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Levante","local_emoji":"🔵","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Mié·21:30","pred":"2","p1":32,"px":30,"p2":38,"conf":"BAJA","razon":"Estimación propia. El Athletic lleva tres victorias seguidas (Sevilla, en Balaídos y 3-0 al Atlético), pero en casa el Levante le ganó 5-2 al Betis. Muy abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"1ª","local":"Real Betis","local_emoji":"🟢","local_nota":"","visit":"Getafe","visit_emoji":"🔵","visit_nota":"","dia":"Jue·19:00","pred":"1","p1":52,"px":28,"p2":20,"conf":"MEDIA","razon":"Estimación propia. Fuera de casa el Getafe no ha ganado: 3-0 en Mendizorroza y 1-0 en El Sadar.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"EU","local":"Omonia","local_emoji":"🟢","local_nota":"","visit":"Celta Vigo","visit_emoji":"🔵","visit_nota":"","dia":"Mié·18:45","pred":"2","p1":33,"px":30,"p2":37,"conf":"BAJA","razon":"Estimación propia, sin datos del Omonia. El Celta es mejor en el papel pero lleva cuatro jornadas de liga sin ganar, y jugar en Chipre no es cómodo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"EU","local":"AC Milan","local_emoji":"🔴","local_nota":"","visit":"Benfica","visit_emoji":"🔴","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":44,"px":29,"p2":27,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Dos equipos parejos; San Siro inclina la balanza.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"EU","local":"Anderlecht","local_emoji":"🟣","local_nota":"","visit":"Olympique Lyon","visit_emoji":"⚪","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":38,"px":28,"p2":34,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Prácticamente una moneda al aire: solo el factor campo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"EU","local":"Celtic","local_emoji":"🟢","local_nota":"","visit":"Ferencváros","visit_emoji":"🟢","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":58,"px":24,"p2":18,"conf":"MEDIA","razon":"Estimación propia, sin datos de esta temporada. Celtic Park pesa mucho en Europa.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"EU","local":"Viktoria Plzen","local_emoji":"🔴","local_nota":"","visit":"Union SG","visit_emoji":"🟡","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":40,"px":30,"p2":30,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Igualado; el factor campo es lo único que desempata.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"EU","local":"Real Sociedad","local_emoji":"🔵","local_nota":"","visit":"Bournemouth","visit_emoji":"🔴","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":43,"px":29,"p2":28,"conf":"BAJA","razon":"Estimación propia. Anoeta ante un equipo de la Premier: partido abierto en el que solo el campo inclina.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"1ª",
+    "local":"Málaga","local_emoji":"🔵","local_nota":"",
+    "visit":"Villarreal","visit_emoji":"🟡","visit_nota":"",
+    "dia":"Jue·21:30",
+    "pred_signo":"X",
+    "pred_marcador":"1-1",
+    "razon":"Estimación propia, sin los % de goles de LAE. En casa el Málaga ha empatado 1-1 con el Depor y 0-0 con el Levante; el Villarreal perdió en casa con el Depor y en Dortmund. Partido de pocos goles.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+}

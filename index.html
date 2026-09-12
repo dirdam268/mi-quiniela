@@ -173,6 +173,52 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 // ════════════════════════════════════════════════════════════════════
 const JORNADAS = [{
   "meta": {
+    "jornada": 7,
+    "temporada": "26/27",
+    "provisional": true,
+    "fecha_cierre": "2026-09-15T18:00:00",
+    "bote": 0,
+    "fuente": "estimación propia, sin % LAE",
+    "fecha_datos": "2026-09-12",
+    "actualizado": "2026-09-12"
+  },
+  "contexto": {
+    "alertas": [
+      "⚠ PROVISIONAL: pronóstico a ojo, sin los % LAE, que se publican el lunes 14. Se rehará con los porcentajes reales",
+      "⏰ Jornada entre semana, del martes 15 al jueves 17. Cierre previsto el martes hacia las 18:00, por confirmar",
+      "🌍 Mezcla 8 partidos de LaLiga con 6 de competiciones europeas, donde no tenemos datos propios"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"1ª","local":"Rayo Vallecano","local_emoji":"🔴","local_nota":"","visit":"RCD Espanyol","visit_emoji":"⚪","visit_nota":"","dia":"Mar·19:00","pred":"1","p1":45,"px":29,"p2":26,"conf":"BAJA","razon":"Estimación propia. El Rayo ganó su último partido en casa (3-2 al Racing); el Espanyol lleva una sola victoria en cuatro jornadas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Dep. Alavés","local_emoji":"⚪","local_nota":"","visit":"Valencia","visit_emoji":"⚪","visit_nota":"","dia":"Mar·20:00","pred":"1","p1":55,"px":26,"p2":19,"conf":"MEDIA","razon":"Estimación propia. En Mendizorroza el Alavés ha ganado 3-0 al Getafe y 5-2 a Osasuna; el Valencia llega con tres derrotas seguidas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"Elche CF","local_emoji":"🟢","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Mar·21:30","pred":"2","p1":12,"px":17,"p2":71,"conf":"ALTA","razon":"Estimación propia. El Madrid ha ganado todo lo que hemos visto (1-2 en Cornellà, 4-0 al Málaga, 2-1 al Inter); el Elche encajó cinco en casa con el Barça.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"Atlético Madrid","local_emoji":"🔴","local_nota":"","visit":"Osasuna","visit_emoji":"🔴","visit_nota":"","dia":"Mié·19:00","pred":"1","p1":70,"px":19,"p2":11,"conf":"ALTA","razon":"Estimación propia. El Metropolitano ante un Osasuna que encajó cinco en Mendizorroza.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"Sevilla","visit_emoji":"⚪","visit_nota":"","dia":"Mié·19:00","pred":"1","p1":42,"px":29,"p2":29,"conf":"BAJA","razon":"Estimación propia. El Depor llega con dos victorias seguidas (3-1 al Valencia y 2-3 en Vila-real); el Sevilla alterna victorias y derrotas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"FC Barcelona","local_emoji":"🔵","local_nota":"","visit":"Racing Santander","visit_emoji":"⚪","visit_nota":"","dia":"Mié·21:30","pred":"1","p1":84,"px":11,"p2":5,"conf":"ALTA","razon":"Estimación propia. El Barça ha marcado cinco goles en cada uno de sus tres partidos de liga; el Racing todavía no ha ganado.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Levante","local_emoji":"🔵","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Mié·21:30","pred":"2","p1":32,"px":30,"p2":38,"conf":"BAJA","razon":"Estimación propia. El Athletic lleva tres victorias seguidas (Sevilla, en Balaídos y 3-0 al Atlético), pero en casa el Levante le ganó 5-2 al Betis. Muy abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"1ª","local":"Real Betis","local_emoji":"🟢","local_nota":"","visit":"Getafe","visit_emoji":"🔵","visit_nota":"","dia":"Jue·19:00","pred":"1","p1":52,"px":28,"p2":20,"conf":"MEDIA","razon":"Estimación propia. Fuera de casa el Getafe no ha ganado: 3-0 en Mendizorroza y 1-0 en El Sadar.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"EU","local":"Omonia","local_emoji":"🟢","local_nota":"","visit":"Celta Vigo","visit_emoji":"🔵","visit_nota":"","dia":"Mié·18:45","pred":"2","p1":33,"px":30,"p2":37,"conf":"BAJA","razon":"Estimación propia, sin datos del Omonia. El Celta es mejor en el papel pero lleva cuatro jornadas de liga sin ganar, y jugar en Chipre no es cómodo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"EU","local":"AC Milan","local_emoji":"🔴","local_nota":"","visit":"Benfica","visit_emoji":"🔴","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":44,"px":29,"p2":27,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Dos equipos parejos; San Siro inclina la balanza.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"EU","local":"Anderlecht","local_emoji":"🟣","local_nota":"","visit":"Olympique Lyon","visit_emoji":"⚪","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":38,"px":28,"p2":34,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Prácticamente una moneda al aire: solo el factor campo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"EU","local":"Celtic","local_emoji":"🟢","local_nota":"","visit":"Ferencváros","visit_emoji":"🟢","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":58,"px":24,"p2":18,"conf":"MEDIA","razon":"Estimación propia, sin datos de esta temporada. Celtic Park pesa mucho en Europa.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"EU","local":"Viktoria Plzen","local_emoji":"🔴","local_nota":"","visit":"Union SG","visit_emoji":"🟡","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":40,"px":30,"p2":30,"conf":"BAJA","razon":"Estimación propia, sin datos de esta temporada. Igualado; el factor campo es lo único que desempata.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"EU","local":"Real Sociedad","local_emoji":"🔵","local_nota":"","visit":"Bournemouth","visit_emoji":"🔴","visit_nota":"","dia":"Jue·21:00","pred":"1","p1":43,"px":29,"p2":28,"conf":"BAJA","razon":"Estimación propia. Anoeta ante un equipo de la Premier: partido abierto en el que solo el campo inclina.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"1ª",
+    "local":"Málaga","local_emoji":"🔵","local_nota":"",
+    "visit":"Villarreal","visit_emoji":"🟡","visit_nota":"",
+    "dia":"Jue·21:30",
+    "pred_signo":"X",
+    "pred_marcador":"1-1",
+    "razon":"Estimación propia, sin los % de goles de LAE. En casa el Málaga ha empatado 1-1 con el Depor y 0-0 con el Levante; el Villarreal perdió en casa con el Depor y en Dortmund. Partido de pocos goles.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+},{
+  "meta": {
     "jornada": 6,
     "temporada": "26/27",
     "fecha_cierre": "2026-09-11T20:00:00",
@@ -453,15 +499,22 @@ let DOBLES = new Map();   // num de partido -> { alt, margen }
 const N_DOBLES = 3;
 const ORDEN = ['1', 'X', '2'];
 
+// Una jornada provisional se publica antes de que salgan los % LAE. Entonces
+// los dobles se calculan con los porcentajes propios, y se dice en pantalla.
+const tieneLae = p => [p.lae_1, p.lae_x, p.lae_2].every(v => typeof v === 'number');
+
 function calcDobles(partidos) {
   const candidatos = partidos
     .filter(p => !p.suspendido)   // un partido por sorteo no merece gastar un doble
     .map(p => {
-      const lae = { '1': p.lae_1, 'X': p.lae_x, '2': p.lae_2 };
-      const porFuerza = ORDEN.slice().sort((a, b) => lae[b] - lae[a]);
-      // El segundo signo con mas apuestas que no sea ya el pronostico
+      const estimado = !tieneLae(p);
+      const ref = estimado
+        ? { '1': p.p1, 'X': p.px, '2': p.p2 }
+        : { '1': p.lae_1, 'X': p.lae_x, '2': p.lae_2 };
+      const porFuerza = ORDEN.slice().sort((a, b) => ref[b] - ref[a]);
+      // El segundo signo mas probable que no sea ya el pronostico
       const alt = porFuerza.find(s => s !== p.pred);
-      return { num: p.num, alt, fuerza: lae[porFuerza[0]] };
+      return { num: p.num, alt, fuerza: ref[porFuerza[0]], estimado };
     })
     .sort((a, b) => a.fuerza - b.fuerza);
 
@@ -624,7 +677,7 @@ function tplPartido(p) {
   else if (acertado === false) clases.push('ko');
 
   const avisos = [
-    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — el favorito de LAE se queda en el ${doble.fuerza}%</div>` : '',
+    doble        ? `<div class="card-aviso doble">◧ DOBLE ${signosDoble(p.pred, doble.alt)} — el favorito ${doble.estimado ? 'estimado' : 'de LAE'} se queda en el ${doble.fuerza}%</div>` : '',
     p.suspendido ? '<div class="card-aviso warn">⚠ SUSPENDIDO — resultado por sorteo LAE</div>' : '',
     p.urgente    ? '<div class="card-aviso danger">⚡ PARTIDO CLAVE</div>' : '',
     p.local_nota ? `<div class="card-aviso info">${esc(p.local_nota)}</div>` : '',
@@ -653,7 +706,9 @@ function tplPartido(p) {
                ${goles}
              </div>`
           : '')
-      : `<div class="lae">${barra(p.lae_1, p.lae_x, p.lae_2)}
+      : !tieneLae(p)
+        ? `<div class="lae"><div class="pie"><span class="et">% LAE pendientes de publicar · pronóstico estimado a mano</span></div></div>`
+        : `<div class="lae">${barra(p.lae_1, p.lae_x, p.lae_2)}
            <div class="pie"><span style="color:var(--p1)">1</span>${p.lae_1}%<span style="color:var(--px)">X</span>${p.lae_x}%<span style="color:var(--p2)">2</span>${p.lae_2}%<span class="et">% LAE</span></div>
          </div>`;
     detalle = `<div class="detalle">
@@ -741,7 +796,7 @@ function tplBoleto(j) {
   </div>`;
 }
 
-const etiqueta = j => `J${j.meta.jornada} · ${j.meta.temporada}`;
+const etiqueta = j => `J${j.meta.jornada} · ${j.meta.temporada}${j.meta.provisional ? ' · PROVISIONAL' : ''}`;
 
 function render() {
   const j = JORNADAS[idxJornada];

@@ -172,6 +172,13 @@ Notas del schema:
   sección que corresponda. **Nunca rellenar a ojo** — mejor dejarlo fuera.
 - `meta.actualizado` (opcional, `YYYY-MM-DD`) es el sello "↻ Actualizado" de la
   cabecera. Si falta, se usa `meta.fecha_datos`.
+- `meta.provisional: true` marca una jornada publicada **antes de que salgan
+  los % LAE**, con pronóstico estimado a mano. La etiqueta de la jornada lleva
+  «PROVISIONAL» en el selector, la cabecera y el boleto. En ese caso los campos
+  `lae_1`/`lae_x`/`lae_2` **se omiten** (nunca se rellenan con números
+  inventados): el panel del partido dice «% LAE pendientes» y los dobles se
+  calculan con los porcentajes propios. Cuando salgan los % reales, se rehace
+  la jornada y se quita la marca.
 
 ## Dobles
 
