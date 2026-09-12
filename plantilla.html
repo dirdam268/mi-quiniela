@@ -185,6 +185,8 @@ const DIVS = {
   '1ª': { etiqueta: '1ª División', color: 'var(--div1)' },
   '2ª': { etiqueta: '2ª División', color: 'var(--div2)' },
   'F':  { etiqueta: 'Liga F',      color: 'var(--divF)' },
+  // Jornadas entre semana: Champions, Europa League y Conference (J5, J7)
+  'EU': { etiqueta: 'Europa',      color: '#475569' },
 };
 const varDiv = d => d === 'P15' ? 'var(--pleno)' : (DIVS[d] ? DIVS[d].color : 'var(--mut)');
 const etiquetaDiv = d => DIVS[d] ? DIVS[d].etiqueta : d;
