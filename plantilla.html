@@ -330,7 +330,11 @@ function barra(a, b, c) {
 // Primera. Si no hay datos NO se inventan: se dice por que faltan.
 function tplAlineaciones(p) {
   const a = p.alineaciones;
-  const hay = a && Array.isArray(a.local) && a.local.length && Array.isArray(a.visit) && a.visit.length;
+  // Se pinta cada lado por separado: muchas veces futbolfantasy publica los
+  // porcentajes de un equipo y del otro no.
+  const hayL = !!(a && Array.isArray(a.local) && a.local.length);
+  const hayV = !!(a && Array.isArray(a.visit) && a.visit.length);
+  const hay = hayL || hayV;
 
   if (!hay) {
     const fuente = p.div === '2ª' ? 'futbolfantasy.com/laliga2' : 'futbolfantasy.com/laliga';
@@ -368,9 +372,10 @@ function tplAlineaciones(p) {
   return `<div class="once">
     <div class="once-cab">% titularidad · futbolfantasy.com${a.actualizado ? ' · ' + esc(a.actualizado) : ''}</div>
     <div class="once-cols">
-      ${col(p.local, a.local)}
-      ${col(p.visit, a.visit)}
+      ${hayL ? col(p.local, a.local) : ''}
+      ${hayV ? col(p.visit, a.visit) : ''}
     </div>
+    ${hayL && hayV ? '' : `<div class="once-vacio">De ${esc(hayL ? p.visit : p.local)} aún no hay porcentajes publicados.</div>`}
   </div>`;
 }
 
