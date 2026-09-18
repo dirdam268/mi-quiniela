@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "jornada": 8,
+    "temporada": "26/27",
+    "fecha_cierre": "2026-09-19T13:00:00",
+    "bote": 3159105,
+    "fuente": "eduardolosilla.es",
+    "fecha_datos": "2026-09-18",
+    "actualizado": "2026-09-18"
+  },
+  "contexto": {
+    "alertas": [
+      "⏰ Cierra el sábado 19 a las 13:00, tres horas antes de lo habitual",
+      "💰 Bote de 3,16 millones. Un único acertante se llevaría 4 millones",
+      "📅 Reparto: 7 de 1ª · 3 de 2ª · 4 de Liga F · Pleno al 15: derbi Atlético – Real Madrid"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"1ª","local":"Osasuna","local_emoji":"🔴","local_nota":"","visit":"Rayo Vallecano","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·14:00","pred":"1","p1":47,"px":31,"p2":22,"lae_1":47,"lae_x":31,"lae_2":22,"conf":"BAJA","razon":"Favorito de LAE al 47%, por debajo del 50. Osasuna viene de perder 0-2 en casa con el Espanyol y 0-4 en el Metropolitano; el Rayo ganó 2-1 al Espanyol pero cayó 4-1 en el Bernabéu.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Athletic Club","local_emoji":"🔴","local_nota":"","visit":"Dep. Alavés","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·16:15","pred":"1","p1":69,"px":20,"p2":11,"lae_1":69,"lae_x":20,"lae_2":11,"conf":"MEDIA","razon":"Favorito de LAE al 69%. El Athletic se ha frenado (1-1 con el Elche y 0-1 en Levante), pero el Alavés llega peor: perdió 1-2 en Santander y 0-1 en casa con el Valencia.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"Sevilla","local_emoji":"⚪","local_nota":"","visit":"FC Barcelona","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·21:00","pred":"2","p1":10,"px":11,"p2":79,"lae_1":10,"lae_x":11,"lae_2":79,"conf":"ALTA","razon":"Favorito de LAE al 79%. El Barça lleva 4-2 en Levante y 7-2 al Racing; el Sevilla ganó en Riazor pero es irregular.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"Getafe","local_emoji":"🔵","local_nota":"","visit":"Málaga","visit_emoji":"🔵","visit_nota":"","dia":"Dom·14:00","pred":"1","p1":61,"px":26,"p2":13,"lae_1":61,"lae_x":26,"lae_2":13,"conf":"MEDIA","razon":"Favorito de LAE al 61%. El Coliseum ante un Málaga que perdió 1-3 en casa con el Villarreal.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"Real Betis","visit_emoji":"🟢","visit_nota":"","dia":"Dom·18:30","pred":"2","p1":28,"px":29,"p2":43,"lae_1":28,"lae_x":29,"lae_2":43,"conf":"BAJA","razon":"LAE hace favorito al visitante con un 43%. El Betis ganó 1-2 en Vila-real y 1-0 al Getafe; el Depor perdió 0-1 en Riazor con el Sevilla.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"Villarreal","local_emoji":"🟡","local_nota":"","visit":"Levante","visit_emoji":"🔵","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":74,"px":16,"p2":10,"lae_1":74,"lae_x":16,"lae_2":10,"conf":"ALTA","razon":"Favorito de LAE al 74%. El Villarreal ganó 1-3 en La Rosaleda; el Levante viene de batir 1-0 al Athletic, así que ojo.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Valencia","local_emoji":"⚪","local_nota":"","visit":"Real Sociedad","visit_emoji":"🔵","visit_nota":"","dia":"Dom·21:00","pred":"2","p1":33,"px":31,"p2":36,"lae_1":33,"lae_x":31,"lae_2":36,"conf":"BAJA","razon":"Los tres signos en cinco puntos: 33-31-36. El Valencia ganó 0-1 en Mendizorroza; la Real encajó 0-3 con el Atlético y perdió con el Bournemouth. Doble claro.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"2ª","local":"FC Andorra","local_emoji":"🔴","local_nota":"","visit":"Sporting Gijón","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·16:15","pred":"2","p1":34,"px":31,"p2":35,"lae_1":34,"lae_x":31,"lae_2":35,"conf":"BAJA","razon":"El reparto más abierto del boleto: 34-31-35, un punto entre el 1 y el 2. Segunda División, que es donde peor lo hacemos. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"CD Castellón","local_emoji":"⚫","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":63,"px":22,"p2":15,"lae_1":63,"lae_x":22,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 63%, el más alto de la Segunda esta jornada. El Tenerife viene de ganar 2-0 al Leganés.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"CD Leganés","local_emoji":"🔵","local_nota":"","visit":"Granada CF","visit_emoji":"🔴","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":54,"px":29,"p2":17,"lae_1":54,"lae_x":29,"lae_2":17,"conf":"MEDIA","razon":"Favorito de LAE al 54%. El Leganés perdió 2-0 en Tenerife; el Granada ganó 1-3 en Córdoba.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"F","local":"Atlético Madrid","local_emoji":"🔴","local_nota":"","visit":"EDF Logroño","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·18:00","pred":"1","p1":80,"px":11,"p2":9,"lae_1":80,"lae_x":11,"lae_2":9,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 80%. El Logroño ganó 2-1 al Valencia, pero el salto de nivel es grande.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"F","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Dom·18:00","pred":"2","p1":19,"px":27,"p2":54,"lae_1":19,"lae_x":27,"lae_2":54,"conf":"MEDIA","razon":"Liga F. Favorito de LAE al 54% para el visitante. El Eibar encajó 1-4 en casa con el Badalona.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"F","local":"Real Madrid","local_emoji":"⚪","local_nota":"","visit":"Valencia","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·20:30","pred":"1","p1":87,"px":8,"p2":5,"lae_1":87,"lae_x":8,"lae_2":5,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 87%, el más alto del boleto. Aviso: el Madrid femenino ya nos falló un 88% en la J4 (0-0 con el Eibar).","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"F","local":"CD Tenerife","local_emoji":"🔵","local_nota":"","visit":"Sevilla","visit_emoji":"⚪","visit_nota":"","dia":"Dom·12:00","pred":"1","p1":40,"px":32,"p2":28,"lae_1":40,"lae_x":32,"lae_2":28,"conf":"BAJA","razon":"Liga F. Favorito de LAE al 40% con la X al 32%: partido abierto. El Sevilla perdió 1-0 en Madrid y 0-4 con el Barça. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"1ª",
+    "local":"Atlético Madrid","local_emoji":"🔴","local_nota":"",
+    "visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"",
+    "dia":"Dom·16:15",
+    "pred_signo":"X",
+    "pred_marcador":"1-1",
+    "razon":"Derbi en el Metropolitano. LAE reparte los goles 0:7% · 1:46% · 2:35% · M:12% (dato agregado, sin desglose por equipo esta jornada): un gol por equipo es lo más probable. El Atlético viene de golear 4-0 a Osasuna y 3-0 en Anoeta; el Madrid lo gana todo.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+}
