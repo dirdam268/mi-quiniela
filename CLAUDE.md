@@ -168,6 +168,22 @@ La versión oscura original está en el historial de git, por si hiciera falta.
   si un fichero está roto, falla ahí y no en el navegador.
 - El sello "↻ Actualizado" de la cabecera sale de `meta.actualizado`, con
   `meta.fecha_datos` como respaldo. Rellenarlo siempre al preparar una jornada.
+- **Botón «Actualizar jornada»** (`actualizarDesdeWeb` / `parsearQuiniela`):
+  lee eduardolosilla a través de `r.jina.ai` porque no da CORS. Detalles que
+  costaron encontrar y conviene no re-descubrir:
+  - Cada partido trae **cuatro** tandas de porcentajes (Jugados, LAE, Probables
+    y Jugados otra vez). **La buena es la segunda.** Coger otra da números que
+    parecen correctos pero no lo son.
+  - Los bloques son los **padres directos** de `.c-boleto-multiples-porcentajes__row`;
+    buscarlos por clase pilla también contenedores de arriba (90 en vez de 60).
+  - Los 14 primeros partidos vienen como `LOCAL - VISITANTE`, pero **el pleno
+    separa los equipos en dos líneas**, sin guion.
+  - El HTML del servidor (vía jina) trae 15 filas; la web en vivo renderiza 60
+    porque Angular duplica bloques. Parsear siempre el de jina.
+  - La validación (15 partidos, 60 bloques, tríos que sumen ~100) **ya evitó
+    publicar datos mal parseados dos veces**. No quitarla ni relajarla.
+  - Lo traído se guarda en `localStorage['quiniela_web_v1']` y las jornadas de
+    `data/` siempre mandan sobre él.
 
 ## Cosas que NO hacer
 

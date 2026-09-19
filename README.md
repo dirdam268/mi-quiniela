@@ -83,6 +83,35 @@ tocar `plantilla.html` para añadir una jornada.
 
 ---
 
+## Botón «Actualizar jornada»
+
+En la cabecera hay un botón que trae el boleto de la jornada abierta
+directamente desde eduardolosilla, **sin depender de nadie**. Tarda unos
+segundos.
+
+Cómo funciona: eduardolosilla no permite CORS, así que se lee a través de
+`https://r.jina.ai/<url>` con la cabecera `x-return-format: html`, el mismo
+truco que usa la app del equipo con la RFFM. Del HTML se sacan las 15 filas de
+partido y, de los **cuatro** bloques de porcentajes que trae cada uno
+(% Jugados · **% LAE** · % Probables · % Jugados), se coge el segundo.
+
+**Validación antes de tocar nada:** 15 partidos, 60 bloques y cada trío sumando
+entre 95 y 105. Si algo falla, lanza un error, lo dice y **no modifica la app**.
+Más vale quedarse sin jornada que pintar porcentajes falsos.
+
+Lo que trae y lo que no:
+
+| Sí | No |
+|---|---|
+| Los 15 partidos con día y hora | El análisis de cada partido |
+| Los % LAE reales | Las alineaciones y las bajas |
+| El pronóstico (favorito de LAE) y los 3 dobles | La división de cada partido (salen todos como «Boleto») |
+| El marcador más apostado del Pleno | El bote y la hora de cierre |
+
+La jornada traída **vive en el `localStorage` de ese dispositivo**: la página es
+estática y no puede escribir en el repositorio. Si la jornada ya está preparada
+a mano en `data/`, esa manda y el botón lo dice.
+
 ## Instalar en el móvil o el ordenador
 
 Se instala desde <https://dirdam268.github.io/mi-quiniela>.
