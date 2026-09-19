@@ -151,6 +151,11 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .btn-copiar { font-family:var(--mono); font-size:.64rem; background:#fff; color:var(--txt); border:1px solid var(--brd2); border-radius:6px; padding:5px 10px; cursor:pointer; white-space:nowrap; }
 .btn-copiar:hover { background:#f1f5f9; }
 .btn-copiar.ok { background:var(--p1); border-color:var(--p1); color:#fff; }
+.dobles-sel { display:flex; align-items:center; gap:6px; margin:0 0 9px; flex-wrap:wrap; }
+.dobles-lbl { font-family:var(--mono); font-size:.58rem; color:var(--mut); }
+.btn-dob { font-family:var(--mono); font-size:.6rem; background:#fff; color:var(--mut); border:1px solid var(--brd2); border-radius:6px; padding:3px 9px; cursor:pointer; }
+.btn-dob:hover { background:#f1f5f9; }
+.btn-dob.on { background:var(--txt); border-color:var(--txt); color:#fff; font-weight:600; }
 .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(165px, 1fr)); gap:2px 14px; }
 .col-cab { font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; margin-bottom:4px; font-weight:600; }
 .linea { display:flex; gap:5px; align-items:center; padding:4px 0; border-bottom:1px solid var(--brd); font-family:var(--mono); }
@@ -250,7 +255,18 @@ let DOBLES = new Map();   // num de partido -> { alt, margen }
 //   2 dobles    -> 53% de aciertos ·  4 apuestas
 //   3 dobles    -> 58% de aciertos ·  8 apuestas  <- mejor relacion
 //   4 dobles    -> 58% de aciertos · 16 apuestas  (no aporta nada)
-const N_DOBLES = 3;
+// Cuantos dobles juega. Se elige en el boleto y se recuerda en el dispositivo.
+// Medido sobre las jornadas 1 a 4: 0 dobles 51% (1 apuesta), 2 dobles 53%
+// (4 apuestas), 3 dobles 58% (8 apuestas).
+const OPCIONES_DOBLES = [0, 2, 3];
+const CLAVE_DOBLES = 'quiniela_dobles';
+function leerDobles() {
+  try {
+    const v = parseInt(localStorage.getItem(CLAVE_DOBLES), 10);
+    return OPCIONES_DOBLES.indexOf(v) > -1 ? v : 3;
+  } catch (_) { return 3; }
+}
+let nDobles = leerDobles();
 const ORDEN = ['1', 'X', '2'];
 
 // Una jornada provisional se publica antes de que salgan los % LAE. Entonces
@@ -272,7 +288,7 @@ function calcDobles(partidos) {
     })
     .sort((a, b) => a.fuerza - b.fuerza);
 
-  return new Map(candidatos.slice(0, N_DOBLES).map(d => [d.num, d]));
+  return new Map(candidatos.slice(0, nDobles).map(d => [d.num, d]));
 }
 
 // "X" + alternativa "1" -> "1X" (siempre en orden 1-X-2)
@@ -539,9 +555,14 @@ function tplBoleto(j) {
     <div class="boleto-top">
       <div>
         <div class="boleto-tit">Boleto oficial · ${esc(etiqueta(j))}</div>
-        <div class="boleto-sub">${partidos.length} partidos + Pleno al 15${nD ? ` · ${nD} ${nD === 1 ? 'doble' : 'dobles'} = ${apuestas} apuestas` : ''}</div>
+        <div class="boleto-sub">${partidos.length} partidos + Pleno al 15 · ${nD ? `${nD} dobles = ${apuestas} apuestas` : 'sin dobles = 1 apuesta'}</div>
       </div>
       <button class="btn-copiar" id="copiar">📋 Copiar</button>
+    </div>
+    <div class="dobles-sel">
+      <span class="dobles-lbl">Dobles</span>
+      ${OPCIONES_DOBLES.map(n => `<button class="btn-dob${n === nDobles ? ' on' : ''}" data-dob="${n}">${n === 0 ? 'ninguno' : n}</button>`).join('')}
+      <span class="dobles-lbl">${nD ? `${apuestas} apuestas · ${(apuestas * 0.75).toFixed(2).replace('.', ',')} €` : '1 apuesta · 0,75 €'}</span>
     </div>
     <div class="cols">
       ${divisiones.map(d => `<div>
@@ -637,6 +658,14 @@ document.getElementById('app').addEventListener('click', e => {
   if (e.target.closest('#copiar')) { copiarBoleto(); return; }
 
   if (e.target.closest('#btnWeb')) { actualizarDesdeWeb(); return; }
+
+  const bd = e.target.closest('[data-dob]');
+  if (bd) {
+    nDobles = parseInt(bd.dataset.dob, 10);
+    try { localStorage.setItem(CLAVE_DOBLES, String(nDobles)); } catch (_) {}
+    render();
+    return;
+  }
 
   const card = e.target.closest('.card');
   if (card) {
