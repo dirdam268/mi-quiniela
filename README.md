@@ -228,8 +228,13 @@ suspendidos quedan fuera: su resultado sale por sorteo.
 | 5 | 60% | 32 |
 
 Tres dobles es donde está el salto; el cuarto no aporta nada y el quinto cuesta
-32 apuestas por un punto. Si quieres gastar menos, baja la constante `N_DOBLES`
-al principio del `<script>` de `plantilla.html`: con 2 vuelves a 4 apuestas.
+32 apuestas por un punto.
+
+**Se elige en el propio boleto**, con los botones *ninguno · 2 · 3*. La elección
+se recuerda en ese dispositivo (`localStorage['quiniela_dobles']`) y recalcula
+todo, incluidos los aciertos de las jornadas ya jugadas: así se ve en vivo qué
+habría dado cada opción. Con los datos de las seis primeras jornadas, 2 dobles
+dejan el histórico en 48/84 (57%) y 3 dobles en 51/84 (61%).
 
 ## Resultados y aciertos
 
