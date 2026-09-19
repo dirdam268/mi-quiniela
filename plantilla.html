@@ -704,8 +704,10 @@ function parsearQuiniela(html) {
 
   // Cada partido trae cuatro bloques de porcentajes en este orden:
   // % Jugados · % LAE · % Probables · % Jugados. El bueno es el segundo.
-  const bloques = [...doc.querySelectorAll('[class*="app_caja_base__porcentajes"]')]
-    .filter(e => e.querySelector('.c-boleto-multiples-porcentajes__row'));
+  // Los bloques son los padres directos de cada fila de porcentajes: buscarlos
+  // por clase tambien pillaba contenedores de arriba y salian 90 en vez de 60.
+  const bloques = [...new Set([...doc.querySelectorAll('.c-boleto-multiples-porcentajes__row')]
+    .map(r => r.parentElement))];
   if (bloques.length !== 60) throw new Error('esperaba 60 bloques de porcentajes y he leido ' + bloques.length);
 
   const mj = /[Jj]ornada\s*(\d+)/.exec(doc.body.textContent || '');
