@@ -1045,7 +1045,9 @@ function parsearQuiniela(html) {
 
   for (let i = 0; i < 15; i++) {
     const eq = (filas[i].querySelector('.c-equipos__teams') || {}).textContent || '';
-    const par = eq.split('-').map(s => s.trim()).filter(Boolean);
+    // Los 14 primeros vienen como "LOCAL - VISITANTE"; el pleno, en dos lineas
+    let par = eq.split(/\s+-\s+/).map(s => s.trim()).filter(Boolean);
+    if (par.length !== 2) par = eq.split(/\n+/).map(s => s.trim()).filter(Boolean);
     if (par.length !== 2) throw new Error('no entiendo los equipos del partido ' + (i + 1));
 
     const dia = ((filas[i].querySelector('.c-marcador-horario__time__day') || {}).textContent || '').trim();
