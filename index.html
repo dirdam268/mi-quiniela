@@ -37,6 +37,10 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .selector { cursor:pointer; }
 .dato-mini { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:4px; }
 .dato-bote { color:var(--p1); font-weight:600; }
+.btn-web { font-family:var(--mono); font-size:.6rem; background:#fff; color:var(--txt); border:1px solid var(--brd2); border-radius:6px; padding:4px 8px; margin-top:5px; cursor:pointer; white-space:nowrap; }
+.btn-web:hover { background:#f1f5f9; }
+.btn-web:disabled { opacity:.5; cursor:default; }
+.estado-web { font-family:var(--mono); font-size:.55rem; color:var(--mut); margin-top:4px; max-width:150px; margin-left:auto; line-height:1.4; }
 .alerta { font-family:var(--mono); font-size:.64rem; padding:5px 8px; margin-top:4px; line-height:1.5; border-radius:6px; }
 .alerta:first-of-type { margin-top:8px; }
 .alerta.info { color:#1e40af; background:#eff6ff; border:1px solid #bfdbfe; }
@@ -171,7 +175,7 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 // ════════════════════════════════════════════════════════════════════
 // DATOS — los inyecta construir.ps1 leyendo data/jXX_YY-YY.json
 // ════════════════════════════════════════════════════════════════════
-const JORNADAS = [{
+const JORNADAS_REPO = [{
   "meta": {
     "jornada": 8,
     "temporada": "26/27",
@@ -500,6 +504,34 @@ const JORNADAS = [{
   }
 }];
 
+// ── Jornadas traidas por el boton "Actualizar" ──────────────────────
+// Viven solo en este dispositivo: la pagina es estatica y no puede escribir en
+// el repositorio. Las del repositorio mandan siempre, porque llevan analisis,
+// alineaciones y resultados; estas son un apaño para no quedarse sin boleto.
+const CLAVE_LOCAL = 'quiniela_web_v1';
+
+function leerLocales() {
+  try { const v = JSON.parse(localStorage.getItem(CLAVE_LOCAL)); return Array.isArray(v) ? v : []; }
+  catch (_) { return []; }
+}
+function guardarLocal(j) {
+  const mismas = x => x.meta.jornada === j.meta.jornada && x.meta.temporada === j.meta.temporada;
+  try { localStorage.setItem(CLAVE_LOCAL, JSON.stringify(leerLocales().filter(x => !mismas(x)).concat([j]))); }
+  catch (_) {}
+}
+function borrarLocales() {
+  try { localStorage.removeItem(CLAVE_LOCAL); } catch (_) {}
+}
+function componer() {
+  const clave = j => j.meta.temporada + '#' + j.meta.jornada;
+  const tengo = new Set(JORNADAS_REPO.map(clave));
+  return JORNADAS_REPO.concat(leerLocales().filter(j => !tengo.has(clave(j))))
+    .sort((a, b) => a.meta.temporada !== b.meta.temporada
+      ? b.meta.temporada.localeCompare(a.meta.temporada)
+      : b.meta.jornada - a.meta.jornada);
+}
+let JORNADAS = componer();
+
 // ── Utilidades ──────────────────────────────────────────────────────
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const varPred = p => p === '1' ? 'var(--p1)' : p === 'X' ? 'var(--px)' : 'var(--p2)';
@@ -514,6 +546,8 @@ const DIVS = {
   'F':  { etiqueta: 'Liga F',      color: 'var(--divF)' },
   // Jornadas entre semana: Champions, Europa League y Conference (J5, J7)
   'EU': { etiqueta: 'Europa',      color: '#475569' },
+  // Jornada traida por el boton: la web no dice a que division va cada partido
+  'BOL': { etiqueta: 'Boleto',     color: 'var(--mut)' },
 };
 const varDiv = d => d === 'P15' ? 'var(--pleno)' : (DIVS[d] ? DIVS[d].color : 'var(--mut)');
 const etiquetaDiv = d => DIVS[d] ? DIVS[d].etiqueta : d;
@@ -892,6 +926,8 @@ function render() {
           ${selector}
           ${cierreTxt}
           ${meta.bote ? `<div class="dato-mini dato-bote">bote ${meta.bote.toLocaleString('es-ES')}€</div>` : ''}
+          <button class="btn-web" id="btnWeb">↻ Actualizar jornada</button>
+          ${mensajeWeb ? `<div class="estado-web" id="estadoWeb">${esc(mensajeWeb)}</div>` : ''}
         </div>
       </div>
       ${(contexto.alertas || []).map(a =>
@@ -926,6 +962,8 @@ document.getElementById('app').addEventListener('click', e => {
   if (tab) { filtro = tab.dataset.filtro; expandido = null; render(); return; }
 
   if (e.target.closest('#copiar')) { copiarBoleto(); return; }
+
+  if (e.target.closest('#btnWeb')) { actualizarDesdeWeb(); return; }
 
   const card = e.target.closest('.card');
   if (card) {
@@ -971,6 +1009,127 @@ function copiaManual(txt, ok) {
   ta.select();
   try { document.execCommand('copy'); ok(); } catch (_) { prompt('Copia el boleto:', txt); }
   document.body.removeChild(ta);
+}
+
+// ── Actualizar la jornada desde eduardolosilla ──────────────────────
+// eduardolosilla no permite CORS, asi que se pasa por r.jina.ai, igual que la
+// app del equipo hace con la RFFM. Tarda unos segundos.
+const FUENTE = 'https://r.jina.ai/https://www.eduardolosilla.es/quiniela';
+const CONF_WEB = v => v >= 70 ? 'ALTA' : v >= 50 ? 'MEDIA' : 'BAJA';
+
+function numerosDe(fila) {
+  return (fila ? [...fila.children] : []).map(c => parseInt(c.textContent.trim(), 10)).filter(n => !isNaN(n));
+}
+
+// Si algo no encaja se lanza un error y NO se toca nada: mas vale quedarse sin
+// jornada que pintar porcentajes equivocados.
+function parsearQuiniela(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+
+  const filas = [...doc.querySelectorAll('.c-caja_base__partido__fila_partido')];
+  if (filas.length !== 15) throw new Error('esperaba 15 partidos y he leido ' + filas.length);
+
+  // Cada partido trae cuatro bloques de porcentajes en este orden:
+  // % Jugados · % LAE · % Probables · % Jugados. El bueno es el segundo.
+  const bloques = [...doc.querySelectorAll('[class*="app_caja_base__porcentajes"]')]
+    .filter(e => e.querySelector('.c-boleto-multiples-porcentajes__row'));
+  if (bloques.length !== 60) throw new Error('esperaba 60 bloques de porcentajes y he leido ' + bloques.length);
+
+  const mj = /[Jj]ornada\s*(\d+)/.exec(doc.body.textContent || '');
+  if (!mj) throw new Error('no encuentro el numero de jornada');
+
+  const partidos = [];
+  let pleno = null;
+
+  for (let i = 0; i < 15; i++) {
+    const eq = (filas[i].querySelector('.c-equipos__teams') || {}).textContent || '';
+    const par = eq.split('-').map(s => s.trim()).filter(Boolean);
+    if (par.length !== 2) throw new Error('no entiendo los equipos del partido ' + (i + 1));
+
+    const dia = ((filas[i].querySelector('.c-marcador-horario__time__day') || {}).textContent || '').trim();
+    const hora = ((filas[i].querySelector('.c-marcador-horario__time__hour') || {}).textContent || '').trim();
+    const cuando = [dia, hora].filter(Boolean).join('·');
+
+    const rows = [...bloques[i * 4 + 1].querySelectorAll('.c-boleto-multiples-porcentajes__row')];
+
+    if (i < 14) {
+      const n = numerosDe(rows[0]);
+      const suma = n.reduce((a, b) => a + b, 0);
+      if (n.length !== 3 || suma < 95 || suma > 105) throw new Error('porcentajes raros en el partido ' + (i + 1));
+      const pred = ORDEN[n.indexOf(Math.max.apply(null, n))];
+      partidos.push({
+        num: i + 1, div: 'BOL', local: par[0], local_emoji: '', local_nota: '',
+        visit: par[1], visit_emoji: '', visit_nota: '', dia: cuando,
+        pred: pred, p1: n[0], px: n[1], p2: n[2],
+        lae_1: n[0], lae_x: n[1], lae_2: n[2],
+        conf: CONF_WEB(Math.max.apply(null, n)),
+        razon: 'Favorito de LAE al ' + Math.max.apply(null, n) + '%. Traido de la web, sin analisis.',
+        bajas: '', suspendido: false, urgente: false
+      });
+    } else {
+      const loc = numerosDe(rows[0]);
+      const vis = numerosDe(rows[1]);
+      const gol = ['0', '1', '2', 'M'];
+      const bien = a => a.length === 4;
+      pleno = {
+        num: 15, div: 'BOL', local: par[0], local_emoji: '', local_nota: '',
+        visit: par[1], visit_emoji: '', visit_nota: '', dia: cuando,
+        pred_signo: '', conf: 'BAJA',
+        pred_marcador: bien(loc) && bien(vis)
+          ? gol[loc.indexOf(Math.max.apply(null, loc))] + '-' + gol[vis.indexOf(Math.max.apply(null, vis))]
+          : '—',
+        razon: 'Marcador mas apostado segun los % de goles de LAE. Traido de la web, sin analisis.',
+        bajas: ''
+      };
+      if (bien(loc)) pleno.lae_p15_local = loc;
+      if (bien(vis)) pleno.lae_p15_visit = vis;
+    }
+  }
+
+  const hoy = new Date().toISOString().slice(0, 10);
+  return {
+    meta: {
+      jornada: parseInt(mj[1], 10),
+      temporada: (JORNADAS_REPO[0] && JORNADAS_REPO[0].meta.temporada) || '',
+      desdeWeb: true, fecha_cierre: '', bote: 0,
+      fuente: 'eduardolosilla.es (botón Actualizar)', fecha_datos: hoy, actualizado: hoy
+    },
+    contexto: { alertas: [
+      '🤖 Traída de eduardolosilla el ' + hoy + ' con el botón Actualizar: solo signos y % LAE',
+      '⚠ Sin análisis, sin alineaciones y sin separar 1ª, 2ª ni Liga F. Cuando se prepare a mano, esa versión manda'
+    ] },
+    partidos: partidos,
+    pleno: pleno
+  };
+}
+
+let mensajeWeb = '';
+
+function actualizarDesdeWeb() {
+  const btn = document.getElementById('btnWeb');
+  if (btn) { btn.disabled = true; btn.textContent = 'Consultando…'; }
+  mensajeWeb = 'Leyendo eduardolosilla, tarda unos segundos…';
+  const est = document.getElementById('estadoWeb');
+  if (est) est.textContent = mensajeWeb;
+
+  fetch(FUENTE, { headers: { 'x-return-format': 'html' } })
+    .then(r => { if (!r.ok) throw new Error('la web no responde (' + r.status + ')'); return r.text(); })
+    .then(html => {
+      const j = parsearQuiniela(html);
+      const yaEsta = JORNADAS_REPO.some(x => x.meta.jornada === j.meta.jornada && x.meta.temporada === j.meta.temporada);
+      guardarLocal(j);
+      JORNADAS = componer();
+      idxJornada = Math.max(0, JORNADAS.findIndex(x => x.meta.jornada === j.meta.jornada && x.meta.temporada === j.meta.temporada));
+      filtro = 'todos'; expandido = null;
+      mensajeWeb = yaEsta
+        ? 'J' + j.meta.jornada + ' ya estaba preparada a mano: se sigue mostrando esa, que es mejor'
+        : '✓ J' + j.meta.jornada + ' actualizada desde la web';
+      render();
+    })
+    .catch(e => {
+      mensajeWeb = '✗ No se ha podido: ' + e.message;
+      render();
+    });
 }
 
 render();
