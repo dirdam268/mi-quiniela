@@ -226,6 +226,8 @@ const DIVS = {
   'EU': { etiqueta: 'Europa',      color: '#475569' },
   // Jornada traida por el boton: la web no dice a que division va cada partido
   'BOL': { etiqueta: 'Boleto',     color: 'var(--mut)' },
+  // El Pleno al 15 puede ser un partido de selecciones (J9: Inglaterra-España)
+  'SEL': { etiqueta: 'Selecciones', color: '#b45309' },
 };
 const varDiv = d => d === 'P15' ? 'var(--pleno)' : (DIVS[d] ? DIVS[d].color : 'var(--mut)');
 const etiquetaDiv = d => DIVS[d] ? DIVS[d].etiqueta : d;

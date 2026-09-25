@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "jornada": 9,
+    "temporada": "26/27",
+    "fecha_cierre": "2026-09-26T13:00:00",
+    "bote": 0,
+    "fuente": "eduardolosilla.es",
+    "fecha_datos": "2026-09-25",
+    "actualizado": "2026-09-25"
+  },
+  "contexto": {
+    "alertas": [
+      "⏰ Cierra el sábado 26 a las 13:00",
+      "⚠ 10 de los 14 partidos son de Segunda, justo donde peor lo hacemos (29% de aciertos)",
+      "🏴 Pleno al 15 atípico: Inglaterra – España, partido de selecciones"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"2ª","local":"AD Ceuta","local_emoji":"🔵","local_nota":"","visit":"R. Sociedad B","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·14:00","pred":"2","p1":31,"px":24,"p2":45,"lae_1":31,"lae_x":24,"lae_2":45,"conf":"BAJA","razon":"LAE hace favorito al visitante con un 45%, por debajo del 50. El filial de la Real empató 1-1 con el Tenerife y ganó en Albacete.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"2ª","local":"Granada CF","local_emoji":"🔴","local_nota":"","visit":"FC Andorra","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·16:15","pred":"1","p1":73,"px":16,"p2":11,"lae_1":73,"lae_x":16,"lae_2":11,"conf":"ALTA","razon":"Favorito de LAE al 73%, el segundo más alto del boleto. El Andorra viene de caer 1-3 en casa con el Sporting.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"2ª","local":"Celta Fortuna","local_emoji":"🔵","local_nota":"","visit":"CE Sabadell","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·18:30","pred":"2","p1":28,"px":28,"p2":44,"lae_1":28,"lae_x":28,"lae_2":44,"conf":"BAJA","razon":"LAE deja el 1 y la X empatados al 28% y carga el 44% en el visitante. Duelo entre dos equipos de la zona baja.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"2ª","local":"CD Tenerife","local_emoji":"🔵","local_nota":"","visit":"Cádiz CF","visit_emoji":"🟡","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":65,"px":20,"p2":15,"lae_1":65,"lae_x":20,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 65%. El Tenerife encajó un 5-0 en Castellón, pero el Cádiz sigue sin arrancar.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"2ª","local":"R. Valladolid","local_emoji":"🟣","local_nota":"","visit":"Córdoba CF","visit_emoji":"🟢","visit_nota":"","dia":"Dom·14:00","pred":"1","p1":49,"px":29,"p2":22,"lae_1":49,"lae_x":29,"lae_2":22,"conf":"BAJA","razon":"Favorito de LAE al 49%, justo por debajo del 50. El Valladolid perdió 0-3 en casa con el Oviedo en la J6.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"2ª","local":"RCD Mallorca","local_emoji":"🔴","local_nota":"","visit":"UD Almería","visit_emoji":"🔴","visit_nota":"","dia":"Dom·16:15","pred":"1","p1":55,"px":26,"p2":19,"lae_1":55,"lae_x":26,"lae_2":19,"conf":"MEDIA","razon":"Favorito de LAE al 55%. Duelo entre dos candidatos al ascenso en Son Moix.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"2ª","local":"Burgos CF","local_emoji":"⚪","local_nota":"","visit":"CD Eldense","visit_emoji":"🔵","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":74,"px":15,"p2":11,"lae_1":74,"lae_x":15,"lae_2":11,"conf":"ALTA","razon":"Favorito de LAE al 74%, el más alto del boleto. El Eldense es equipo de permanencia y El Plantío aprieta.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"2ª","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"UD Las Palmas","visit_emoji":"🟡","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":56,"px":24,"p2":20,"lae_1":56,"lae_x":24,"lae_2":20,"conf":"MEDIA","razon":"Favorito de LAE al 56%. Las Palmas ganó 0-1 en Cádiz en la J6; Ipurua sigue siendo un campo difícil.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"Real Oviedo","local_emoji":"🔵","local_nota":"","visit":"Sporting Gijón","visit_emoji":"🔴","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":41,"px":35,"p2":24,"lae_1":41,"lae_x":35,"lae_2":24,"conf":"BAJA","razon":"Derbi asturiano: 41-35-24, con la X al 35%, de las más altas de la temporada. El Oviedo ganó 0-3 en Valladolid y el Sporting 1-3 en Andorra. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"CD Leganés","local_emoji":"🔵","local_nota":"","visit":"CD Castellón","visit_emoji":"⚫","visit_nota":"","dia":"Lun·20:30","pred":"2","p1":30,"px":26,"p2":44,"lae_1":30,"lae_x":26,"lae_2":44,"conf":"BAJA","razon":"LAE hace favorito al visitante con un 44%: el Castellón viene de golear 5-0 al Tenerife. El Leganés ganó 3-2 al Granada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"F","local":"Athletic Club","local_emoji":"🔴","local_nota":"","visit":"Atlético Madrid","visit_emoji":"🔴","visit_nota":"","dia":"Dom·12:00","pred":"2","p1":33,"px":25,"p2":42,"lae_1":33,"lae_x":25,"lae_2":42,"conf":"BAJA","razon":"Liga F. Favorito de LAE al 42% para el visitante, muy repartido. El Atlético ganó 1-0 al Logroño; el Athletic perdió 1-0 en Eibar. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"F","local":"Valencia","local_emoji":"⚪","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Dom·12:00","pred":"1","p1":45,"px":26,"p2":29,"lae_1":45,"lae_x":26,"lae_2":29,"conf":"BAJA","razon":"Liga F. Favorito de LAE al 45%, por debajo del 50. El Valencia perdió 3-1 en Madrid y el Tenerife ganó 1-3 al Sevilla.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"F","local":"Sevilla","local_emoji":"⚪","local_nota":"","visit":"SD Eibar","visit_emoji":"🔵","visit_nota":"","dia":"Dom·16:00","pred":"1","p1":58,"px":23,"p2":19,"lae_1":58,"lae_x":23,"lae_2":19,"conf":"MEDIA","razon":"Liga F. Favorito de LAE al 58%. El Sevilla ganó 1-3 en Tenerife, su primera alegría.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"F","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"RCD Espanyol","visit_emoji":"⚪","visit_nota":"","dia":"Dom·18:00","pred":"1","p1":41,"px":31,"p2":28,"lae_1":41,"lae_x":31,"lae_2":28,"conf":"BAJA","razon":"Liga F. 41-31-28: de los repartos más abiertos de la jornada. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"SEL",
+    "local":"Inglaterra","local_emoji":"🏴","local_nota":"",
+    "visit":"España","visit_emoji":"🇪🇸","visit_nota":"",
+    "dia":"Sáb·20:45",
+    "pred_signo":"2",
+    "pred_marcador":"1-2",
+    "lae_p15_local":[11,55,27,7],
+    "lae_p15_visit":[7,28,46,19],
+    "razon":"Pleno de selecciones, algo que no habíamos visto. LAE da 1 gol a Inglaterra como lo más probable (55%) y 2 goles a España (46%, frente al 28% de un solo gol). Combinación más apostada: 1-2.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+}
