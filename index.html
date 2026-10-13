@@ -133,6 +133,9 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .marca-sub { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:3px; line-height:1.5; }
 .marca-hist { font-family:var(--mono); font-size:.6rem; color:var(--mut); margin-top:8px; padding-top:7px; border-top:1px dashed rgba(0,0,0,.12); }
 .marca-hist b { color:var(--txt); }
+.mh-tit { font-weight:600; color:var(--txt); margin-bottom:5px; }
+.mh-fila { margin-bottom:6px; line-height:1.55; }
+.mh-nota { margin-top:6px; color:var(--tenue); line-height:1.5; }
 
 .card.ok { border-color:#bbf7d0; }
 .card.ko { border-color:#fecaca; }
@@ -512,6 +515,7 @@ const JORNADAS_REPO = [{
   "meta": {
     "jornada": 4,
     "temporada": "26/27",
+    "metodo": "propio",
     "fecha_cierre": "2026-09-05T13:00:00",
     "bote": 1500000,
     "fuente": "eduardolosilla.es",
@@ -558,6 +562,7 @@ const JORNADAS_REPO = [{
   "meta": {
     "jornada": 3,
     "temporada": "26/27",
+    "metodo": "propio",
     "fecha_cierre": "2026-08-29T16:00:00",
     "bote": 1300000,
     "fuente": "eduardolosilla.es",
@@ -606,6 +611,7 @@ const JORNADAS_REPO = [{
   "meta": {
     "jornada": 2,
     "temporada": "26/27",
+    "metodo": "propio",
     "fecha_cierre": "2026-08-22T16:00:00",
     "bote": 0,
     "fuente": "eduardolosilla.es",
@@ -651,6 +657,7 @@ const JORNADAS_REPO = [{
   "meta": {
     "jornada": 1,
     "temporada": "26/27",
+    "metodo": "propio",
     "fecha_cierre": "2026-08-15T16:00:00",
     "bote": 393561,
     "fuente": "eduardolosilla.es",
@@ -763,18 +770,13 @@ let expandido = null;
 let DOBLES = new Map();   // num de partido -> { alt, margen }
 
 // ── Dobles ──────────────────────────────────────────────────────────
-// Se doblan los partidos donde el favorito de LAE es mas debil, que son los
-// que de verdad estan abiertos. Medido sobre las jornadas 1 a 4: cuando el
-// favorito de LAE no llega al 50%, acierta solo el 38% de las veces.
+// Se doblan los partidos donde el favorito de LAE es mas debil: son los mas
+// abiertos. Un doble es pagar mas por acertar mas (cada uno duplica las
+// apuestas), no un hallazgo; una tabla de "3 dobles = 58%" que hubo aqui se
+// retiro por ser un ajuste a posteriori sobre 45 partidos.
 //
-// N_DOBLES probado contra esos mismos datos (45 partidos):
-//   0 o 1 doble -> 51% de aciertos ·  1-2 apuestas
-//   2 dobles    -> 53% de aciertos ·  4 apuestas
-//   3 dobles    -> 58% de aciertos ·  8 apuestas  <- mejor relacion
-//   4 dobles    -> 58% de aciertos · 16 apuestas  (no aporta nada)
-// Cuantos dobles juega. Se elige en el boleto y se recuerda en el dispositivo.
-// Medido sobre las jornadas 1 a 4: 0 dobles 51% (1 apuesta), 2 dobles 53%
-// (4 apuestas), 3 dobles 58% (8 apuestas).
+// Cuantos dobles juega. Se elige en el boleto y se recuerda en el dispositivo;
+// arranca en 0 porque Enrique lo pidio.
 const OPCIONES_DOBLES = [0, 2, 3];
 const CLAVE_DOBLES = 'quiniela_dobles';
 function leerDobles() {
@@ -829,7 +831,10 @@ function calcAciertos(j) {
     if (okSimple || (d && p.resultado === d.alt)) conDobles++;
   }
 
-  const plenoOk = j.pleno.resultado_marcador
+  // El Pleno solo cuenta si hubo pronostico de verdad: un marcador en blanco
+  // ("—") no es un fallo, es que no se pronostico. Formato: 0, 1, 2 o M (3+).
+  const PLENO_VALIDO = /^[0-2M]-[0-2M]$/;
+  const plenoOk = (PLENO_VALIDO.test(j.pleno.pred_marcador || '') && PLENO_VALIDO.test(j.pleno.resultado_marcador || ''))
     ? j.pleno.resultado_marcador === j.pleno.pred_marcador
     : null;
 
@@ -843,18 +848,42 @@ function calcAciertos(j) {
   };
 }
 
-// Acumulado de todas las jornadas que ya tienen resultados
+// ── Historico por metodo ────────────────────────────────────────────
+// Sumar todo en un unico porcentaje mezclaba cosas incomparables: tres formas
+// distintas de pronosticar y apuestas de coste distinto. Se agrupa por metodo:
+//   propio   = criterio mio (J1-J4, `meta.metodo: "propio"`)
+//   lae      = el favorito de LAE (por defecto)
+//   estimado = jornada provisional publicada antes de que salgan los % LAE
+const METODOS = {
+  propio:   'Criterio propio',
+  lae:      'Favorito de LAE',
+  estimado: 'Estimado, sin % LAE',
+};
+const metodoDe = j => j.meta.provisional ? 'estimado' : (j.meta.metodo || 'lae');
+
+// Con tan pocos partidos el margen de error es enorme; se ensena siempre.
+const ic95 = (k, n) => n ? Math.round(196 * Math.sqrt((k / n) * (1 - k / n) / n)) : 0;
+const MUESTRA_OBJETIVO = 300;   // por debajo, no se cambia de metodo por una diferencia de unos puntos
+
 function calcHistorico() {
   const conRes = JORNADAS.map(j => ({ j, a: calcAciertos(j) })).filter(x => x.a);
   if (conRes.length < 2) return null;
+
+  const grupos = {};
+  for (const x of conRes) {
+    const m = metodoDe(x.j);
+    const g = grupos[m] || (grupos[m] = { metodo: m, jornadas: [], jugados: 0, simple: 0, conDobles: 0 });
+    g.jornadas.push(x.j.meta.jornada);
+    g.jugados += x.a.jugados;
+    g.simple += x.a.simple;
+    g.conDobles += x.a.conDobles;
+  }
+
   return {
-    jornadas: conRes.length,
+    grupos: ['propio', 'lae', 'estimado'].filter(m => grupos[m]).map(m => grupos[m]),
     jugados: conRes.reduce((s, x) => s + x.a.jugados, 0),
-    conDobles: conRes.reduce((s, x) => s + x.a.conDobles, 0),
-    simple: conRes.reduce((s, x) => s + x.a.simple, 0),
     plenos: conRes.filter(x => x.a.plenoOk === true).length,
     plenosJugados: conRes.filter(x => x.a.plenoOk !== null).length,
-    detalle: conRes.map(x => ({ et: etiqueta(x.j), aciertos: x.a.conDobles, de: x.a.jugados })),
   };
 }
 
@@ -865,18 +894,34 @@ function tplAciertos(j) {
   const pct = Math.round((a.conDobles / a.jugados) * 100);
   const tono = pct >= 71 ? 'bien' : pct >= 50 ? 'regular' : 'mal';
 
+  // Cada cifra lleva su margen de error y se separa "una apuesta" de "con dobles":
+  // comparar 1 apuesta con 8 sin decirlo hacía parecer que los dobles eran
+  // acierto de criterio y no simplemente pagar más.
+  const fmt = (k, n) => `${k}/${n} (${Math.round(k / n * 100)}% ±${ic95(k, n)})`;
+  const nApuestas = Math.pow(2, nDobles);
+  const etqDobles = `con ${nDobles} dobles (${nApuestas} apuestas)`;
+
   const h = calcHistorico();
   const histTxt = h
-    ? `<div class="marca-hist">Histórico: <b>${h.conDobles}/${h.jugados}</b> (${Math.round((h.conDobles / h.jugados) * 100)}%) en ${h.jornadas} jornadas${h.plenosJugados ? ` · Pleno ${h.plenos}/${h.plenosJugados}` : ''}</div>`
+    ? `<div class="marca-hist">
+        <div class="mh-tit">Histórico por método</div>
+        ${h.grupos.map(g => `<div class="mh-fila">
+          <b>${esc(METODOS[g.metodo])}</b> · ${g.jornadas.length} ${g.jornadas.length === 1 ? 'jornada' : 'jornadas'} (J${g.jornadas.slice().sort((x, y) => x - y).join(', J')}), ${g.jugados} partidos<br>
+          una apuesta ${fmt(g.simple, g.jugados)}${nDobles ? `<br>${etqDobles} ${fmt(g.conDobles, g.jugados)}` : ''}
+        </div>`).join('')}
+        ${h.plenosJugados ? `<div class="mh-fila">Plenos: ${h.plenos}/${h.plenosJugados} (solo los que tenían pronóstico)</div>` : ''}
+        <div class="mh-nota">Muestra: ${h.jugados} de ${MUESTRA_OBJETIVO} partidos. Con tan pocos, una diferencia de unos puntos entre métodos es ruido.</div>
+      </div>`
     : '';
 
   return `<div class="marca ${tono}">
     <div class="marca-top">
       <div class="marca-num"><b>${a.conDobles}</b><span>/${a.jugados}</span></div>
       <div class="marca-txt">
-        <div class="marca-tit">${a.completa ? 'Aciertos de la jornada' : `Aciertos provisionales · ${a.jugados} de ${a.total} partidos jugados`}</div>
+        <div class="marca-tit">${a.completa ? 'Aciertos de la jornada' : `Aciertos provisionales · ${a.jugados} de ${a.total} partidos jugados`} · ${nDobles ? etqDobles : 'una apuesta'}</div>
         <div class="marca-sub">
-          ${pct}% acertado · boleto simple ${a.simple}/${a.jugados}${a.rescatados ? ` · los dobles rescataron ${a.rescatados}` : ' · los dobles no han sumado'}
+          ${pct}% acertado · método: ${esc(METODOS[metodoDe(j)])}<br>
+          una apuesta ${a.simple}/${a.jugados}${nDobles ? (a.rescatados ? ` · los dobles rescataron ${a.rescatados}` : ' · los dobles no han sumado') : ''}
           ${a.plenoOk === null ? '' : ` · Pleno al 15 ${a.plenoOk ? '✓' : '✗'}`}
         </div>
       </div>

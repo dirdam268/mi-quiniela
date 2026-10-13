@@ -208,6 +208,10 @@ Notas del schema:
   inventados): el panel del partido dice «% LAE pendientes» y los dobles se
   calculan con los porcentajes propios. Cuando salgan los % reales, se rehace
   la jornada y se quita la marca.
+- `meta.metodo` (opcional) dice cómo se pronosticó la jornada y decide en qué
+  grupo cae en el histórico: `"propio"` (criterio mío, J1 a J4) o `"lae"` (el
+  favorito de LAE; es el valor por defecto si falta). Una jornada con
+  `provisional: true` cuenta siempre como `estimado`.
 
 ## Dobles
 
@@ -216,25 +220,18 @@ partidos donde **el favorito de LAE es más débil**, que son los que de verdad
 están abiertos, y cubre con el segundo signo más apostado. Los partidos
 suspendidos quedan fuera: su resultado sale por sorteo.
 
-`N_DOBLES` es **3**, elegido probando el sistema contra las jornadas 1 a 4
-(45 partidos reales):
+Un doble es **pagar más por acertar más**, no un hallazgo: cada uno duplica las
+apuestas (2 dobles = 4, 3 dobles = 8) y suma aproximadamente un tercio de
+acierto en ese partido. En la versión anterior de este README había una tabla
+que presentaba «3 dobles = 58%» como resultado de un análisis; era un ajuste
+hecho a posteriori sobre 45 partidos, sin validación, y se ha retirado.
 
-| Dobles | Aciertos | Apuestas |
-|---|---|---|
-| 0 o 1 | 51% | 1-2 |
-| 2 | 53% | 4 |
-| **3** | **58%** | **8** |
-| 4 | 58% | 16 |
-| 5 | 60% | 32 |
-
-Tres dobles es donde está el salto; el cuarto no aporta nada y el quinto cuesta
-32 apuestas por un punto.
-
-**Se elige en el propio boleto**, con los botones *ninguno · 2 · 3*. La elección
-se recuerda en ese dispositivo (`localStorage['quiniela_dobles']`) y recalcula
-todo, incluidos los aciertos de las jornadas ya jugadas: así se ve en vivo qué
-habría dado cada opción. Con los datos de las seis primeras jornadas, 2 dobles
-dejan el histórico en 48/84 (57%) y 3 dobles en 51/84 (61%).
+**Se elige en el propio boleto**, con los botones *ninguno · 2 · 3*. La app
+arranca **sin dobles**. La elección se recuerda en ese dispositivo
+(`localStorage['quiniela_dobles']`) y recalcula todo, incluidos los aciertos de
+las jornadas ya jugadas, así que se puede ver en vivo qué habría dado cada
+opción. El histórico siempre enseña «una apuesta» y «con N dobles» por separado,
+para no comparar una apuesta con ocho como si costaran lo mismo.
 
 ## Resultados y aciertos
 
@@ -252,7 +249,11 @@ cuanto hay resultados aparece:
   servido de algo o han sido dinero tirado.
 - Cada tarjeta con borde verde o rojo, el resultado real y, si se falló, qué se
   había pronosticado. Un ✓/✗ en cada línea del boleto.
-- El **acumulado histórico** en cuanto haya dos jornadas o más con resultados.
+- El **histórico por método**, en cuanto haya dos jornadas o más con
+  resultados. Agrupa las jornadas según cómo se pronosticaron (`propio`, `lae`,
+  `estimado`) en vez de sumarlo todo en un solo porcentaje, y cada cifra lleva su
+  **margen de error** (±) y la muestra acumulada frente a los 300 partidos que
+  hacen falta para decidir nada. El Pleno solo cuenta si había pronóstico.
 
 Un doble cuenta como acierto si el resultado real es cualquiera de sus dos
 signos. Los partidos sin `resultado` no cuentan ni a favor ni en contra.

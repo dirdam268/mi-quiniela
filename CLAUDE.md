@@ -51,36 +51,75 @@ repo público se puede atacar offline sin límite, así que la contraseña acaba
 siendo más riesgo que protección. No volver a proponer cifrado salvo que Enrique
 lo pida. El script que lo hacía sigue en el historial: `git show d708ef2:build-secure.ps1`.
 
-## Lo que dicen los datos (jornadas 1 a 4, 45 partidos)
+## Lo que dicen los datos (J1 a J12, 126 partidos con % LAE)
 
-Medido, no opinado. Estas reglas salen del análisis del 05/09/2026 y **mandan
-sobre cualquier intuición**:
+Auditoría del 13/10/2026. **Sustituye a la versión anterior** (J1-J4, 45
+partidos), cuyas reglas resultaron ser ruido de muestra pequeña. Cualquier
+cifra de aquí lleva su margen de error: con tan pocos partidos, una diferencia
+de unos puntos no significa nada.
 
-**1. No apartarse del favorito de LAE.** Nos apartamos 3 veces y acertamos 0;
-LAE habría acertado 2 de esas 3. Ahí está la diferencia entre nuestro 47% y el
-51% de seguir ciegamente al mercado. El `pred` es **el signo con más % de LAE**.
-Solo se puede desviar con un hecho concreto y verificable que el porcentaje no
-recoja (una baja confirmada después, un equipo sin nada en juego), y hay que
-decirlo en la `razon`. Nunca por olfato.
+**Qué es «% LAE».** Según la propia web de eduardolosilla, es el porcentaje de
+apuestas **reales del público** validadas en los terminales oficiales,
+actualizado una vez al día a primera hora. **No es una probabilidad calculada ni
+la opinión de ningún experto.** Seguir al favorito de LAE es seguir a la
+mayoría de los apostantes.
 
-**2. La Segunda es el agujero: 29% de aciertos (6 de 21).** Pronosticamos el 1
-en 17 de 21 partidos, y salió 1×7, X×8, 2×6 — un reparto casi uniforme. El
-factor campo en Segunda vale mucho menos de lo que parece.
+**Resultado principal: no hay ventaja medible sobre el mercado.**
+- El favorito de LAE acierta el **54% (±9 puntos)**; nuestro criterio, el **52%
+  (±9)**. Indistinguibles.
+- El mercado está razonablemente calibrado: los favoritos del 75% o más aciertan
+  el 80%; los de menos del 45%, el 42%.
+- No hay sesgo explotable: LAE da de media un 24,2% al empate y salió el 25,4%;
+  da un 48,7% al local y salió el 47,6%.
 
-**3. Cuando el favorito de LAE no llega al 50%, acierta solo el 38%.** Y eso es
-más de la mitad del boleto (24 de 45). Ahí no hay pronóstico que valga: es donde
-tienen que ir los dobles, y por eso `calcDobles()` los elige por debilidad del
-favorito y no por nuestro propio margen.
+**Reglas de la versión anterior que se retiran** (no las vuelvas a aplicar ni a
+meter en prompts):
 
-**4. La confianza sí está calibrada:** ALTA 64%, MEDIA 56%, BAJA 25%. El campo
-`conf` funciona, mantenerlo honesto.
+| Regla antigua | En qué se apoyaba | Con los datos de hoy |
+|---|---|---|
+| «La Segunda es el agujero, 29%» | 6 de 21 | **48% ±13** (n=54), en línea con 1ª (56% ±14) |
+| «Hay sesgo al local, da más peso a la X» | 9 de 14 fallos | Sin sesgo (ver arriba) |
+| «Desviarse de LAE falla (0 de 3)» | n=3 | Nada que concluir |
+| «3 dobles dan un 58%» | 45 partidos, ajustado a posteriori | Es aritmética, no un hallazgo: cada doble suma ~un tercio de acierto en ese partido a cambio de pagar el doble |
+| «`conf` está calibrada (64/56/25)» | n=45 | No se ha vuelto a comprobar: tratarla como no demostrada |
 
-**5. Liga F es lo más predecible:** 4 de 4. Los porcentajes de LAE ahí son
-extremos (84%, 88%) y se cumplen.
+**Qué se hace por defecto.** `pred` = el signo con más % de LAE. No porque esté
+demostrado que sea mejor, sino porque es lo más simple y no hay evidencia de que
+desviarse mejore. Si te desvías, que sea por un hecho concreto y verificable
+(una baja confirmada después de publicarse las cifras) y dilo en la `razon`.
 
-**Expectativa realista: 55-60%.** La quiniela es en su mayor parte azar; el
-valor de esta app es ordenar la información y colocar bien los dobles, no
-adivinar. No prometer más.
+**Los dobles** se calculan solos (ver `calcDobles()`): son pagar más por acertar
+más. Compáralos siempre **por apuesta**, nunca una apuesta contra ocho. La app
+arranca **sin dobles** porque Enrique lo pidió.
+
+**Expectativas reales:**
+- **12 aciertos** son ≈2% por jornada sin dobles y ≈8% con tres. Ninguna jornada
+  pasó de 9 aciertos, ni con una apuesta ni con tres dobles; y 10 es el mínimo
+  que paga (6,30 € en la J7).
+- **El juego devuelve poco.** En la J7, las categorías de 10 a 14 aciertos
+  sumaron ≈594.000 € de 1.323.190 € recaudados (≈45%). Es una sola jornada, pero
+  el orden de magnitud es el que es: juego de esperanza negativa, presupuesto
+  fijo.
+- **El Pleno al 15 no es señal.** Con desglose por equipo, acertar el marcador
+  más apostado ronda el 25%; fallar 10 seguidas pasa una de cada diez veces.
+
+**Regla de método:** no se cambia de método ni se escribe una regla nueva con
+menos de **300 partidos** y sin indicar `n` y el margen. La app muestra el
+histórico separado por método (`meta.metodo`: `propio`, `lae`; `provisional` →
+`estimado`) y cuenta cuántos partidos llevamos de los 300.
+
+**Pendiente (de la auditoría, aún sin hacer):**
+1. Guardar el escrutinio de cada jornada (acertantes y premio por categoría)
+   para medir el retorno real y probar si elegir lo que elige la mayoría reduce
+   lo que se cobra por acierto.
+2. Pasar la parte determinista (partidos, % LAE, resultados) a GitHub Actions:
+   ese entorno no tiene el cortafuegos de la nube de Claude y quitaría la
+   dependencia de pedir «actualizar».
+3. Validaciones automáticas al construir: JSON sin claves duplicadas,
+   porcentajes que sumen ~100, signos válidos y marcador del Pleno con formato
+   `[0-2M]-[0-2M]`; y guardar una copia del dato crudo de cada fuente.
+4. El prompt de la rutina de la nube (pausada) todavía lleva las reglas
+   retiradas: reescribirlo antes de reactivarla.
 
 ## Convenciones de estilo
 

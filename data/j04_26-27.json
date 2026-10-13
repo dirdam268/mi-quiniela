@@ -2,6 +2,7 @@
   "meta": {
     "jornada": 4,
     "temporada": "26/27",
+    "metodo": "propio",
     "fecha_cierre": "2026-09-05T13:00:00",
     "bote": 1500000,
     "fuente": "eduardolosilla.es",
