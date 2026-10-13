@@ -182,36 +182,83 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 // ════════════════════════════════════════════════════════════════════
 const JORNADAS_REPO = [{
   "meta": {
+    "jornada": 13,
+    "temporada": "26/27",
+    "fecha_cierre": "2026-10-13T20:00:00",
+    "bote": 0,
+    "fuente": "eduardolosilla.es",
+    "fecha_datos": "2026-10-13",
+    "actualizado": "2026-10-13"
+  },
+  "contexto": {
+    "alertas": [
+      "⚠ Publicada TARDE: cerró el martes 13 a las 20:00. Sirve para seguir midiendo el sistema",
+      "🌍 Jornada europea entera: Champions, Europa League y Conference, de martes a jueves",
+      "🎯 Sin dobles: boleto de una sola apuesta"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"EU","local":"Villarreal","local_emoji":"🟡","local_nota":"","visit":"Napoli","visit_emoji":"🔵","visit_nota":"","dia":"Mar·21:00","pred":"1","p1":49,"px":27,"p2":24,"lae_1":49,"lae_x":27,"lae_2":24,"conf":"BAJA","razon":"Favorito de LAE al 49%, justo por debajo del 50.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"EU","local":"Atlético Madrid","local_emoji":"🔴","local_nota":"","visit":"Manchester United","visit_emoji":"🔴","visit_nota":"","dia":"Mar·21:00","pred":"1","p1":60,"px":23,"p2":17,"lae_1":60,"lae_x":23,"lae_2":17,"conf":"MEDIA","razon":"Favorito de LAE al 60% en el Metropolitano.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"EU","local":"Arsenal","local_emoji":"🔴","local_nota":"","visit":"LOSC Lille","visit_emoji":"🔴","visit_nota":"","dia":"Mar·21:00","pred":"1","p1":82,"px":10,"p2":8,"lae_1":82,"lae_x":10,"lae_2":8,"conf":"ALTA","razon":"Favorito de LAE al 82%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"EU","local":"Galatasaray","local_emoji":"🟡","local_nota":"","visit":"FC Barcelona","visit_emoji":"🔵","visit_nota":"","dia":"Mar·21:00","pred":"2","p1":13,"px":12,"p2":75,"lae_1":13,"lae_x":12,"lae_2":75,"conf":"ALTA","razon":"Favorito de LAE al 75% para el Barça, pese a jugar en Estambul.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"EU","local":"Inter","local_emoji":"🔵","local_nota":"","visit":"Club Brujas","visit_emoji":"🔵","visit_nota":"","dia":"Mar·21:00","pred":"1","p1":79,"px":12,"p2":9,"lae_1":79,"lae_x":12,"lae_2":9,"conf":"ALTA","razon":"Favorito de LAE al 79%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"EU","local":"Viking","local_emoji":"⚪","local_nota":"","visit":"Bayern Múnich","visit_emoji":"🔴","visit_nota":"","dia":"Mar·21:00","pred":"2","p1":12,"px":9,"p2":79,"lae_1":12,"lae_x":9,"lae_2":79,"conf":"ALTA","razon":"Favorito de LAE al 79% para el Bayern.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"EU","local":"Feyenoord","local_emoji":"🔴","local_nota":"","visit":"Como 1907","visit_emoji":"🔵","visit_nota":"","dia":"Mié·18:45","pred":"1","p1":38,"px":28,"p2":34,"lae_1":38,"lae_x":28,"lae_2":34,"conf":"BAJA","razon":"38-28-34: de los repartos más abiertos de la jornada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"EU","local":"LASK Linz","local_emoji":"⚫","local_nota":"","visit":"Liverpool","visit_emoji":"🔴","visit_nota":"","dia":"Mié·18:45","pred":"2","p1":12,"px":10,"p2":78,"lae_1":12,"lae_x":10,"lae_2":78,"conf":"ALTA","razon":"Favorito de LAE al 78% para el Liverpool.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"EU","local":"Real Betis","local_emoji":"🟢","local_nota":"","visit":"Oporto","visit_emoji":"🔵","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":52,"px":28,"p2":20,"lae_1":52,"lae_x":28,"lae_2":20,"conf":"MEDIA","razon":"Favorito de LAE al 52%. El Betis viene de golear 5-2 a Osasuna.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"EU","local":"Bodø/Glimt","local_emoji":"🟡","local_nota":"","visit":"Borussia Dortmund","visit_emoji":"🟡","visit_nota":"","dia":"Mié·21:00","pred":"2","p1":23,"px":22,"p2":55,"lae_1":23,"lae_x":22,"lae_2":55,"conf":"MEDIA","razon":"Favorito de LAE al 55% para el Dortmund. Jugar en el ártico noruego nunca es fácil.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"EU","local":"Manchester City","local_emoji":"🔵","local_nota":"","visit":"PSG","visit_emoji":"🔵","visit_nota":"","dia":"Mié·21:00","pred":"1","p1":40,"px":27,"p2":33,"lae_1":40,"lae_x":27,"lae_2":33,"conf":"BAJA","razon":"Choque de gigantes: 40-27-33, favorito de LAE por debajo del 50.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"EU","local":"Union SG","local_emoji":"🟡","local_nota":"","visit":"Real Sociedad","visit_emoji":"🔵","visit_nota":"","dia":"Jue·18:45","pred":"1","p1":37,"px":27,"p2":36,"lae_1":37,"lae_x":27,"lae_2":36,"conf":"BAJA","razon":"37-27-36: un punto entre el 1 y el 2. Moneda al aire.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"EU","local":"Celta Vigo","local_emoji":"🔵","local_nota":"","visit":"Juventus","visit_emoji":"⚪","visit_nota":"","dia":"Jue·21:00","pred":"2","p1":21,"px":23,"p2":56,"lae_1":21,"lae_x":23,"lae_2":56,"conf":"MEDIA","razon":"Favorito de LAE al 56% para la Juventus, pese a jugar en Balaídos.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"EU","local":"Universitatea Craiova","local_emoji":"🔵","local_nota":"","visit":"Getafe","visit_emoji":"🔵","visit_nota":"","dia":"Jue·18:45","pred":"2","p1":33,"px":30,"p2":37,"lae_1":33,"lae_x":30,"lae_2":37,"conf":"BAJA","razon":"Favorito de LAE al 37% para el Getafe: partido muy abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"EU",
+    "local":"Roma","local_emoji":"🟡","local_nota":"",
+    "visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"",
+    "dia":"Mié·21:00",
+    "pred_signo":"2",
+    "pred_marcador":"1-2",
+    "lae_p15_local":[17,57,21,5],
+    "lae_p15_visit":[8,25,43,24],
+    "razon":"Lo más apostado: 1 gol de la Roma (57%) y 2 del Madrid (43%). Ojo: la web no rotula qué bloque es de cada equipo; se asume el orden habitual, local primero.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+},{
+  "meta": {
     "jornada": 12,
     "temporada": "26/27",
     "fecha_cierre": "2026-10-10T13:00:00",
     "bote": 0,
     "fuente": "eduardolosilla.es",
     "fecha_datos": "2026-10-05",
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-13"
   },
   "contexto": {
     "alertas": [
-      "⏰ Cierra el sábado 10 a las 13:00 (12:30 para Peñas)",
+      "✅ Jornada cerrada · Pleno: Real Madrid 1-0 Villarreal",
       "📅 Reparto: 8 de 1ª · 6 de 2ª · sin Liga F · Pleno al 15 en Primera",
       "⚠ Pleno sin % de goles de LAE por equipo: el marcador no tiene base de cálculo"
     ]
   },
   "partidos": [
-    {"num":1,"div":"1ª","local":"Rayo Vallecano","local_emoji":"","local_nota":"","visit":"Athletic Club","visit_emoji":"","visit_nota":"","dia":"Sáb·14:00","pred":"2","p1":33,"px":30,"p2":37,"lae_1":33,"lae_x":30,"lae_2":37,"conf":"BAJA","razon":"Favorito de LAE al 37% para el visitante, sin llegar al 50%: partido abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":2,"div":"1ª","local":"Dep. Alavés","local_emoji":"","local_nota":"","visit":"Atlético Madrid","visit_emoji":"","visit_nota":"","dia":"Sáb·16:15","pred":"2","p1":16,"px":25,"p2":59,"lae_1":16,"lae_x":25,"lae_2":59,"conf":"MEDIA","razon":"Favorito de LAE al 59% para el Atlético.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":3,"div":"1ª","local":"FC Barcelona","local_emoji":"","local_nota":"","visit":"Getafe","visit_emoji":"","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":72,"px":19,"p2":9,"lae_1":72,"lae_x":19,"lae_2":9,"conf":"ALTA","razon":"Favorito de LAE al 72% para el Barça.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":4,"div":"1ª","local":"Elche CF","local_emoji":"","local_nota":"","visit":"Celta Vigo","visit_emoji":"","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":33,"px":31,"p2":36,"lae_1":33,"lae_x":31,"lae_2":36,"conf":"BAJA","razon":"Reparto casi igual, 33-31-36. Partido de los más abiertos de la jornada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":5,"div":"1ª","local":"Real Sociedad","local_emoji":"","local_nota":"","visit":"RC Deportivo","visit_emoji":"","visit_nota":"","dia":"Dom·16:15","pred":"1","p1":56,"px":29,"p2":15,"lae_1":56,"lae_x":29,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 56% para la Real.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":6,"div":"1ª","local":"Real Betis","local_emoji":"","local_nota":"","visit":"Osasuna","visit_emoji":"","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":76,"px":13,"p2":11,"lae_1":76,"lae_x":13,"lae_2":11,"conf":"ALTA","razon":"Favorito de LAE al 76% para el Betis.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":7,"div":"1ª","local":"Racing Santander","local_emoji":"","local_nota":"","visit":"Valencia","visit_emoji":"","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":49,"px":25,"p2":26,"lae_1":49,"lae_x":25,"lae_2":26,"conf":"BAJA","razon":"Favorito de LAE al 49%, justo por debajo del 50.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":8,"div":"1ª","local":"Levante","local_emoji":"","local_nota":"","visit":"Sevilla","visit_emoji":"","visit_nota":"","dia":"Lun·21:00","pred":"2","p1":29,"px":26,"p2":45,"lae_1":29,"lae_x":26,"lae_2":45,"conf":"BAJA","razon":"Favorito de LAE al 45% para el Sevilla, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":9,"div":"2ª","local":"CD Eldense","local_emoji":"","local_nota":"","visit":"Córdoba CF","visit_emoji":"","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":48,"px":32,"p2":20,"lae_1":48,"lae_x":32,"lae_2":20,"conf":"BAJA","razon":"Favorito de LAE al 48%, por debajo del 50.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":10,"div":"2ª","local":"FC Andorra","local_emoji":"","local_nota":"","visit":"CD Castellón","visit_emoji":"","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":25,"px":22,"p2":53,"lae_1":25,"lae_x":22,"lae_2":53,"conf":"MEDIA","razon":"Favorito de LAE al 53% para el Castellón.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":11,"div":"2ª","local":"UD Almería","local_emoji":"","local_nota":"","visit":"CD Leganés","visit_emoji":"","visit_nota":"","dia":"Dom·16:15","pred":"1","p1":71,"px":17,"p2":12,"lae_1":71,"lae_x":17,"lae_2":12,"conf":"ALTA","razon":"Favorito de LAE al 71% para el Almería.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":12,"div":"2ª","local":"RCD Mallorca","local_emoji":"","local_nota":"","visit":"UD Las Palmas","visit_emoji":"","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":56,"px":29,"p2":15,"lae_1":56,"lae_x":29,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 56% para el Mallorca.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":13,"div":"2ª","local":"Burgos CF","local_emoji":"","local_nota":"","visit":"Granada CF","visit_emoji":"","visit_nota":"","dia":"Lun·16:15","pred":"1","p1":65,"px":21,"p2":14,"lae_1":65,"lae_x":21,"lae_2":14,"conf":"MEDIA","razon":"Favorito de LAE al 65% para el Burgos.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":14,"div":"2ª","local":"Real Oviedo","local_emoji":"","local_nota":"","visit":"SD Eibar","visit_emoji":"","visit_nota":"","dia":"Lun·18:30","pred":"2","p1":29,"px":31,"p2":40,"lae_1":29,"lae_x":31,"lae_2":40,"conf":"BAJA","razon":"Favorito de LAE al 40% para el Eibar, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+    {"num":1,"div":"1ª","local":"Rayo Vallecano","local_emoji":"","local_nota":"","visit":"Athletic Club","visit_emoji":"","visit_nota":"","dia":"Sáb·14:00","pred":"2","p1":33,"px":30,"p2":37,"lae_1":33,"lae_x":30,"lae_2":37,"conf":"BAJA","razon":"Favorito de LAE al 37% para el visitante, sin llegar al 50%: partido abierto.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Dep. Alavés","local_emoji":"","local_nota":"","visit":"Atlético Madrid","visit_emoji":"","visit_nota":"","dia":"Sáb·16:15","pred":"2","p1":16,"px":25,"p2":59,"lae_1":16,"lae_x":25,"lae_2":59,"conf":"MEDIA","razon":"Favorito de LAE al 59% para el Atlético.","bajas":"Sin datos confirmados","resultado":"2","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"FC Barcelona","local_emoji":"","local_nota":"","visit":"Getafe","visit_emoji":"","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":72,"px":19,"p2":9,"lae_1":72,"lae_x":19,"lae_2":9,"conf":"ALTA","razon":"Favorito de LAE al 72% para el Barça.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"Elche CF","local_emoji":"","local_nota":"","visit":"Celta Vigo","visit_emoji":"","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":33,"px":31,"p2":36,"lae_1":33,"lae_x":31,"lae_2":36,"conf":"BAJA","razon":"Reparto casi igual, 33-31-36. Partido de los más abiertos de la jornada.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"Real Sociedad","local_emoji":"","local_nota":"","visit":"RC Deportivo","visit_emoji":"","visit_nota":"","dia":"Dom·16:15","pred":"1","p1":56,"px":29,"p2":15,"lae_1":56,"lae_x":29,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 56% para la Real.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"Real Betis","local_emoji":"","local_nota":"","visit":"Osasuna","visit_emoji":"","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":76,"px":13,"p2":11,"lae_1":76,"lae_x":13,"lae_2":11,"conf":"ALTA","razon":"Favorito de LAE al 76% para el Betis.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Racing Santander","local_emoji":"","local_nota":"","visit":"Valencia","visit_emoji":"","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":49,"px":25,"p2":26,"lae_1":49,"lae_x":25,"lae_2":26,"conf":"BAJA","razon":"Favorito de LAE al 49%, justo por debajo del 50.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
+    {"num":8,"div":"1ª","local":"Levante","local_emoji":"","local_nota":"","visit":"Sevilla","visit_emoji":"","visit_nota":"","dia":"Lun·21:00","pred":"2","p1":29,"px":26,"p2":45,"lae_1":29,"lae_x":26,"lae_2":45,"conf":"BAJA","razon":"Favorito de LAE al 45% para el Sevilla, sin llegar al 50%.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"CD Eldense","local_emoji":"","local_nota":"","visit":"Córdoba CF","visit_emoji":"","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":48,"px":32,"p2":20,"lae_1":48,"lae_x":32,"lae_2":20,"conf":"BAJA","razon":"Favorito de LAE al 48%, por debajo del 50.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"FC Andorra","local_emoji":"","local_nota":"","visit":"CD Castellón","visit_emoji":"","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":25,"px":22,"p2":53,"lae_1":25,"lae_x":22,"lae_2":53,"conf":"MEDIA","razon":"Favorito de LAE al 53% para el Castellón.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":11,"div":"2ª","local":"UD Almería","local_emoji":"","local_nota":"","visit":"CD Leganés","visit_emoji":"","visit_nota":"","dia":"Dom·16:15","pred":"1","p1":71,"px":17,"p2":12,"lae_1":71,"lae_x":17,"lae_2":12,"conf":"ALTA","razon":"Favorito de LAE al 71% para el Almería.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":12,"div":"2ª","local":"RCD Mallorca","local_emoji":"","local_nota":"","visit":"UD Las Palmas","visit_emoji":"","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":56,"px":29,"p2":15,"lae_1":56,"lae_x":29,"lae_2":15,"conf":"MEDIA","razon":"Favorito de LAE al 56% para el Mallorca.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
+    {"num":13,"div":"2ª","local":"Burgos CF","local_emoji":"","local_nota":"","visit":"Granada CF","visit_emoji":"","visit_nota":"","dia":"Lun·16:15","pred":"1","p1":65,"px":21,"p2":14,"lae_1":65,"lae_x":21,"lae_2":14,"conf":"MEDIA","razon":"Favorito de LAE al 65% para el Burgos.","bajas":"Sin datos confirmados","resultado":"2","suspendido":false,"urgente":false},
+    {"num":14,"div":"2ª","local":"Real Oviedo","local_emoji":"","local_nota":"","visit":"SD Eibar","visit_emoji":"","visit_nota":"","dia":"Lun·18:30","pred":"2","p1":29,"px":31,"p2":40,"lae_1":29,"lae_x":31,"lae_2":40,"conf":"BAJA","razon":"Favorito de LAE al 40% para el Eibar, sin llegar al 50%.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false}
   ],
   "pleno": {
     "num":15,
@@ -221,6 +268,7 @@ const JORNADAS_REPO = [{
     "dia":"Sáb·21:00",
     "pred_signo":"",
     "pred_marcador":"—",
+    "resultado_marcador":"1-0",
     "razon":"La web no publica el desglose de goles de LAE por equipo para este partido, así que no hay base para pronosticar el marcador. Hay que decidirlo a mano.",
     "bajas":"Sin datos confirmados",
     "conf":"BAJA"
@@ -233,11 +281,11 @@ const JORNADAS_REPO = [{
     "bote": 0,
     "fuente": "eduardolosilla.es",
     "fecha_datos": "2026-10-03",
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-13"
   },
   "contexto": {
     "alertas": [
-      "✅ Cerrada · falta Córdoba–Tenerife, que se juega el lunes 20:30",
+      "✅ Jornada cerrada · Pleno: España 3-1 Rep. Checa (M-1), pronosticábamos M-0",
       "📅 Reparto: 10 de 2ª · 4 de Liga F · Pleno al 15 atípico: selecciones (España - Rep. Checa)",
       "⚠ Jornada 10 (selecciones) no se preparó a tiempo: se salta, sin resultados ni boleto"
     ]
@@ -252,7 +300,7 @@ const JORNADAS_REPO = [{
     {"num":7,"div":"2ª","local":"CD Castellón","local_emoji":"⚫","local_nota":"","visit":"AD Ceuta","visit_emoji":"🔵","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":85,"px":8,"p2":7,"lae_1":85,"lae_x":8,"lae_2":7,"conf":"ALTA","razon":"Favorito de LAE al 85%, el porcentaje más extremo del boleto. El Castellón es de la zona alta; el Ceuta, recién ascendido.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
     {"num":8,"div":"2ª","local":"UD Las Palmas","local_emoji":"🟡","local_nota":"","visit":"R. Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":62,"px":24,"p2":14,"lae_1":62,"lae_x":24,"lae_2":14,"conf":"MEDIA","razon":"Favorito de LAE al 62%. Las Palmas aspira al ascenso directo.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
     {"num":9,"div":"2ª","local":"Girona FC","local_emoji":"🔴","local_nota":"","visit":"RCD Mallorca","visit_emoji":"🔴","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":47,"px":31,"p2":22,"lae_1":47,"lae_x":31,"lae_2":22,"conf":"BAJA","razon":"Favorito de LAE al 47%, por debajo del 50. Duelo entre dos recién descendidos con aspiraciones de ascenso directo.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
-    {"num":10,"div":"2ª","local":"Córdoba CF","local_emoji":"🟢","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Lun·20:30","pred":"1","p1":40,"px":31,"p2":29,"lae_1":40,"lae_x":31,"lae_2":29,"conf":"BAJA","razon":"40-31-29: reparto muy abierto. El Arcángel ante un Tenerife irregular. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"Córdoba CF","local_emoji":"🟢","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Lun·20:30","pred":"1","p1":40,"px":31,"p2":29,"lae_1":40,"lae_x":31,"lae_2":29,"conf":"BAJA","razon":"40-31-29: reparto muy abierto. El Arcángel ante un Tenerife irregular. Doble.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
     {"num":11,"div":"F","local":"FC Barcelona","local_emoji":"🔵","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Dom·17:00","pred":"1","p1":82,"px":10,"p2":8,"lae_1":82,"lae_x":10,"lae_2":8,"conf":"ALTA","razon":"Liga F. Clásico femenino. Favorito de LAE al 82% para el Barça, equipo dominante de la liga.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
     {"num":12,"div":"F","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"Atlético Madrid","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·16:00","pred":"2","p1":13,"px":17,"p2":70,"lae_1":13,"lae_x":17,"lae_2":70,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 70% para el visitante. El Atlético es de la parte alta.","bajas":"Sin datos confirmados","resultado":"2","suspendido":false,"urgente":false},
     {"num":13,"div":"F","local":"Madrid CFF","local_emoji":"⚪","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·18:00","pred":"1","p1":49,"px":26,"p2":25,"lae_1":49,"lae_x":26,"lae_2":25,"conf":"BAJA","razon":"Liga F. 49-26-25: favorito de LAE por debajo del 50%. Doble.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
@@ -733,8 +781,9 @@ const CLAVE_DOBLES = 'quiniela_dobles';
 function leerDobles() {
   try {
     const v = parseInt(localStorage.getItem(CLAVE_DOBLES), 10);
-    return OPCIONES_DOBLES.indexOf(v) > -1 ? v : 3;
-  } catch (_) { return 3; }
+    // Por defecto sin dobles: lo pidio Enrique el 13/10/2026
+    return OPCIONES_DOBLES.indexOf(v) > -1 ? v : 0;
+  } catch (_) { return 0; }
 }
 let nDobles = leerDobles();
 const ORDEN = ['1', 'X', '2'];

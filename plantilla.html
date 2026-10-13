@@ -265,8 +265,9 @@ const CLAVE_DOBLES = 'quiniela_dobles';
 function leerDobles() {
   try {
     const v = parseInt(localStorage.getItem(CLAVE_DOBLES), 10);
-    return OPCIONES_DOBLES.indexOf(v) > -1 ? v : 3;
-  } catch (_) { return 3; }
+    // Por defecto sin dobles: lo pidio Enrique el 13/10/2026
+    return OPCIONES_DOBLES.indexOf(v) > -1 ? v : 0;
+  } catch (_) { return 0; }
 }
 let nDobles = leerDobles();
 const ORDEN = ['1', 'X', '2'];

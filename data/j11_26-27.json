@@ -6,11 +6,11 @@
     "bote": 0,
     "fuente": "eduardolosilla.es",
     "fecha_datos": "2026-10-03",
-    "actualizado": "2026-10-05"
+    "actualizado": "2026-10-13"
   },
   "contexto": {
     "alertas": [
-      "✅ Cerrada · falta Córdoba–Tenerife, que se juega el lunes 20:30",
+      "✅ Jornada cerrada · Pleno: España 3-1 Rep. Checa (M-1), pronosticábamos M-0",
       "📅 Reparto: 10 de 2ª · 4 de Liga F · Pleno al 15 atípico: selecciones (España - Rep. Checa)",
       "⚠ Jornada 10 (selecciones) no se preparó a tiempo: se salta, sin resultados ni boleto"
     ]
@@ -25,7 +25,7 @@
     {"num":7,"div":"2ª","local":"CD Castellón","local_emoji":"⚫","local_nota":"","visit":"AD Ceuta","visit_emoji":"🔵","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":85,"px":8,"p2":7,"lae_1":85,"lae_x":8,"lae_2":7,"conf":"ALTA","razon":"Favorito de LAE al 85%, el porcentaje más extremo del boleto. El Castellón es de la zona alta; el Ceuta, recién ascendido.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
     {"num":8,"div":"2ª","local":"UD Las Palmas","local_emoji":"🟡","local_nota":"","visit":"R. Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":62,"px":24,"p2":14,"lae_1":62,"lae_x":24,"lae_2":14,"conf":"MEDIA","razon":"Favorito de LAE al 62%. Las Palmas aspira al ascenso directo.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
     {"num":9,"div":"2ª","local":"Girona FC","local_emoji":"🔴","local_nota":"","visit":"RCD Mallorca","visit_emoji":"🔴","visit_nota":"","dia":"Dom·21:00","pred":"1","p1":47,"px":31,"p2":22,"lae_1":47,"lae_x":31,"lae_2":22,"conf":"BAJA","razon":"Favorito de LAE al 47%, por debajo del 50. Duelo entre dos recién descendidos con aspiraciones de ascenso directo.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
-    {"num":10,"div":"2ª","local":"Córdoba CF","local_emoji":"🟢","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Lun·20:30","pred":"1","p1":40,"px":31,"p2":29,"lae_1":40,"lae_x":31,"lae_2":29,"conf":"BAJA","razon":"40-31-29: reparto muy abierto. El Arcángel ante un Tenerife irregular. Doble.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"Córdoba CF","local_emoji":"🟢","local_nota":"","visit":"CD Tenerife","visit_emoji":"🔵","visit_nota":"","dia":"Lun·20:30","pred":"1","p1":40,"px":31,"p2":29,"lae_1":40,"lae_x":31,"lae_2":29,"conf":"BAJA","razon":"40-31-29: reparto muy abierto. El Arcángel ante un Tenerife irregular. Doble.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
     {"num":11,"div":"F","local":"FC Barcelona","local_emoji":"🔵","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Dom·17:00","pred":"1","p1":82,"px":10,"p2":8,"lae_1":82,"lae_x":10,"lae_2":8,"conf":"ALTA","razon":"Liga F. Clásico femenino. Favorito de LAE al 82% para el Barça, equipo dominante de la liga.","bajas":"Sin datos confirmados","resultado":"1","suspendido":false,"urgente":false},
     {"num":12,"div":"F","local":"RC Deportivo","local_emoji":"🔵","local_nota":"","visit":"Atlético Madrid","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·16:00","pred":"2","p1":13,"px":17,"p2":70,"lae_1":13,"lae_x":17,"lae_2":70,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 70% para el visitante. El Atlético es de la parte alta.","bajas":"Sin datos confirmados","resultado":"2","suspendido":false,"urgente":false},
     {"num":13,"div":"F","local":"Madrid CFF","local_emoji":"⚪","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·18:00","pred":"1","p1":49,"px":26,"p2":25,"lae_1":49,"lae_x":26,"lae_2":25,"conf":"BAJA","razon":"Liga F. 49-26-25: favorito de LAE por debajo del 50%. Doble.","bajas":"Sin datos confirmados","resultado":"X","suspendido":false,"urgente":false},
