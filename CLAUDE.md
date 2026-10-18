@@ -65,8 +65,10 @@ la opinión de ningún experto.** Seguir al favorito de LAE es seguir a la
 mayoría de los apostantes.
 
 **Resultado principal: no hay ventaja medible sobre el mercado.**
-- El favorito de LAE acierta el **54% (±9 puntos)**; nuestro criterio, el **52%
-  (±9)**. Indistinguibles.
+- El favorito de LAE acierta el **53% (±9 puntos)**; nuestro criterio, el **52%
+  (±9)**. Indistinguibles. (Cifras recalculadas el 18/10/2026 tras corregir
+  J2 P1 Athletic-Sevilla, que teníamos mal: los 140 resultados de J1-J12 están
+  ya cruzados uno a uno con la casilla oficial del escrutinio.)
 - El mercado está razonablemente calibrado: los favoritos del 75% o más aciertan
   el 80%; los de menos del 45%, el 42%.
 - No hay sesgo explotable: LAE da de media un 24,2% al empate y salió el 25,4%;
@@ -77,7 +79,7 @@ meter en prompts):
 
 | Regla antigua | En qué se apoyaba | Con los datos de hoy |
 |---|---|---|
-| «La Segunda es el agujero, 29%» | 6 de 21 | **48% ±13** (n=54), en línea con 1ª (56% ±14) |
+| «La Segunda es el agujero, 29%» | 6 de 21 | **48% ±13** (n=54), en línea con 1ª (54% ±14) |
 | «Hay sesgo al local, da más peso a la X» | 9 de 14 fallos | Sin sesgo (ver arriba) |
 | «Desviarse de LAE falla (0 de 3)» | n=3 | Nada que concluir |
 | «3 dobles dan un 58%» | 45 partidos, ajustado a posteriori | Es aritmética, no un hallazgo: cada doble suma ~un tercio de acierto en ese partido a cambio de pagar el doble |
@@ -178,8 +180,12 @@ La versión oscura original está en el historial de git, por si hiciera falta.
     `futbolfantasy.com`, `loteriasyapuestas.es` y otros. Solo le funciona la
     búsqueda web. Cuando eso pasa, tiene orden de **no hacer** esa parte y
     decirlo, nunca de reconstruir los datos a base de titulares.
-  - El 25/08/2026 lo hizo y se equivocó: dio el Athletic-Sevilla de la J2 al 2
-    cuando el escrutinio decía 1. De ahí la prohibición explícita en su prompt.
+  - El 25/08/2026 reconstruyó resultados a base de búsquedas web, y por eso se
+    le prohibió en su prompt. OJO: se creyó que se había equivocado con el
+    Athletic-Sevilla de la J2 (dio 2, nosotros pusimos 1), pero el escrutinio
+    oficial (1-3, casilla 2) le da la razón: el error era nuestro y se corrigió
+    el 18/10/2026. Lección: una lectura resumida por un modelo (WebFetch) no
+    vale como verdad; el HTML oficial leído a mano, sí.
   - El `git push` desde la nube requiere que la Claude GitHub App tenga
     `dirdam268/mi-quiniela` en su lista de repos
     (<https://github.com/apps/claude/installations/select_target>). El conector

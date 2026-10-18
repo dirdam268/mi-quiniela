@@ -1,0 +1,164 @@
+{
+  "26/27": {
+    "1": {
+      "fecha": "2026-08-15", "recaudacion": 1707590.25, "bote": 393561.7,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 1, "premio": 226571.55},
+        {"aciertos": 13, "acertantes": 15, "premio": 8537.95},
+        {"aciertos": 12, "acertantes": 287, "premio": 446.23},
+        {"aciertos": 11, "acertantes": 2338, "premio": 54.78},
+        {"aciertos": 10, "acertantes": 13646, "premio": 11.26}
+      ],
+      "elige8": {"acertantes": 23, "premio": 1392.6},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_1", "capturado": "2026-10-18"
+    },
+    "2": {
+      "fecha": "2026-08-22", "recaudacion": 2447268.75, "bote": 521630.97,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 1, "premio": 321250.4},
+        {"aciertos": 13, "acertantes": 28, "premio": 6555.18},
+        {"aciertos": 12, "acertantes": 448, "premio": 409.7},
+        {"aciertos": 11, "acertantes": 4222, "premio": 43.47},
+        {"aciertos": 10, "acertantes": 25547, "premio": 8.62}
+      ],
+      "elige8": {"acertantes": 32, "premio": 1406.11},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_2", "capturado": "2026-10-18"
+    },
+    "3": {
+      "fecha": "2026-08-29", "recaudacion": 2585853.75, "bote": 705176.13,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 10, "premio": 41098.93},
+        {"aciertos": 13, "acertantes": 339, "premio": 572.09},
+        {"aciertos": 12, "acertantes": 3600, "premio": 53.87},
+        {"aciertos": 11, "acertantes": 23645, "premio": 8.2},
+        {"aciertos": 10, "acertantes": 100155, "premio": 2.32}
+      ],
+      "elige8": {"acertantes": 574, "premio": 84.46},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_3", "capturado": "2026-10-18"
+    },
+    "4": {
+      "fecha": "2026-09-05", "recaudacion": 3026137.5, "bote": 899115.16,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 1, "premio": 908860.38},
+        {"aciertos": 14, "acertantes": 2, "premio": 201672.8},
+        {"aciertos": 13, "acertantes": 57, "premio": 3981.76},
+        {"aciertos": 12, "acertantes": 1310, "premio": 173.25},
+        {"aciertos": 11, "acertantes": 13396, "premio": 16.94},
+        {"aciertos": 10, "acertantes": 80069, "premio": 3.4}
+      ],
+      "elige8": {"acertantes": 26, "premio": 2051.79},
+      "notas": ["14 aciertos: cobran 150,0 % de lo teorico (reparto distinto del publicado)"],
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_4", "capturado": "2026-10-18"
+    },
+    "5": {
+      "fecha": "2026-09-08", "recaudacion": 995064.75, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 74, "premio": 1008.51},
+        {"aciertos": 14, "acertantes": 270, "premio": 589.67},
+        {"aciertos": 13, "acertantes": 5345, "premio": 13.96},
+        {"aciertos": 12, "acertantes": 35065, "premio": 4.26},
+        {"aciertos": 11, "acertantes": 122674, "premio": 0},
+        {"aciertos": 10, "acertantes": 242826, "premio": 0}
+      ],
+      "elige8": {"acertantes": 9284, "premio": 2.58},
+      "notas": ["14 aciertos: cobran 127,4 % de lo teorico (reparto distinto del publicado)", "12 aciertos: cobran 200,2 % de lo teorico (reparto distinto del publicado)", "11 aciertos: 122674 acertantes sin premio (el teorico seria 0,61 EUR cada uno; pasa a bote)", "10 aciertos: 242826 acertantes sin premio (el teorico seria 0,37 EUR cada uno; pasa a bote)"],
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_5", "capturado": "2026-10-18"
+    },
+    "6": {
+      "fecha": "2026-09-12", "recaudacion": 2434240.5, "bote": 361065.21,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 6, "premio": 59930.46},
+        {"aciertos": 13, "acertantes": 137, "premio": 1332.61},
+        {"aciertos": 12, "acertantes": 1753, "premio": 104.15},
+        {"aciertos": 11, "acertantes": 13433, "premio": 13.59},
+        {"aciertos": 10, "acertantes": 67270, "premio": 3.26}
+      ],
+      "elige8": {"acertantes": 144, "premio": 312.29},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_6", "capturado": "2026-10-18"
+    },
+    "7": {
+      "fecha": "2026-09-15", "recaudacion": 1323189.75, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 1, "premio": 177368.29},
+        {"aciertos": 13, "acertantes": 42, "premio": 2362.84},
+        {"aciertos": 12, "acertantes": 553, "premio": 179.46},
+        {"aciertos": 11, "acertantes": 3901, "premio": 25.44},
+        {"aciertos": 10, "acertantes": 18900, "premio": 6.3}
+      ],
+      "elige8": {"acertantes": 128, "premio": 242},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_7", "capturado": "2026-10-18"
+    },
+    "8": {
+      "fecha": "2026-09-19", "recaudacion": 3781971.75, "bote": 3159105.01,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 1, "premio": 2762202.31},
+        {"aciertos": 14, "acertantes": 22, "premio": 27505.25},
+        {"aciertos": 13, "acertantes": 723, "premio": 392.32},
+        {"aciertos": 12, "acertantes": 8758, "premio": 32.39},
+        {"aciertos": 11, "acertantes": 57693, "premio": 4.92},
+        {"aciertos": 10, "acertantes": 232667, "premio": 0}
+      ],
+      "elige8": {"acertantes": 1070, "premio": 54.29},
+      "notas": ["14 aciertos: cobran 104,5 % de lo teorico (reparto distinto del publicado)", "10 aciertos: 232667 acertantes sin premio (el teorico seria 1,46 EUR cada uno; pasa a bote)"],
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_8", "capturado": "2026-10-18"
+    },
+    "9": {
+      "fecha": "2026-09-26", "recaudacion": 1453174.5, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 0, "premio": 0},
+        {"aciertos": 13, "acertantes": 2, "premio": 51595.23},
+        {"aciertos": 12, "acertantes": 53, "premio": 2056.38},
+        {"aciertos": 11, "acertantes": 648, "premio": 168.19},
+        {"aciertos": 10, "acertantes": 4639, "premio": 28.19}
+      ],
+      "elige8": {"acertantes": 7, "premio": 4240.11},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_9", "capturado": "2026-10-18"
+    },
+    "10": {
+      "fecha": "2026-09-29", "recaudacion": 728881.5, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 0, "premio": 0},
+        {"aciertos": 13, "acertantes": 22, "premio": 2484.82},
+        {"aciertos": 12, "acertantes": 395, "premio": 138.4},
+        {"aciertos": 11, "acertantes": 3777, "premio": 14.47},
+        {"aciertos": 10, "acertantes": 22173, "premio": 2.96}
+      ],
+      "elige8": {"acertantes": 69, "premio": 243.41},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_10", "capturado": "2026-10-18"
+    },
+    "11": {
+      "fecha": "2026-10-03", "recaudacion": 1463363.25, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 1, "premio": 195310.5},
+        {"aciertos": 13, "acertantes": 62, "premio": 1770.2},
+        {"aciertos": 12, "acertantes": 989, "premio": 110.97},
+        {"aciertos": 11, "acertantes": 7944, "premio": 13.82},
+        {"aciertos": 10, "acertantes": 37694, "premio": 3.49}
+      ],
+      "elige8": {"acertantes": 45, "premio": 682.9},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_11", "capturado": "2026-10-18"
+    },
+    "12": {
+      "fecha": "2026-10-10", "recaudacion": 3500149.5, "bote": 725525.54,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 32, "premio": 17500.75},
+        {"aciertos": 13, "acertantes": 1033, "premio": 254.13},
+        {"aciertos": 12, "acertantes": 11292, "premio": 23.25},
+        {"aciertos": 11, "acertantes": 67200, "premio": 3.91},
+        {"aciertos": 10, "acertantes": 240653, "premio": 0}
+      ],
+      "elige8": {"acertantes": 1623, "premio": 36.52},
+      "notas": ["10 aciertos: 240653 acertantes sin premio (el teorico seria 1,31 EUR cada uno; pasa a bote)"],
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_12", "capturado": "2026-10-18"
+    }
+  }
+}
