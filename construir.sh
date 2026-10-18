@@ -21,7 +21,16 @@ mapfile -t FICHEROS < <(ls "$DIR"/data/j*.json 2>/dev/null | sort -t_ -k2,2r -k1
 [ "${#FICHEROS[@]}" -gt 0 ] || { echo "ERROR: no hay data/jXX_YY-YY.json" >&2; exit 1; }
 
 TMP="$(mktemp)"
-trap 'rm -f "$TMP"' EXIT
+STATS="$(mktemp)"
+trap 'rm -f "$TMP" "$STATS"' EXIT
+
+# Estadisticas de LaLiga (Understat): opcionales; sin fichero la app no muestra el bloque
+if [ -f "$DIR/data/estadisticas_laliga.json" ]; then
+  printf '%s' "$(cat "$DIR/data/estadisticas_laliga.json")" > "$STATS"
+  echo "  + estadisticas_laliga.json"
+else
+  printf 'null' > "$STATS"
+fi
 
 printf '[' > "$TMP"
 PRIMERO=1
@@ -39,8 +48,16 @@ done
 printf ']' >> "$TMP"
 
 # awk en vez de sed: los datos llevan &, barras y acentos que sed interpretaría
-awk -v datos="$TMP" -v marca="$MARCADOR" '
+awk -v datos="$TMP" -v marca="$MARCADOR" -v stats="$STATS" -v marca2="__STATS__" '
   {
+    pos2 = index($0, marca2)
+    if (pos2 > 0) {
+      printf "%s", substr($0, 1, pos2 - 1)
+      if ((getline linea < stats) > 0) printf "%s", linea; else printf "null"
+      close(stats)
+      print substr($0, pos2 + length(marca2))
+      next
+    }
     pos = index($0, marca)
     if (pos == 0) { print; next }
     printf "%s", substr($0, 1, pos - 1)

@@ -38,6 +38,16 @@ $json = "[" + ($bloques -join ",") + "]"
 
 $html = [System.IO.File]::ReadAllText($rutaPlantilla, [System.Text.Encoding]::UTF8)
 if ($html -notmatch '__JORNADAS__') { throw "La plantilla no contiene el marcador __JORNADAS__" }
+# Estadisticas de LaLiga (Understat): opcionales. Sin fichero, la app no muestra el bloque.
+$rutaStats = Join-Path $dirDatos "estadisticas_laliga.json"
+$stats = 'null'
+if (Test-Path $rutaStats) {
+  $stats = [System.IO.File]::ReadAllText($rutaStats, [System.Text.Encoding]::UTF8).TrimStart([char]0xFEFF).Trim()
+  try { $null = $stats | ConvertFrom-Json } catch { throw ("JSON invalido en estadisticas_laliga.json: " + $_.Exception.Message) }
+  Write-Host "  + estadisticas_laliga.json"
+}
+if ($html -notmatch '__STATS__') { throw "La plantilla no contiene el marcador __STATS__" }
+$html = $html.Replace('__STATS__', $stats)
 $html = $html.Replace('__JORNADAS__', $json)
 
 $rutaOut = Join-Path $dir $Out

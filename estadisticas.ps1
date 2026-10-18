@@ -120,7 +120,7 @@ $salida = [ordered]@{
   nota = 'Solo LaLiga. Sin duelos aereos ni posesion: no hay fuente abierta accesible. Los datos van con retraso respecto al calendario.'
   equipos = $equipos
 }
-$json = $salida | ConvertTo-Json -Depth 8
+$json = $salida | ConvertTo-Json -Depth 8 -Compress
 [System.IO.File]::WriteAllText((Join-Path $dirData 'estadisticas_laliga.json'), $json, $utf8)
 
 Write-Host ""

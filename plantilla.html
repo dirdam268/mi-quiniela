@@ -114,6 +114,14 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 .jug .pista i { display:block; height:100%; border-radius:2px; }
 .jug .pct { text-align:right; color:var(--mut); font-variant-numeric:tabular-nums; }
 .jug.dudoso .nom, .jug.dudoso .pct { color:var(--tenue); }
+/* ── Estadisticas de LaLiga (Understat) ────────────────────────────── */
+.est { margin-top:10px; padding-top:9px; border-top:1px dashed var(--brd); }
+.est-tabla { width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.62rem; color:#374151; }
+.est-tabla th { font-weight:600; color:var(--txt); text-align:left; padding:2px 0 4px; }
+.est-tabla td { padding:2px 0; vertical-align:top; }
+.est-tabla td.k { color:var(--mut); width:34%; }
+.est-forma i { display:inline-block; width:14px; height:14px; line-height:14px; text-align:center; border-radius:3px; margin-right:2px; font-style:normal; font-size:.55rem; font-weight:700; color:#fff; }
+.est-pie { margin-top:5px; font-family:var(--mono); font-size:.56rem; color:var(--mut); line-height:1.5; }
 .once-corte { border-top:1px dashed var(--brd); margin:5px 0 4px; padding-top:4px; font-family:var(--mono); font-size:.54rem; color:var(--tenue); text-transform:uppercase; letter-spacing:.06em; }
 .once-vacio { font-family:var(--mono); font-size:.62rem; color:var(--mut); background:var(--sfc2); border:1px solid var(--brd); border-radius:6px; padding:6px 8px; line-height:1.5; }
 
@@ -184,6 +192,46 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 // DATOS — los inyecta construir.ps1 leyendo data/jXX_YY-YY.json
 // ════════════════════════════════════════════════════════════════════
 const JORNADAS_REPO = __JORNADAS__;
+
+// Estadisticas avanzadas de LaLiga (Understat). Solo Primera; sin datos NO se
+// inventa nada y el bloque simplemente no aparece. No hay duelos aereos ni
+// posesion: no existe fuente abierta accesible.
+const STATS_LALIGA = __STATS__;
+// Nombre nuestro (normalizado) -> nombre de Understat (normalizado)
+const ALIAS_STATS = { 'dep alaves': 'alaves', 'fc barcelona': 'barcelona', 'rc deportivo': 'deportivo la coruna', 'rcd espanyol': 'espanyol', 'elche cf': 'elche' };
+function statsDe(nombre) {
+  if (!STATS_LALIGA || !STATS_LALIGA.equipos) return null;
+  const norm = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z ]/g, ' ').replace(/\s+/g, ' ').trim();
+  let k = norm(nombre); k = ALIAS_STATS[k] || k;
+  for (const t of Object.keys(STATS_LALIGA.equipos)) if (norm(t) === k) return STATS_LALIGA.equipos[t];
+  return null;
+}
+function tplStats(p) {
+  if (p.div !== '1ª') return '';
+  const l = statsDe(p.local), v = statsDe(p.visit);
+  if (!l || !v) return '';
+  const n2 = x => x == null ? '—' : Number(x).toFixed(2).replace('.', ',');
+  const dif = e => { const d = e.xg - e.xga; return (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(2).replace('.', ','); };
+  const col = { V: 'var(--p1)', E: 'var(--px)', D: 'var(--p2)' };
+  const forma = f => `<span class="est-forma">${String(f || '').split('').map(c => `<i style="background:${col[c] || 'var(--tenue)'}">${esc(c)}</i>`).join('')}</span>`;
+  const jug = (arr, campo, et) => arr && arr[0] ? `${esc(arr[0].nombre)} <span style="color:var(--mut)">${n2(arr[0][campo])} ${et}</span>` : '—';
+  const fila = (k, a, b) => `<tr><td class="k">${k}</td><td>${a}</td><td>${b}</td></tr>`;
+  const hasta = STATS_LALIGA.datos_hasta ? STATS_LALIGA.datos_hasta.split('-').reverse().join('/') : '';
+  return `<div class="est">
+    <div class="once-cab">Estadísticas LaLiga · Understat${hasta ? ' · hasta el ' + esc(hasta) : ''}</div>
+    <table class="est-tabla">
+      <tr><th></th><th>${esc(p.local)}</th><th>${esc(p.visit)}</th></tr>
+      ${fila('Forma (5)', forma(l.forma), forma(v.forma))}
+      ${fila('xG a favor / partido', n2(l.xg) + ' <span style="color:var(--mut)">(en casa ' + n2(l.xg_casa) + ')</span>', n2(v.xg) + ' <span style="color:var(--mut)">(fuera ' + n2(v.xg_fuera) + ')</span>')}
+      ${fila('xG en contra / partido', n2(l.xga) + ' <span style="color:var(--mut)">(en casa ' + n2(l.xga_casa) + ')</span>', n2(v.xga) + ' <span style="color:var(--mut)">(fuera ' + n2(v.xga_fuera) + ')</span>')}
+      ${fila('Diferencia xG', dif(l), dif(v))}
+      ${fila('Presión (PPDA)', l.ppda == null ? '—' : String(l.ppda).replace('.', ','), v.ppda == null ? '—' : String(v.ppda).replace('.', ','))}
+      ${fila('Más peligro (xG/90)', jug(l.goleadores, 'xg90', 'xG/90'), jug(v.goleadores, 'xg90', 'xG/90'))}
+      ${fila('Más creación (xA/90)', jug(l.creadores, 'xa90', 'xA/90'), jug(v.creadores, 'xa90', 'xA/90'))}
+    </table>
+    <div class="est-pie">Con ${l.pj} y ${v.pj} partidos jugados la muestra es corta. Sin duelos aéreos ni posesión: no hay fuente. En la prueba con J1–J12 (28 partidos) el xG no mejoró al favorito de LAE; es información, no un cambio de pronóstico.</div>
+  </div>`;
+}
 
 // ── Jornadas traidas por el boton "Actualizar" ──────────────────────
 // Viven solo en este dispositivo: la pagina es estatica y no puede escribir en
@@ -535,6 +583,7 @@ function tplPartido(p) {
       ${p.bajas ? `<div class="bajas">⚕ ${esc(p.bajas)}</div>` : ''}
       ${lae}
       ${tplAlineaciones(p)}
+      ${tplStats(p)}
     </div>`;
   }
 
