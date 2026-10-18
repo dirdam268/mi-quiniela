@@ -239,3 +239,20 @@ La versión oscura original está en el historial de git, por si hiciera falta.
 - No usar `fetch()` para los JSON de `data/`: no funciona en `file://` y rompe
   el cifrado en un solo fichero. Los datos se inyectan en build.
 - No cambiar el idioma de la UI.
+
+## Estadísticas, escrutinio y verificación (añadido el 18/10/2026)
+
+- `estadisticas.ps1` lee Understat (xG, forma, PPDA, jugadores; **solo LaLiga**) y
+  escribe `data/estadisticas_laliga.json` (compacto) + `data/crudo/`. `construir.ps1`
+  y `construir.sh` lo inyectan en `__STATS__`; `tplStats()` pinta el bloque en el
+  detalle de los partidos de Primera. Sin fichero, no aparece nada.
+- `escrutinio.ps1 -Jornadas 1..12` guarda el escrutinio oficial (recaudación, bote,
+  premios por categoría) en `data/escrutinios.json`. Pendiente: simular el retorno
+  real de 0/2/3 dobles y comprobar si ir con el favorito baja el premio por acierto.
+- `backtest.ps1`: xG vs favorito LAE en Primera → 46% vs 54% con 28 partidos (±18).
+  No concluyente; no cambia el pronóstico.
+- `PROMPT.md`: el prompt "QuinielaAI Engine" adaptado a los datos reales.
+- **Verificar resultados:** cada resultado guardado debe coincidir con la casilla
+  `m-resultado` de `.../escrutinio/jornada_N` (HTML leído a mano). El 18/10/2026 se
+  cruzaron los 140 de J1–J12 y se corrigió J2 P1 (Athletic–Sevilla fue 2).
+  Cuidado con `.Replace()` masivo en los JSON: cambia TODAS las coincidencias.
