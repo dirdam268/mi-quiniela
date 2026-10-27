@@ -193,53 +193,6 @@ body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); col
 // ════════════════════════════════════════════════════════════════════
 const JORNADAS_REPO = [{
   "meta": {
-    "jornada": 17,
-    "temporada": "26/27",
-    "fecha_cierre": "",
-    "bote": 0,
-    "fuente": "eduardolosilla.es",
-    "fecha_datos": "2026-10-27",
-    "actualizado": "2026-10-27"
-  },
-  "contexto": {
-    "alertas": [
-      "🏆 Jornada de Copa del Rey (primera ronda, a partido único), entre semana: martes 27 a jueves 29. Juega de local el equipo de categoría inferior",
-      "⏰ Primer partido hoy, martes 27, a las 20:00 (Alcalá – Las Palmas). Cierre antes de esa hora, por confirmar: si ya ha cerrado, esta jornada solo sirve para medir el sistema",
-      "ℹ Sin datos propios de Copa (xG, forma, alineaciones): el pronóstico es el favorito de LAE en todos los partidos"
-    ]
-  },
-  "partidos": [
-    {"num":1,"div":"COP","local":"RSD Alcalá","local_emoji":"","local_nota":"","visit":"UD Las Palmas","visit_emoji":"🟡","visit_nota":"","dia":"Mar·20:00","pred":"2","p1":19,"px":15,"p2":66,"lae_1":19,"lae_x":15,"lae_2":66,"conf":"ALTA","razon":"Favorito de LAE al 66% para el visitante, que juega en categoría superior. Copa a partido único en campo del modesto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":2,"div":"COP","local":"Alcoyano","local_emoji":"","local_nota":"","visit":"RCD Mallorca","visit_emoji":"🔴","visit_nota":"","dia":"Mié·20:00","pred":"2","p1":20,"px":17,"p2":63,"lae_1":20,"lae_x":17,"lae_2":63,"conf":"MEDIA","razon":"Favorito de LAE al 63% para el visitante. Copa a partido único.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":3,"div":"COP","local":"Arosa SC","local_emoji":"","local_nota":"","visit":"Pontevedra","visit_emoji":"","visit_nota":"","dia":"Mar·21:00","pred":"2","p1":29,"px":27,"p2":44,"lae_1":29,"lae_x":27,"lae_2":44,"conf":"BAJA","razon":"Favorito de LAE al 44%, por debajo del 50%: duelo igualado entre equipos de categorías cercanas.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":4,"div":"COP","local":"At. Calatayud","local_emoji":"","local_nota":"","visit":"Osasuna","visit_emoji":"🔴","visit_nota":"","dia":"Jue·19:00","pred":"2","p1":18,"px":12,"p2":70,"lae_1":18,"lae_x":12,"lae_2":70,"conf":"ALTA","razon":"Favorito de LAE al 70% para el equipo de Primera. Copa a partido único en campo del modesto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":5,"div":"COP","local":"Badajoz","local_emoji":"","local_nota":"","visit":"CD Tenerife","visit_emoji":"⚪","visit_nota":"","dia":"Mié·20:00","pred":"2","p1":28,"px":23,"p2":49,"lae_1":28,"lae_x":23,"lae_2":49,"conf":"BAJA","razon":"Favorito de LAE al 49%, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":6,"div":"COP","local":"CD Cieza","local_emoji":"","local_nota":"","visit":"Granada CF","visit_emoji":"🔴","visit_nota":"","dia":"Mié·20:30","pred":"2","p1":18,"px":15,"p2":67,"lae_1":18,"lae_x":15,"lae_2":67,"conf":"ALTA","razon":"Favorito de LAE al 67% para el visitante, de categoría superior.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":7,"div":"COP","local":"Conquense","local_emoji":"","local_nota":"","visit":"CD Castellón","visit_emoji":"⚫","visit_nota":"","dia":"Jue·20:00","pred":"2","p1":18,"px":16,"p2":66,"lae_1":18,"lae_x":16,"lae_2":66,"conf":"ALTA","razon":"Favorito de LAE al 66% para el visitante, de categoría superior.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":8,"div":"COP","local":"CD Covadonga","local_emoji":"","local_nota":"","visit":"Real Valladolid","visit_emoji":"🟣","visit_nota":"","dia":"Mié·20:00","pred":"2","p1":20,"px":16,"p2":64,"lae_1":20,"lae_x":16,"lae_2":64,"conf":"MEDIA","razon":"Favorito de LAE al 64% para el visitante, de categoría superior.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":9,"div":"COP","local":"CD Minera","local_emoji":"","local_nota":"","visit":"FC Cartagena","visit_emoji":"⚫","visit_nota":"","dia":"Mié·20:30","pred":"2","p1":30,"px":26,"p2":44,"lae_1":30,"lae_x":26,"lae_2":44,"conf":"BAJA","razon":"Favorito de LAE al 44%, por debajo del 50%: partido abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":10,"div":"COP","local":"Don Benito","local_emoji":"","local_nota":"","visit":"Extremadura UD","visit_emoji":"","visit_nota":"","dia":"Mar·20:30","pred":"2","p1":32,"px":28,"p2":40,"lae_1":32,"lae_x":28,"lae_2":40,"conf":"BAJA","razon":"Favorito de LAE al 40%: el partido más igualado de la jornada, con el 1 en 32%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":11,"div":"COP","local":"CD Laredo","local_emoji":"","local_nota":"","visit":"Burgos CF","visit_emoji":"⚪","visit_nota":"","dia":"Jue·20:00","pred":"2","p1":19,"px":16,"p2":65,"lae_1":19,"lae_x":16,"lae_2":65,"conf":"ALTA","razon":"Favorito de LAE al 65% para el visitante, de categoría superior.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":12,"div":"COP","local":"Numancia","local_emoji":"","local_nota":"","visit":"Real Oviedo","visit_emoji":"🔵","visit_nota":"","dia":"Mié·20:00","pred":"2","p1":29,"px":21,"p2":50,"lae_1":29,"lae_x":21,"lae_2":50,"conf":"MEDIA","razon":"Favorito de LAE al 50% para el visitante.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":13,"div":"COP","local":"CD Tudelano","local_emoji":"","local_nota":"","visit":"Real Zaragoza","visit_emoji":"","visit_nota":"","dia":"Mar·21:00","pred":"2","p1":21,"px":19,"p2":60,"lae_1":21,"lae_x":19,"lae_2":60,"conf":"MEDIA","razon":"Favorito de LAE al 60% para el visitante.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
-    {"num":14,"div":"COP","local":"Xerez","local_emoji":"","local_nota":"","visit":"Cádiz CF","visit_emoji":"🟡","visit_nota":"","dia":"Mié·21:00","pred":"2","p1":27,"px":23,"p2":50,"lae_1":27,"lae_x":23,"lae_2":50,"conf":"MEDIA","razon":"Favorito de LAE al 50% para el visitante.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
-  ],
-  "pleno": {
-    "num":15,
-    "div":"COP",
-    "local":"Recreativo Huelva","local_emoji":"","local_nota":"",
-    "visit":"Rayo Vallecano","visit_emoji":"🔴","visit_nota":"",
-    "dia":"Mar·21:00",
-    "pred_signo":"2",
-    "pred_marcador":"1-M",
-    "lae_p15_local":[22,52,19,7],
-    "lae_p15_visit":[10,22,32,36],
-    "razon":"LAE da un 52% a que el Recreativo marque 1 gol y un 36% a que el Rayo marque 3 o más (M). Apuesta 1-M, con el 2 como signo.",
-    "bajas":"Sin datos confirmados",
-    "conf":"BAJA"
-  }
-},{
-  "meta": {
     "jornada": 16,
     "temporada": "26/27",
     "provisional": true,
@@ -888,8 +841,6 @@ const DIVS = {
   'F':  { etiqueta: 'Liga F',      color: 'var(--divF)' },
   // Jornadas entre semana: Champions, Europa League y Conference (J5, J7)
   'EU': { etiqueta: 'Europa',      color: '#475569' },
-  // Jornadas de Copa del Rey entre semana (J17)
-  'COP': { etiqueta: 'Copa',        color: '#0f766e' },
   // Jornada traida por el boton: la web no dice a que division va cada partido
   'BOL': { etiqueta: 'Boleto',     color: 'var(--mut)' },
   // El Pleno al 15 puede ser un partido de selecciones (J9: Inglaterra-España)
