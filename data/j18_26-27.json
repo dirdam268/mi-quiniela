@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "jornada": 18,
+    "temporada": "26/27",
+    "fecha_cierre": "2026-10-31T13:00:00",
+    "bote": 1898047,
+    "fuente": "eduardolosilla.es",
+    "fecha_datos": "2026-10-29",
+    "actualizado": "2026-10-29"
+  },
+  "contexto": {
+    "alertas": [
+      "⏰ Cierre estimado el sábado 31 a las 13:00 (una hora antes del primer partido, Levante – Atlético a las 14:00); hora exacta por confirmar",
+      "📅 Reparto: 7 de 1ª · 3 de 2ª · 4 de Liga F · Pleno al 15: Athletic – Real Sociedad (domingo 21:00)",
+      "🎯 Sin dobles, como se acordó: pronóstico simple, el favorito de LAE en cada partido",
+      "⚖ Jornada muy abierta: 8 de los 14 partidos tienen un favorito por debajo del 50% en LAE"
+    ]
+  },
+  "partidos": [
+    {"num":1,"div":"1ª","local":"Levante","local_emoji":"","local_nota":"","visit":"Atlético Madrid","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·14:00","pred":"2","p1":11,"px":15,"p2":74,"lae_1":11,"lae_x":15,"lae_2":74,"conf":"ALTA","razon":"Favorito de LAE al 74% para el Atlético, que juega de visitante.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":2,"div":"1ª","local":"Rayo Vallecano","local_emoji":"🔴","local_nota":"","visit":"Celta Vigo","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·16:15","pred":"1","p1":35,"px":34,"p2":31,"lae_1":35,"lae_x":34,"lae_2":31,"conf":"BAJA","razon":"Los tres signos casi empatados en LAE (35-34-31): el 1 gana por un punto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":3,"div":"1ª","local":"Real Betis","local_emoji":"🟢","local_nota":"","visit":"Málaga","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·18:30","pred":"1","p1":81,"px":11,"p2":8,"lae_1":81,"lae_x":11,"lae_2":8,"conf":"ALTA","razon":"Favorito de LAE al 81% para el Betis en casa.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":4,"div":"1ª","local":"FC Barcelona","local_emoji":"🔵","local_nota":"","visit":"Dep. Alavés","visit_emoji":"⚪","visit_nota":"","dia":"Sáb·21:00","pred":"1","p1":90,"px":5,"p2":5,"lae_1":90,"lae_x":5,"lae_2":5,"conf":"ALTA","razon":"Favorito de LAE al 90% para el Barcelona, el más alto de la jornada.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":5,"div":"1ª","local":"Getafe","local_emoji":"🔵","local_nota":"","visit":"Sevilla","visit_emoji":"⚪","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":23,"px":35,"p2":42,"lae_1":23,"lae_x":35,"lae_2":42,"conf":"BAJA","razon":"Favorito de LAE al 42% para el Sevilla, con el empate en 35%: partido abierto.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":6,"div":"1ª","local":"Racing Santander","local_emoji":"⚪","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Dom·16:15","pred":"2","p1":7,"px":7,"p2":86,"lae_1":7,"lae_x":7,"lae_2":86,"conf":"ALTA","razon":"Favorito de LAE al 86% para el Real Madrid.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":7,"div":"1ª","local":"Elche CF","local_emoji":"🟢","local_nota":"","visit":"Valencia","visit_emoji":"⚪","visit_nota":"","dia":"Dom·18:30","pred":"1","p1":40,"px":33,"p2":27,"lae_1":40,"lae_x":33,"lae_2":27,"conf":"BAJA","razon":"Favorito de LAE al 40% para el Elche, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":8,"div":"2ª","local":"SD Eibar","local_emoji":"🔵","local_nota":"","visit":"UD Almería","visit_emoji":"🔴","visit_nota":"","dia":"Sáb·16:15","pred":"1","p1":37,"px":33,"p2":30,"lae_1":37,"lae_x":33,"lae_2":30,"conf":"BAJA","razon":"Favorito de LAE al 37% para el Eibar: muy igualado. Segunda, nuestro punto débil.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":9,"div":"2ª","local":"CD Eldense","local_emoji":"","local_nota":"","visit":"Granada CF","visit_emoji":"🔴","visit_nota":"","dia":"Dom·14:00","pred":"2","p1":28,"px":29,"p2":43,"lae_1":28,"lae_x":29,"lae_2":43,"conf":"BAJA","razon":"Favorito de LAE al 43% para el Granada, sin llegar al 50%. Segunda, nuestro punto débil.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":10,"div":"2ª","local":"Burgos CF","local_emoji":"⚪","local_nota":"","visit":"CD Castellón","visit_emoji":"⚫","visit_nota":"","dia":"Dom·18:30","pred":"2","p1":25,"px":30,"p2":45,"lae_1":25,"lae_x":30,"lae_2":45,"conf":"BAJA","razon":"Favorito de LAE al 45% para el Castellón, sin llegar al 50%. Segunda, nuestro punto débil.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":11,"div":"F","local":"Dep. Alavés","local_emoji":"⚪","local_nota":"","visit":"Real Sociedad","visit_emoji":"🔵","visit_nota":"","dia":"Dom·12:00","pred":"2","p1":24,"px":28,"p2":48,"lae_1":24,"lae_x":28,"lae_2":48,"conf":"BAJA","razon":"Liga F. Favorito de LAE al 48% para la Real Sociedad, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":12,"div":"F","local":"Madrid CFF","local_emoji":"⚪","local_nota":"","visit":"RC Deportivo","visit_emoji":"🔵","visit_nota":"","dia":"Sáb·18:00","pred":"1","p1":67,"px":19,"p2":14,"lae_1":67,"lae_x":19,"lae_2":14,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 67% para el Madrid CFF en casa.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":13,"div":"F","local":"Sevilla","local_emoji":"⚪","local_nota":"","visit":"Real Madrid","visit_emoji":"⚪","visit_nota":"","dia":"Dom·19:00","pred":"2","p1":10,"px":14,"p2":76,"lae_1":10,"lae_x":14,"lae_2":76,"conf":"ALTA","razon":"Liga F. Favorito de LAE al 76% para el Real Madrid.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false},
+    {"num":14,"div":"F","local":"CD Tenerife","local_emoji":"⚪","local_nota":"","visit":"Athletic Club","visit_emoji":"🔴","visit_nota":"","dia":"Lun·20:00","pred":"2","p1":30,"px":29,"p2":41,"lae_1":30,"lae_x":29,"lae_2":41,"conf":"BAJA","razon":"Liga F. Favorito de LAE al 41% para el Athletic, sin llegar al 50%.","bajas":"Sin datos confirmados","suspendido":false,"urgente":false}
+  ],
+  "pleno": {
+    "num":15,
+    "div":"1ª",
+    "local":"Athletic Club","local_emoji":"🔴","local_nota":"",
+    "visit":"Real Sociedad","visit_emoji":"🔵","visit_nota":"",
+    "dia":"Dom·21:00",
+    "pred_signo":"X",
+    "pred_marcador":"1-1",
+    "lae_p15_local":[10,46,39,5],
+    "lae_p15_visit":[12,49,32,7],
+    "razon":"LAE da un 46% a que el Athletic marque 1 gol y un 49% a que la Real marque 1: el marcador más votado de los dos lados es 1-1, y el signo que sale de ahí es la X.",
+    "bajas":"Sin datos confirmados",
+    "conf":"BAJA"
+  }
+}
