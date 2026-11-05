@@ -45,12 +45,15 @@ $r = Invoke-WebRequest -Uri $url -UseBasicParsing -UserAgent $ua -Headers $cab -
 # Se decodifica a mano como UTF-8: si el servidor no declara charset, PowerShell
 # lo leeria como ISO-8859-1 y los nombres con tilde saldrian rotos
 $txt = [System.Text.Encoding]::UTF8.GetString($r.RawContentStream.ToArray())
-[System.IO.File]::WriteAllText((Join-Path $dirCrudo "understat_laliga_$Anio.json"), $txt, $utf8)
 
 Add-Type -AssemblyName System.Web.Extensions
 $ser = New-Object System.Web.Script.Serialization.JavaScriptSerializer
 $ser.MaxJsonLength = [int]::MaxValue
+# Primero se valida y SOLO despues se guarda el crudo: si Understat esta en
+# mantenimiento y devuelve una pagina HTML, no se pisa el ultimo crudo bueno
+if ($txt.TrimStart().StartsWith('<')) { throw "Understat ha devuelto una pagina HTML (probablemente en mantenimiento). No se toca nada; reintentalo mas tarde" }
 $d = $ser.DeserializeObject($txt)
+[System.IO.File]::WriteAllText((Join-Path $dirCrudo "understat_laliga_$Anio.json"), $txt, $utf8)
 if (-not $d.ContainsKey('teams') -or -not $d.ContainsKey('players') -or -not $d.ContainsKey('dates')) {
   throw "la respuesta no tiene teams/players/dates: Understat ha cambiado el formato"
 }
