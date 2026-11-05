@@ -193,7 +193,22 @@
         {"aciertos": 10, "acertantes": 186259, "premio": 1.63}
       ],
       "elige8": {"acertantes": 590, "premio": 94.33},
+      "notas": [""],
       "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_16", "capturado": "2026-10-27"
+    },
+    "18": {
+      "fecha": "2026-10-31", "recaudacion": 3587550, "bote": 1898047.03,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 26, "premio": 74680.41},
+        {"aciertos": 14, "acertantes": 96, "premio": 5979.25},
+        {"aciertos": 13, "acertantes": 1867, "premio": 144.12},
+        {"aciertos": 12, "acertantes": 16798, "premio": 16.02},
+        {"aciertos": 11, "acertantes": 91671, "premio": 2.94},
+        {"aciertos": 10, "acertantes": 321020, "premio": 0}
+      ],
+      "elige8": {"acertantes": 2801, "premio": 21.66},
+      "notas": ["14 aciertos: cobran 127,1 % de lo teorico (reparto distinto del publicado)", "10 aciertos: 321020 acertantes sin premio (el teorico seria 1,01 EUR cada uno; pasa a bote)"],
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_18", "capturado": "2026-11-05"
     }
   }
 }
