@@ -223,6 +223,19 @@
       "elige8": {"acertantes": 258, "premio": 214.66},
       "notas": ["14 aciertos: cobran 116,7 % de lo teorico (reparto distinto del publicado)"],
       "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_20", "capturado": "2026-11-12"
+    },
+    "21": {
+      "fecha": "2026-11-14", "recaudacion": 1586225.25, "bote": 0,
+      "categorias": [
+        {"aciertos": 15, "acertantes": 0, "premio": 0},
+        {"aciertos": 14, "acertantes": 4, "premio": 58759.21},
+        {"aciertos": 13, "acertantes": 40, "premio": 2974.17},
+        {"aciertos": 12, "acertantes": 459, "premio": 259.19},
+        {"aciertos": 11, "acertantes": 3831, "premio": 31.05},
+        {"aciertos": 10, "acertantes": 21762, "premio": 6.56}
+      ],
+      "elige8": {"acertantes": 49, "premio": 666.36},
+      "fuente": "https://www.eduardolosilla.es/quiniela/ayudas/escrutinio/jornada_21", "capturado": "2026-11-19"
     }
   }
 }
